@@ -7,13 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AC40505C2C3358B200F4D5F6 /* Capstone_CookbookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC40505B2C3358B200F4D5F6 /* Capstone_CookbookApp.swift */; };
+		AC1F4B562C335BE700855379 /* TastyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1F4B552C335BE700855379 /* TastyAPI.swift */; };
+		AC1F4B582C335C7100855379 /* Tasty-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC1F4B572C335C7100855379 /* Tasty-Info.plist */; };
+		AC1F4B5A2C3360AF00855379 /* TastyRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1F4B592C3360AF00855379 /* TastyRecipe.swift */; };
+		AC1F4B5C2C33612300855379 /* TastyTips.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1F4B5B2C33612300855379 /* TastyTips.swift */; };
+		AC1F4B5E2C33614800855379 /* TastyAutoComplete.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1F4B5D2C33614800855379 /* TastyAutoComplete.swift */; };
+		AC1F4B602C33617100855379 /* TastyTagsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1F4B5F2C33617100855379 /* TastyTagsList.swift */; };
+		AC1F4B622C3361F700855379 /* TastyNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1F4B612C3361F700855379 /* TastyNetworkService.swift */; };
+		AC1F4B642C336AB700855379 /* TastyStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1F4B632C336AB700855379 /* TastyStore.swift */; };
+		AC1F4B662C336BFE00855379 /* ErrorsEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1F4B652C336BFE00855379 /* ErrorsEnums.swift */; };
+		AC1F4B682C336CD300855379 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1F4B672C336CD200855379 /* SearchBarView.swift */; };
+		AC1F4B6A2C33700000855379 /* SearchStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1F4B692C33700000855379 /* SearchStateView.swift */; };
+		AC1F4B6D2C3374E900855379 /* RecipeDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1F4B6C2C3374E900855379 /* RecipeDetailsView.swift */; };
+		AC1F4B6F2C337C8A00855379 /* TastyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1F4B6E2C337C8A00855379 /* TastyJSON.swift */; };
+		AC1F4B712C337CFC00855379 /* Recipe.json in Resources */ = {isa = PBXBuildFile; fileRef = AC1F4B702C337CFC00855379 /* Recipe.json */; };
+		AC40505C2C3358B200F4D5F6 /* CapstoneCookbookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC40505B2C3358B200F4D5F6 /* CapstoneCookbookApp.swift */; };
 		AC40505E2C3358B200F4D5F6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC40505D2C3358B200F4D5F6 /* ContentView.swift */; };
 		AC4050602C3358B300F4D5F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC40505F2C3358B300F4D5F6 /* Assets.xcassets */; };
 		AC4050632C3358B300F4D5F6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC4050622C3358B300F4D5F6 /* Preview Assets.xcassets */; };
-		AC40506D2C3358B300F4D5F6 /* Capstone_CookbookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC40506C2C3358B300F4D5F6 /* Capstone_CookbookTests.swift */; };
-		AC4050772C3358B300F4D5F6 /* Capstone_CookbookUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4050762C3358B300F4D5F6 /* Capstone_CookbookUITests.swift */; };
-		AC4050792C3358B300F4D5F6 /* Capstone_CookbookUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4050782C3358B300F4D5F6 /* Capstone_CookbookUITestsLaunchTests.swift */; };
+		AC40506D2C3358B300F4D5F6 /* CapstoneCookbookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC40506C2C3358B300F4D5F6 /* CapstoneCookbookTests.swift */; };
+		AC4050772C3358B300F4D5F6 /* CapstoneCookbookUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4050762C3358B300F4D5F6 /* CapstoneCookbookUITests.swift */; };
+		AC4050792C3358B300F4D5F6 /* CapstoneCookbookUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4050782C3358B300F4D5F6 /* CapstoneCookbookUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,16 +48,30 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AC1F4B552C335BE700855379 /* TastyAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TastyAPI.swift; sourceTree = "<group>"; };
+		AC1F4B572C335C7100855379 /* Tasty-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tasty-Info.plist"; sourceTree = "<group>"; };
+		AC1F4B592C3360AF00855379 /* TastyRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TastyRecipe.swift; sourceTree = "<group>"; };
+		AC1F4B5B2C33612300855379 /* TastyTips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TastyTips.swift; sourceTree = "<group>"; };
+		AC1F4B5D2C33614800855379 /* TastyAutoComplete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TastyAutoComplete.swift; sourceTree = "<group>"; };
+		AC1F4B5F2C33617100855379 /* TastyTagsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TastyTagsList.swift; sourceTree = "<group>"; };
+		AC1F4B612C3361F700855379 /* TastyNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TastyNetworkService.swift; sourceTree = "<group>"; };
+		AC1F4B632C336AB700855379 /* TastyStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TastyStore.swift; sourceTree = "<group>"; };
+		AC1F4B652C336BFE00855379 /* ErrorsEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorsEnums.swift; sourceTree = "<group>"; };
+		AC1F4B672C336CD200855379 /* SearchBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
+		AC1F4B692C33700000855379 /* SearchStateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchStateView.swift; sourceTree = "<group>"; };
+		AC1F4B6C2C3374E900855379 /* RecipeDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsView.swift; sourceTree = "<group>"; };
+		AC1F4B6E2C337C8A00855379 /* TastyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TastyJSON.swift; sourceTree = "<group>"; };
+		AC1F4B702C337CFC00855379 /* Recipe.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Recipe.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
 		AC4050582C3358B200F4D5F6 /* Capstone-Cookbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Capstone-Cookbook.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AC40505B2C3358B200F4D5F6 /* Capstone_CookbookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Capstone_CookbookApp.swift; sourceTree = "<group>"; };
+		AC40505B2C3358B200F4D5F6 /* CapstoneCookbookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapstoneCookbookApp.swift; sourceTree = "<group>"; };
 		AC40505D2C3358B200F4D5F6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		AC40505F2C3358B300F4D5F6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC4050622C3358B300F4D5F6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AC4050682C3358B300F4D5F6 /* Capstone-CookbookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Capstone-CookbookTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AC40506C2C3358B300F4D5F6 /* Capstone_CookbookTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Capstone_CookbookTests.swift; sourceTree = "<group>"; };
+		AC40506C2C3358B300F4D5F6 /* CapstoneCookbookTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapstoneCookbookTests.swift; sourceTree = "<group>"; };
 		AC4050722C3358B300F4D5F6 /* Capstone-CookbookUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Capstone-CookbookUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AC4050762C3358B300F4D5F6 /* Capstone_CookbookUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Capstone_CookbookUITests.swift; sourceTree = "<group>"; };
-		AC4050782C3358B300F4D5F6 /* Capstone_CookbookUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Capstone_CookbookUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		AC4050762C3358B300F4D5F6 /* CapstoneCookbookUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapstoneCookbookUITests.swift; sourceTree = "<group>"; };
+		AC4050782C3358B300F4D5F6 /* CapstoneCookbookUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapstoneCookbookUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +99,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AC1F4B522C335BB100855379 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AC1F4B552C335BE700855379 /* TastyAPI.swift */,
+				AC1F4B592C3360AF00855379 /* TastyRecipe.swift */,
+				AC1F4B5B2C33612300855379 /* TastyTips.swift */,
+				AC1F4B5D2C33614800855379 /* TastyAutoComplete.swift */,
+				AC1F4B5F2C33617100855379 /* TastyTagsList.swift */,
+				AC1F4B652C336BFE00855379 /* ErrorsEnums.swift */,
+				AC1F4B6E2C337C8A00855379 /* TastyJSON.swift */,
+				AC1F4B702C337CFC00855379 /* Recipe.json */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AC1F4B532C335BB700855379 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AC1F4B612C3361F700855379 /* TastyNetworkService.swift */,
+				AC1F4B632C336AB700855379 /* TastyStore.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		AC1F4B542C335BBD00855379 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AC1F4B672C336CD200855379 /* SearchBarView.swift */,
+				AC40505D2C3358B200F4D5F6 /* ContentView.swift */,
+				AC1F4B692C33700000855379 /* SearchStateView.swift */,
+				AC1F4B6C2C3374E900855379 /* RecipeDetailsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		AC40504F2C3358B200F4D5F6 = {
 			isa = PBXGroup;
 			children = (
@@ -94,10 +157,13 @@
 		AC40505A2C3358B200F4D5F6 /* Capstone-Cookbook */ = {
 			isa = PBXGroup;
 			children = (
-				AC40505B2C3358B200F4D5F6 /* Capstone_CookbookApp.swift */,
-				AC40505D2C3358B200F4D5F6 /* ContentView.swift */,
+				AC1F4B542C335BBD00855379 /* View */,
+				AC1F4B532C335BB700855379 /* ViewModel */,
+				AC1F4B522C335BB100855379 /* Model */,
+				AC40505B2C3358B200F4D5F6 /* CapstoneCookbookApp.swift */,
 				AC40505F2C3358B300F4D5F6 /* Assets.xcassets */,
 				AC4050612C3358B300F4D5F6 /* Preview Content */,
+				AC1F4B572C335C7100855379 /* Tasty-Info.plist */,
 			);
 			path = "Capstone-Cookbook";
 			sourceTree = "<group>";
@@ -113,7 +179,7 @@
 		AC40506B2C3358B300F4D5F6 /* Capstone-CookbookTests */ = {
 			isa = PBXGroup;
 			children = (
-				AC40506C2C3358B300F4D5F6 /* Capstone_CookbookTests.swift */,
+				AC40506C2C3358B300F4D5F6 /* CapstoneCookbookTests.swift */,
 			);
 			path = "Capstone-CookbookTests";
 			sourceTree = "<group>";
@@ -121,8 +187,8 @@
 		AC4050752C3358B300F4D5F6 /* Capstone-CookbookUITests */ = {
 			isa = PBXGroup;
 			children = (
-				AC4050762C3358B300F4D5F6 /* Capstone_CookbookUITests.swift */,
-				AC4050782C3358B300F4D5F6 /* Capstone_CookbookUITestsLaunchTests.swift */,
+				AC4050762C3358B300F4D5F6 /* CapstoneCookbookUITests.swift */,
+				AC4050782C3358B300F4D5F6 /* CapstoneCookbookUITestsLaunchTests.swift */,
 			);
 			path = "Capstone-CookbookUITests";
 			sourceTree = "<group>";
@@ -134,6 +200,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AC40507C2C3358B300F4D5F6 /* Build configuration list for PBXNativeTarget "Capstone-Cookbook" */;
 			buildPhases = (
+				AC1F4B722C35FBE800855379 /* Run Script */,
 				AC4050542C3358B200F4D5F6 /* Sources */,
 				AC4050552C3358B200F4D5F6 /* Frameworks */,
 				AC4050562C3358B200F4D5F6 /* Resources */,
@@ -231,6 +298,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC1F4B712C337CFC00855379 /* Recipe.json in Resources */,
+				AC1F4B582C335C7100855379 /* Tasty-Info.plist in Resources */,
 				AC4050632C3358B300F4D5F6 /* Preview Assets.xcassets in Resources */,
 				AC4050602C3358B300F4D5F6 /* Assets.xcassets in Resources */,
 			);
@@ -252,13 +321,47 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		AC1F4B722C35FBE800855379 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "PATH=/opt/homebrew/bin:$PATH\nif [ -f ~/com.raywenderlich.swiftlint.yml ]; then\n  if which swiftlint >/dev/null; then\n    swiftlint --no-cache --config ~/com.raywenderlich.swiftlint.yml\n  fi\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AC4050542C3358B200F4D5F6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC1F4B642C336AB700855379 /* TastyStore.swift in Sources */,
+				AC1F4B662C336BFE00855379 /* ErrorsEnums.swift in Sources */,
+				AC1F4B562C335BE700855379 /* TastyAPI.swift in Sources */,
+				AC1F4B5E2C33614800855379 /* TastyAutoComplete.swift in Sources */,
+				AC1F4B602C33617100855379 /* TastyTagsList.swift in Sources */,
+				AC1F4B6F2C337C8A00855379 /* TastyJSON.swift in Sources */,
+				AC1F4B5A2C3360AF00855379 /* TastyRecipe.swift in Sources */,
+				AC1F4B6A2C33700000855379 /* SearchStateView.swift in Sources */,
+				AC1F4B622C3361F700855379 /* TastyNetworkService.swift in Sources */,
+				AC1F4B682C336CD300855379 /* SearchBarView.swift in Sources */,
+				AC1F4B5C2C33612300855379 /* TastyTips.swift in Sources */,
+				AC1F4B6D2C3374E900855379 /* RecipeDetailsView.swift in Sources */,
 				AC40505E2C3358B200F4D5F6 /* ContentView.swift in Sources */,
-				AC40505C2C3358B200F4D5F6 /* Capstone_CookbookApp.swift in Sources */,
+				AC40505C2C3358B200F4D5F6 /* CapstoneCookbookApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,7 +369,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC40506D2C3358B300F4D5F6 /* Capstone_CookbookTests.swift in Sources */,
+				AC40506D2C3358B300F4D5F6 /* CapstoneCookbookTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,8 +377,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC4050792C3358B300F4D5F6 /* Capstone_CookbookUITestsLaunchTests.swift in Sources */,
-				AC4050772C3358B300F4D5F6 /* Capstone_CookbookUITests.swift in Sources */,
+				AC4050792C3358B300F4D5F6 /* CapstoneCookbookUITestsLaunchTests.swift in Sources */,
+				AC4050772C3358B300F4D5F6 /* CapstoneCookbookUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,6 +527,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Capstone-Cookbook/Preview Content\"";
 				DEVELOPMENT_TEAM = HR9ZV6NGYD;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -453,6 +557,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Capstone-Cookbook/Preview Content\"";
 				DEVELOPMENT_TEAM = HR9ZV6NGYD;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

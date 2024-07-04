@@ -1,0 +1,1635 @@
+{
+  "approved_at": 1571343068,
+  "aspect_ratio": "1:1",
+  "beauty_url": null,
+  "brand": null,
+  "brand_id": null,
+  "buzz_id": null,
+  "canonical_id": "recipe:951",
+  "compilations": [
+    {
+      "approved_at": 1539315023,
+      "aspect_ratio": "1:1",
+      "beauty_url": null,
+      "buzz_id": null,
+      "canonical_id": "compilation:687",
+      "country": "US",
+      "created_at": 1539213847,
+      "description": null,
+      "draft_status": "published",
+      "facebook_posts": [],
+      "id": 687,
+      "is_shoppable": false,
+      "keywords": null,
+      "language": "eng",
+      "name": "18 Tasty Pie Recipes ",
+      "promotion": "full",
+      "show": [
+        {
+          "id": 17,
+          "name": "Tasty"
+        }
+      ],
+      "slug": "18-tasty-pie-recipes",
+      "thumbnail_alt_text": "",
+      "thumbnail_url": "https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/183186.jpg",
+      "video_id": 68212,
+      "video_url": "https://vid.tasty.co/output/111982/hls24_1539289535.m3u8"
+    },
+    {
+      "approved_at": 1576591844,
+      "aspect_ratio": "1:1",
+      "beauty_url": null,
+      "buzz_id": null,
+      "canonical_id": "compilation:1200",
+      "country": "US",
+      "created_at": 1571813283,
+      "description": null,
+      "draft_status": "published",
+      "facebook_posts": [],
+      "id": 1200,
+      "is_shoppable": true,
+      "keywords": null,
+      "language": "eng",
+      "name": "Three Impressive (Yet Easy) Pies For Your Holiday Dessert Table",
+      "promotion": "full",
+      "show": [
+        {
+          "id": 17,
+          "name": "Tasty"
+        }
+      ],
+      "slug": "three-impressive-yet-easy-pies-for-your-holiday-dessert-table",
+      "thumbnail_alt_text": "",
+      "thumbnail_url": "https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/239703.jpg",
+      "video_id": 93744,
+      "video_url": "https://vid.tasty.co/output/149311/hls24_1571813853.m3u8"
+    },
+    {
+      "approved_at": 1574794846,
+      "aspect_ratio": "1:1",
+      "beauty_url": null,
+      "buzz_id": null,
+      "canonical_id": "compilation:1262",
+      "country": "US",
+      "created_at": 1574399364,
+      "description": null,
+      "draft_status": "published",
+      "facebook_posts": [],
+      "id": 1262,
+      "is_shoppable": false,
+      "keywords": null,
+      "language": "eng",
+      "name": "Tasty's Ultimate Christmas Dinner Recipes",
+      "promotion": "full",
+      "show": [
+        {
+          "id": 17,
+          "name": "Tasty"
+        }
+      ],
+      "slug": "tasty-s-ultimate-christmas-dinner-recipes",
+      "thumbnail_alt_text": "",
+      "thumbnail_url": "https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/244187.jpg",
+      "video_id": 95740,
+      "video_url": "https://vid.tasty.co/output/152398/hls24_1574399435.m3u8"
+    },
+    {
+      "approved_at": 1575689432,
+      "aspect_ratio": "1:1",
+      "beauty_url": null,
+      "buzz_id": null,
+      "canonical_id": "compilation:1303",
+      "country": "US",
+      "created_at": 1575459359,
+      "description": null,
+      "draft_status": "published",
+      "facebook_posts": [],
+      "id": 1303,
+      "is_shoppable": false,
+      "keywords": null,
+      "language": "eng",
+      "name": "6 Easy Pie Recipes",
+      "promotion": "full",
+      "show": [
+        {
+          "id": 17,
+          "name": "Tasty"
+        }
+      ],
+      "slug": "6-easy-pie-recipes",
+      "thumbnail_alt_text": "",
+      "thumbnail_url": "https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/245261.jpg",
+      "video_id": 96172,
+      "video_url": "https://vid.tasty.co/output/153170/hls24_1574927971.m3u8"
+    },
+    {
+      "approved_at": 1582950037,
+      "aspect_ratio": "1:1",
+      "beauty_url": null,
+      "buzz_id": null,
+      "canonical_id": "compilation:1411",
+      "country": "US",
+      "created_at": 1582884389,
+      "description": null,
+      "draft_status": "published",
+      "facebook_posts": [],
+      "id": 1411,
+      "is_shoppable": false,
+      "keywords": null,
+      "language": "eng",
+      "name": "6 Amazing Pies To Impress Your Friends",
+      "promotion": "full",
+      "show": [
+        {
+          "id": 17,
+          "name": "Tasty"
+        }
+      ],
+      "slug": "6-amazing-pies-to-impress-your-friends",
+      "thumbnail_alt_text": "",
+      "thumbnail_url": "https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/256869.jpg",
+      "video_id": 101265,
+      "video_url": "https://vid.tasty.co/output/161403/hls24_1582884370.m3u8"
+    },
+    {
+      "approved_at": 1599053174,
+      "aspect_ratio": "1:1",
+      "beauty_url": null,
+      "buzz_id": null,
+      "canonical_id": "compilation:1656",
+      "country": "US",
+      "created_at": 1597752807,
+      "description": "Every special occassion just feels incomplete without the wonderful smell of pies wafting through the air. But why settle for just one when you can chose from 31 different recipes! From everyone's favorite \u003ca href=\"https://tasty.co/recipe/aunt-vivians-sweet-potato-pie\"\u003eclassic sweet potato pie\u003c/a\u003e to Instagram-worthy \u003ca href=\"https://tasty.co/recipe/rigatoni-pie\"\u003erigatoni pie\u003c/a\u003e, these sweet and savory pies are sure to impress all your loved ones and keep them coming back for another slice.",
+      "draft_status": "published",
+      "facebook_posts": [],
+      "id": 1656,
+      "is_shoppable": false,
+      "keywords": null,
+      "language": "eng",
+      "name": "31 Pie Recipes for Every Occasion ",
+      "promotion": "full",
+      "show": [
+        {
+          "id": 17,
+          "name": "Tasty"
+        }
+      ],
+      "slug": "31-pie-recipes-for-every-occasion",
+      "thumbnail_alt_text": "",
+      "thumbnail_url": "https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/277313.jpg",
+      "video_id": 110080,
+      "video_url": "https://vid.tasty.co/output/176341/hls24_1597755186.m3u8"
+    },
+    {
+      "approved_at": 1599572000,
+      "aspect_ratio": "1:1",
+      "beauty_url": null,
+      "buzz_id": null,
+      "canonical_id": "compilation:1678",
+      "country": "US",
+      "created_at": 1598858737,
+      "description": "Who said you can't eat dessert first? These healthy and delicious fruit-filled treats will satisfy your dessert cravings at any hour of the day. From \u003ca href=\"https://tasty.co/recipe/healthier-raspberry-cheesecake\"\u003eraspberry cheesecake\u003c/a\u003e to a \u003ca href=\"https://tasty.co/recipe/mango-tart\"\u003elight mango tart\u003c/a\u003e, these fruity desserts will simply melt in your mouth. So go ahead, take your pick and start snacking!",
+      "draft_status": "published",
+      "facebook_posts": [],
+      "id": 1678,
+      "is_shoppable": false,
+      "keywords": null,
+      "language": "eng",
+      "name": "Homemade Fruit Filled Desserts",
+      "promotion": "full",
+      "show": [
+        {
+          "id": 17,
+          "name": "Tasty"
+        }
+      ],
+      "slug": "homemade-fruit-filled-desserts",
+      "thumbnail_alt_text": "",
+      "thumbnail_url": "https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/280938.jpg",
+      "video_id": 111489,
+      "video_url": "https://vid.tasty.co/output/177491/hls24_1598862830.m3u8"
+    },
+    {
+      "approved_at": 1600434405,
+      "aspect_ratio": "1:1",
+      "beauty_url": null,
+      "buzz_id": null,
+      "canonical_id": "compilation:1716",
+      "country": "US",
+      "created_at": 1600265935,
+      "description": "Whether you’re in the mood for a classic apple pie or a super fancy version, apple pie recipes are celebrated all year round. Start with \u003ca href=\"https://tasty.co/recipe/apple-pie-from-scratch\"\u003efrom-scratch apple pie\u003c/a\u003e which is easier than you think, or go with an impressive Instagram-ready \u003ca href=\"https://tasty.co/recipe/caramel-rose-apple-pie\"\u003ecaramel rose apple pie\u003c/a\u003e. They're also a perfect dessert option for your next family gathering. So take your pick and let’s get started!",
+      "draft_status": "published",
+      "facebook_posts": [],
+      "id": 1716,
+      "is_shoppable": false,
+      "keywords": null,
+      "language": "eng",
+      "name": "Apple Pie Please!",
+      "promotion": "full",
+      "show": [
+        {
+          "id": 17,
+          "name": "Tasty"
+        }
+      ],
+      "slug": "apple-pie-please",
+      "thumbnail_alt_text": "",
+      "thumbnail_url": "https://s3.amazonaws.com/video-api-prod/assets/4d904dbff9ab41c4bc3421c26655ffff/Compilation1716.jpg",
+      "video_id": 112957,
+      "video_url": "https://vid.tasty.co/output/178980/hls24_1600266449.m3u8"
+    },
+    {
+      "approved_at": 1606833799,
+      "aspect_ratio": "1:1",
+      "beauty_url": null,
+      "buzz_id": null,
+      "canonical_id": "compilation:1867",
+      "country": "US",
+      "created_at": 1606466850,
+      "description": "Enjoy your holidays with Tasty's 25 favorite apple pie recipes! Start of with a quick \u0026 easy \u003ca href=\"https://tasty.co/recipe/easy-apple-pie-bites\"\u003emini apple pie bites\u003c/a\u003e and then spend your day baking this heavenly \u003ca href=\"https://tasty.co/recipe/caramel-rose-apple-pie\"\u003eCaramel Rose Apple Pie,\u003c/a\u003e Happy holidays!",
+      "draft_status": "published",
+      "facebook_posts": [],
+      "id": 1867,
+      "is_shoppable": false,
+      "keywords": null,
+      "language": "eng",
+      "name": "Apple Pie 25 Ways",
+      "promotion": "full",
+      "show": [
+        {
+          "id": 17,
+          "name": "Tasty"
+        }
+      ],
+      "slug": "apple-pie-25-ways",
+      "thumbnail_alt_text": "",
+      "thumbnail_url": "https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/295992.jpg",
+      "video_id": 118074,
+      "video_url": "https://vid.tasty.co/output/186542/hls24_1606467362.m3u8"
+    },
+    {
+      "approved_at": 1607958461,
+      "aspect_ratio": "1:1",
+      "beauty_url": null,
+      "buzz_id": null,
+      "canonical_id": "compilation:1890",
+      "country": "US",
+      "created_at": 1606796690,
+      "description": "Looking for ways to satiate your sweet tooth? These mesmerizing desserts are hand-picked just for you! Indulge in some \u003ca href=\"https://tasty.co/recipe/healthier-raspberry-cheesecake\"\u003eraspberry cheesecake\u003c/a\u003e and then take your pick between the classic \u003ca href=\"https://tasty.co/recipe/apple-pie-from-scratch\"\u003eapple pie\u003c/a\u003e and our famous indulgent fudgy \u003ca href=\"https://tasty.co/recipe/the-best-fudgy-brownies\"\u003ebrownies\u003c/a\u003e! Sometimes it's best to stick to the traditional! ",
+      "draft_status": "published",
+      "facebook_posts": [],
+      "id": 1890,
+      "is_shoppable": false,
+      "keywords": null,
+      "language": "eng",
+      "name": "7 Timeless Desserts",
+      "promotion": "full",
+      "show": [
+        {
+          "id": 17,
+          "name": "Tasty"
+        }
+      ],
+      "slug": "7-timeless-desserts",
+      "thumbnail_alt_text": "",
+      "thumbnail_url": "https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/296448.jpg",
+      "video_id": 119509,
+      "video_url": "https://vid.tasty.co/output/186829/hls24_1606798249.m3u8"
+    },
+    {
+      "approved_at": 1611761147,
+      "aspect_ratio": "1:1",
+      "beauty_url": null,
+      "buzz_id": null,
+      "canonical_id": "compilation:2069",
+      "country": "US",
+      "created_at": 1611232707,
+      "description": "Let the stars guide your sweet tooth and uncover which dessert truly fits your inner zodiac! When the planets align, there's no denying that our desserts will make you feel heavenly and so very delicious. All your fiery scorpios, take a bite out of our \u003ca href=\"https://tasty.co/recipe/cookies-and-creme-brulee\"\u003eCookies and Creme Brûlée\u003c/a\u003e or let the \u003ca href=\"https://tasty.co/recipe/cherry-blossom-raindrop-cake\"\u003eRaindrop Cake\u003c/a\u003e stand true to the dreamy Pisces in you. All you zodiac babies come and discover which dessert is in the stars for you!",
+      "draft_status": "published",
+      "facebook_posts": [],
+      "id": 2069,
+      "is_shoppable": false,
+      "keywords": null,
+      "language": "eng",
+      "name": "Desserts Based On Your Zodiac",
+      "promotion": "full",
+      "show": [
+        {
+          "id": 17,
+          "name": "Tasty"
+        }
+      ],
+      "slug": "desserts-based-on-your-zodiac",
+      "thumbnail_alt_text": "",
+      "thumbnail_url": "https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/289170.jpg",
+      "video_id": 115336,
+      "video_url": "https://vid.tasty.co/output/182677/hls24_1603453630.m3u8"
+    },
+    {
+      "approved_at": 1617308002,
+      "aspect_ratio": "1:1",
+      "beauty_url": null,
+      "buzz_id": null,
+      "canonical_id": "compilation:2238",
+      "country": "US",
+      "created_at": 1616562059,
+      "description": "If you apple-solutely love the fruit, this one is for you! Pull out all the stops with a classic apple pie, or cook up a fancy \u003ca href=\"https://tasty.co/recipe/caramel-rose-apple-pie\"\u003ecaramel rose apple pie\u003c/a\u003e when you are entertaining. For something more adventurous, try the \u003ca href=\"https://tasty.co/recipe/apple-cider-beignet\"\u003eapple cider beignet\u003c/a\u003e or \u003ca href=\"https://tasty.co/recipe/apple-cider-beignet\"\u003eapple pie tacos\u003c/a\u003e. ",
+      "draft_status": "published",
+      "facebook_posts": [],
+      "id": 2238,
+      "is_shoppable": false,
+      "keywords": null,
+      "language": "eng",
+      "name": "Apple Lovers Only",
+      "promotion": "full",
+      "show": [
+        {
+          "id": 17,
+          "name": "Tasty"
+        }
+      ],
+      "slug": "apple-lovers-only",
+      "thumbnail_alt_text": "",
+      "thumbnail_url": "https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/315117.jpg",
+      "video_id": 128082,
+      "video_url": "https://vid.tasty.co/output/198218/hls24_1617177773.m3u8"
+    },
+    {
+      "approved_at": 1630514125,
+      "aspect_ratio": "1:1",
+      "beauty_url": null,
+      "buzz_id": null,
+      "canonical_id": "compilation:2767",
+      "country": "US",
+      "created_at": 1629983541,
+      "description": "Pies can be daunting, especially if you're a new baker. But every home cook must know how to bake an \u003ca href=\"https://tasty.co/recipe/apple-pie-from-scratch\"\u003eapple pie\u003c/a\u003e: it's culinary gospel. For something simpler, you can begin with the \u003ca href=\"https://tasty.co/recipe/chocolate-cookie-crust-peanut-butter-pie\"\u003echocolate cookie crust peanut butter pie\u003c/a\u003e. And if you're a savory pie kind of person, follow along to the \u003ca href=\"https://tasty.co/recipe/chicken-pot-pie-by-wolfgang-puck\"\u003eChicken Pot Pie\u003c/a\u003e recipe by Wolfgang Puck. We promise you, these recipes will impress everyone you serve a slice to. ",
+      "draft_status": "published",
+      "facebook_posts": [],
+      "id": 2767,
+      "is_shoppable": false,
+      "keywords": null,
+      "language": "eng",
+      "name": "Easy Homemade Pies",
+      "promotion": "full",
+      "show": [
+        {
+          "id": 17,
+          "name": "Tasty"
+        }
+      ],
+      "slug": "easy-homemade-pies",
+      "thumbnail_alt_text": "",
+      "thumbnail_url": "https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/339174.jpg",
+      "video_id": 139814,
+      "video_url": "https://vid.tasty.co/output/214097/hls24_1629983677.m3u8"
+    },
+    {
+      "approved_at": 1633618910,
+      "aspect_ratio": null,
+      "beauty_url": null,
+      "buzz_id": null,
+      "canonical_id": "compilation:2860",
+      "country": "US",
+      "created_at": 1632808964,
+      "description": "Fall is officially here: between all the pumpkin spice and apple cider, autumn is all about seasonal comforts. We've got the perfect line-up to keep you warm and cozy. Sip on \u003ca href=\"https://tasty.co/recipe/pumpkin-spice-coffee\"\u003epumpkin spiced coffee\u003c/a\u003e while you cook this feel-good \u003ca href=\"https://tasty.co/recipe/one-skillet-chicken-pot-pie\"\u003echicken pot pie\u003c/a\u003e. And celebrate the weekend with the best \u003ca href=\"https://tasty.co/recipe/apple-pie-from-scratch\"\u003eapple pie\u003c/a\u003e! These recipes will give fall comfort food a whole new meaning.",
+      "draft_status": "published",
+      "facebook_posts": [],
+      "id": 2860,
+      "is_shoppable": false,
+      "keywords": null,
+      "language": "eng",
+      "name": "Cozy Recipes For Fall Season",
+      "promotion": "full",
+      "show": [
+        {
+          "id": 17,
+          "name": "Tasty"
+        }
+      ],
+      "slug": "cozy-recipes-for-fall-season",
+      "thumbnail_alt_text": "",
+      "thumbnail_url": "https://s3.amazonaws.com/video-api-prod/assets/c8484c535c8d417893c1fe608dc4fdf1/16_1x1.jpg",
+      "video_id": 142629,
+      "video_url": "https://vid.tasty.co/output/217422/hls24_1632809902.m3u8"
+    },
+    {
+      "approved_at": 1635865036,
+      "aspect_ratio": "1:1",
+      "beauty_url": null,
+      "buzz_id": null,
+      "canonical_id": "compilation:2920",
+      "country": "US",
+      "created_at": 1635494820,
+      "description": null,
+      "draft_status": "published",
+      "facebook_posts": [],
+      "id": 2920,
+      "is_shoppable": false,
+      "keywords": null,
+      "language": "eng",
+      "name": "Apple Pie Recipes For The Fall",
+      "promotion": "full",
+      "show": [
+        {
+          "id": 17,
+          "name": "Tasty"
+        }
+      ],
+      "slug": "apple-pie-recipes-for-the-fall",
+      "thumbnail_alt_text": "Apple Pie Recipes For The Fall",
+      "thumbnail_url": "https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/349855.jpg",
+      "video_id": 144395,
+      "video_url": "https://vid.tasty.co/output/220937/hls24_1635495640.m3u8"
+    },
+    {
+      "approved_at": 1645135848,
+      "aspect_ratio": "1:1",
+      "beauty_url": "https://img.buzzfeed.com/video-api-prod/assets/f6c1f58fe4dd4d9cac3cac743e317406/FB_final.jpg",
+      "buzz_id": null,
+      "canonical_id": "compilation:3046",
+      "country": "US",
+      "created_at": 1643369814,
+      "description": "We're getting close to February and that only means one thing: Aquarius season is here! To the delight of all our analytical and original fellow Aquarians, we've compiled a list of mouth-watering desserts that you're surely going to love. So buckle up and get ready, because Aquarius season just got a whole lot sweeter!",
+      "draft_status": "published",
+      "facebook_posts": [],
+      "id": 3046,
+      "is_shoppable": false,
+      "keywords": null,
+      "language": "eng",
+      "name": "5 Dessert Recipes That Are Aquarius Approved",
+      "promotion": "full",
+      "show": [
+        {
+          "id": 17,
+          "name": "Tasty"
+        }
+      ],
+      "slug": "5-dessert-recipes-that-are-aquarius-approved",
+      "thumbnail_alt_text": "",
+      "thumbnail_url": "https://s3.amazonaws.com/video-api-prod/assets/d117913ab536459699adfe54d777b00b/OnO_final.jpg",
+      "video_id": 150995,
+      "video_url": "https://vid.tasty.co/output/230684/hls24_1644290005.m3u8"
+    }
+  ],
+  "cook_time_minutes": 60,
+  "country": "ZZ",
+  "created_at": 1493236095,
+  "credits": [
+    {
+      "name": "Alix Traeger",
+      "type": "internal"
+    }
+  ],
+  "description": "Homemade apple pie is a timeless, all-time favorite dessert for many. Crafting an apple pie from scratch is fulfilling in so many ways. It's a process that, once mastered, is satisfying and a dessert that, when eaten, is delightful. Begin by making a buttery, flaky pie crust with basic pantry staples. Then, fill the crust with freshly sliced apples tossed in sugar, spices, and a touch of citrus. As the pie bakes, the crust turns golden brown with a glistening finish thanks to egg wash and a sugar sprinkle. Serve up generous slices crowned with a scoop of vanilla ice cream.",
+  "draft_status": "published",
+  "facebook_posts": [],
+  "id": 951,
+  "inspired_by_url": null,
+  "instructions": [
+    {
+      "appliance": null,
+      "display_text": "In a medium-sized bowl, add the flour and salt. Mix with fork until combined.",
+      "end_time": 3850,
+      "id": 6913,
+      "position": 1,
+      "start_time": 1000,
+      "temperature": null
+    },
+    {
+      "appliance": null,
+      "display_text": "Add in cubed butter and break up into flour with a fork. Mixture will still have lumps about the size of small peas.",
+      "end_time": 9467,
+      "id": 6914,
+      "position": 2,
+      "start_time": 4016,
+      "temperature": null
+    },
+    {
+      "appliance": null,
+      "display_text": "Gradually add the ice water and continue to mix until the dough starts to come together. You may not need all of the water, but if the dough is too dry then add more. The dough should not be very tacky or sticky.",
+      "end_time": 17567,
+      "id": 6915,
+      "position": 3,
+      "start_time": 10467,
+      "temperature": null
+    },
+    {
+      "appliance": null,
+      "display_text": "Work the dough together with your hands and turn out onto a surface. Work into a ball and cover with cling wrap. Refrigerate.",
+      "end_time": 27767,
+      "id": 6916,
+      "position": 4,
+      "start_time": 18567,
+      "temperature": null
+    },
+    {
+      "appliance": null,
+      "display_text": "Peel the apples, then core and slice.",
+      "end_time": 42766,
+      "id": 10190,
+      "position": 5,
+      "start_time": 28767,
+      "temperature": null
+    },
+    {
+      "appliance": null,
+      "display_text": "In a bowl, add the sliced apples, sugar, flour, salt, cinnamon, nutmeg, and juice from the lemon.",
+      "end_time": 55800,
+      "id": 6917,
+      "position": 6,
+      "start_time": 45699,
+      "temperature": null
+    },
+    {
+      "appliance": null,
+      "display_text": "Mix until combined and all apples are coated. Refrigerate.",
+      "end_time": 60117,
+      "id": 6918,
+      "position": 7,
+      "start_time": 56800,
+      "temperature": null
+    },
+    {
+      "appliance": "oven",
+      "display_text": "Preheat the oven to 375°F (200°C).",
+      "end_time": 0,
+      "id": 6912,
+      "position": 8,
+      "start_time": 0,
+      "temperature": 375
+    },
+    {
+      "appliance": null,
+      "display_text": "On a floured surface, cut the pie dough in half and roll out both halves until round and about ⅛-inch (3 mm) thick.",
+      "end_time": 70916,
+      "id": 6919,
+      "position": 9,
+      "start_time": 61117,
+      "temperature": null
+    },
+    {
+      "appliance": null,
+      "display_text": "Roll the dough around the rolling pin and unroll onto a pie dish making sure the dough reaches all edges. Trim extra if necessary.",
+      "end_time": 77017,
+      "id": 6920,
+      "position": 10,
+      "start_time": 72000,
+      "temperature": null
+    },
+    {
+      "appliance": null,
+      "display_text": "Pour in apple filling mixture and pat down.",
+      "end_time": 80166,
+      "id": 6921,
+      "position": 11,
+      "start_time": 77866,
+      "temperature": null
+    },
+    {
+      "appliance": null,
+      "display_text": "Roll the other half of the dough on top.",
+      "end_time": 81866,
+      "id": 6922,
+      "position": 12,
+      "start_time": 80717,
+      "temperature": null
+    },
+    {
+      "appliance": null,
+      "display_text": "Trim the extra dough from the edges and pinch the edges to create a crimp. Make sure edges are sealed together.",
+      "end_time": 90717,
+      "id": 6923,
+      "position": 13,
+      "start_time": 82866,
+      "temperature": null
+    },
+    {
+      "appliance": null,
+      "display_text": "Brush the pie with the beaten egg and sprinkle with the sugar.",
+      "end_time": 97767,
+      "id": 6924,
+      "position": 14,
+      "start_time": 91717,
+      "temperature": null
+    },
+    {
+      "appliance": null,
+      "display_text": "Cut four slits in the top of the pie to create a vent.",
+      "end_time": 100916,
+      "id": 6925,
+      "position": 15,
+      "start_time": 99000,
+      "temperature": null
+    },
+    {
+      "appliance": null,
+      "display_text": "Bake pie for 50-60 minutes or until the crust is golden brown and no greyish or undercooked pastry remains.",
+      "end_time": 102949,
+      "id": 6926,
+      "position": 16,
+      "start_time": 102000,
+      "temperature": null
+    },
+    {
+      "appliance": null,
+      "display_text": "Allow to cool completely before slicing.",
+      "end_time": 109617,
+      "id": 6927,
+      "position": 17,
+      "start_time": 104000,
+      "temperature": null
+    },
+    {
+      "appliance": null,
+      "display_text": "Top with ice cream and serve.",
+      "end_time": 113917,
+      "id": 10191,
+      "position": 18,
+      "start_time": 111000,
+      "temperature": null
+    },
+    {
+      "appliance": null,
+      "display_text": "Enjoy!",
+      "end_time": 118517,
+      "id": 10189,
+      "position": 19,
+      "start_time": 114917,
+      "temperature": null
+    }
+  ],
+  "is_app_only": false,
+  "is_one_top": false,
+  "is_shoppable": true,
+  "is_subscriber_content": false,
+  "keywords": "apple, apple pie, bake, buzzfeed, comfort food, dessert, easy, from scratch, fruit, homemade, pie, tasty, tasty_vegetarian",
+  "language": "eng",
+  "name": "Apple Pie From Scratch",
+  "num_servings": 8,
+  "nutrition": {
+    "calories": 273,
+    "carbohydrates": 60,
+    "fat": 1,
+    "fiber": 3,
+    "protein": 5,
+    "sugar": 26,
+    "updated_at": "2024-05-01T08:05:15+02:00"
+  },
+  "nutrition_visibility": "auto",
+  "original_video_url": "https://s3.amazonaws.com/video-api-prod/assets/3593865599de4bf8a15d528c2b18cc69/fb.mp4",
+  "prep_time_minutes": 15,
+  "price": {
+    "consumption_portion": 50,
+    "consumption_total": 200,
+    "portion": 150,
+    "total": 1150,
+    "updated_at": "2024-07-01T07:12:28+02:00"
+  },
+  "promotion": "full",
+  "renditions": [
+    {
+      "aspect": "square",
+      "bit_rate": 7513,
+      "container": "mp4",
+      "content_type": "video/mp4",
+      "duration": 122180,
+      "file_size": 114736178,
+      "height": 720,
+      "maximum_bit_rate": null,
+      "minimum_bit_rate": null,
+      "name": "mp4_720x720",
+      "poster_url": "https://img.buzzfeed.com/video-transcoder-prod/output/29645/mp4_1280X720/1492635519_00001.png",
+      "url": "https://vid.tasty.co/output/29645/mp4_1280X720/1492635519",
+      "width": 720
+    },
+    {
+      "aspect": "square",
+      "bit_rate": null,
+      "container": "mp4",
+      "content_type": "application/vnd.apple.mpegurl",
+      "duration": 122133,
+      "file_size": null,
+      "height": 1080,
+      "maximum_bit_rate": 8211,
+      "minimum_bit_rate": 276,
+      "name": "low",
+      "poster_url": "https://img.buzzfeed.com/video-transcoder-prod/output/29645/1445289064805-h2exzu/1492635519_00001.png",
+      "url": "https://vid.tasty.co/output/29645/low_1492635519.m3u8",
+      "width": 1080
+    },
+    {
+      "aspect": "square",
+      "bit_rate": 7473,
+      "container": "mp4",
+      "content_type": "video/mp4",
+      "duration": 122180,
+      "file_size": 114125556,
+      "height": 640,
+      "maximum_bit_rate": null,
+      "minimum_bit_rate": null,
+      "name": "mp4_640x640",
+      "poster_url": "https://img.buzzfeed.com/video-transcoder-prod/output/29645/mp4_640x640/1492635519_00001.png",
+      "url": "https://vid.tasty.co/output/29645/mp4_640x640/1492635519",
+      "width": 640
+    },
+    {
+      "aspect": "square",
+      "bit_rate": 7513,
+      "container": "mp4",
+      "content_type": "video/mp4",
+      "duration": 122180,
+      "file_size": 114730066,
+      "height": 720,
+      "maximum_bit_rate": null,
+      "minimum_bit_rate": null,
+      "name": "mp4_720x720",
+      "poster_url": "https://img.buzzfeed.com/video-transcoder-prod/output/29645/mp4_720x1280/1492635519_00001.png",
+      "url": "https://vid.tasty.co/output/29645/mp4_720x1280/1492635519",
+      "width": 720
+    }
+  ],
+  "sections": [
+    {
+      "components": [
+        {
+          "extra_comment": "",
+          "id": 10260,
+          "ingredient": {
+            "created_at": 1493314654,
+            "display_plural": "flours",
+            "display_singular": "flour",
+            "id": 25,
+            "name": "flour",
+            "updated_at": 1509035288
+          },
+          "measurements": [
+            {
+              "id": 773220,
+              "quantity": "2 ½",
+              "unit": {
+                "abbreviation": "c",
+                "display_plural": "cups",
+                "display_singular": "cup",
+                "name": "cup",
+                "system": "imperial"
+              }
+            },
+            {
+              "id": 773218,
+              "quantity": "315",
+              "unit": {
+                "abbreviation": "g",
+                "display_plural": "g",
+                "display_singular": "g",
+                "name": "gram",
+                "system": "metric"
+              }
+            }
+          ],
+          "position": 2,
+          "raw_text": "2½ cups flour"
+        },
+        {
+          "extra_comment": "",
+          "id": 10261,
+          "ingredient": {
+            "created_at": 1493314644,
+            "display_plural": "salts",
+            "display_singular": "salt",
+            "id": 22,
+            "name": "salt",
+            "updated_at": 1509035288
+          },
+          "measurements": [
+            {
+              "id": 773215,
+              "quantity": "1",
+              "unit": {
+                "abbreviation": "tsp",
+                "display_plural": "teaspoons",
+                "display_singular": "teaspoon",
+                "name": "teaspoon",
+                "system": "imperial"
+              }
+            }
+          ],
+          "position": 3,
+          "raw_text": "1 teaspoon salt"
+        },
+        {
+          "extra_comment": "1 1/2 sticks, cold, cubed",
+          "id": 10262,
+          "ingredient": {
+            "created_at": 1493314940,
+            "display_plural": "butters",
+            "display_singular": "butter",
+            "id": 30,
+            "name": "butter",
+            "updated_at": 1509035287
+          },
+          "measurements": [
+            {
+              "id": 773214,
+              "quantity": "1 ½",
+              "unit": {
+                "abbreviation": "stick",
+                "display_plural": "sticks",
+                "display_singular": "stick",
+                "name": "stick",
+                "system": "none"
+              }
+            }
+          ],
+          "position": 4,
+          "raw_text": "1½ sticks butter, cold and cut in cubes"
+        },
+        {
+          "extra_comment": "or as needed",
+          "id": 10263,
+          "ingredient": {
+            "created_at": 1496761339,
+            "display_plural": "ice waters",
+            "display_singular": "ice water",
+            "id": 1457,
+            "name": "ice water",
+            "updated_at": 1509035187
+          },
+          "measurements": [
+            {
+              "id": 773219,
+              "quantity": "8",
+              "unit": {
+                "abbreviation": "tbsp",
+                "display_plural": "tablespoons",
+                "display_singular": "tablespoon",
+                "name": "tablespoon",
+                "system": "imperial"
+              }
+            }
+          ],
+          "position": 5,
+          "raw_text": "4-8 tablespoons ice water"
+        }
+      ],
+      "name": "Pie Dough",
+      "position": 1
+    },
+    {
+      "components": [
+        {
+          "extra_comment": "cored, sliced, peeled",
+          "id": 10265,
+          "ingredient": {
+            "created_at": 1496958533,
+            "display_plural": "granny smith apples",
+            "display_singular": "granny smith apple",
+            "id": 1689,
+            "name": "granny smith apple",
+            "updated_at": 1509035172
+          },
+          "measurements": [
+            {
+              "id": 773227,
+              "quantity": "2 ½",
+              "unit": {
+                "abbreviation": "lb",
+                "display_plural": "lb",
+                "display_singular": "lb",
+                "name": "pound",
+                "system": "imperial"
+              }
+            },
+            {
+              "id": 773226,
+              "quantity": "1",
+              "unit": {
+                "abbreviation": "kg",
+                "display_plural": "kg",
+                "display_singular": "kg",
+                "name": "kilogram",
+                "system": "metric"
+              }
+            }
+          ],
+          "position": 7,
+          "raw_text": "2½ pounds Granny Smith apples, cored and sliced"
+        },
+        {
+          "extra_comment": "",
+          "id": 10266,
+          "ingredient": {
+            "created_at": 1493314650,
+            "display_plural": "sugars",
+            "display_singular": "sugar",
+            "id": 24,
+            "name": "sugar",
+            "updated_at": 1509035288
+          },
+          "measurements": [
+            {
+              "id": 773224,
+              "quantity": "¾",
+              "unit": {
+                "abbreviation": "c",
+                "display_plural": "cups",
+                "display_singular": "cup",
+                "name": "cup",
+                "system": "imperial"
+              }
+            },
+            {
+              "id": 773223,
+              "quantity": "150",
+              "unit": {
+                "abbreviation": "g",
+                "display_plural": "g",
+                "display_singular": "g",
+                "name": "gram",
+                "system": "metric"
+              }
+            }
+          ],
+          "position": 8,
+          "raw_text": "¾ cup sugar"
+        },
+        {
+          "extra_comment": "",
+          "id": 10267,
+          "ingredient": {
+            "created_at": 1493314654,
+            "display_plural": "flours",
+            "display_singular": "flour",
+            "id": 25,
+            "name": "flour",
+            "updated_at": 1509035288
+          },
+          "measurements": [
+            {
+              "id": 773228,
+              "quantity": "2",
+              "unit": {
+                "abbreviation": "tbsp",
+                "display_plural": "tablespoons",
+                "display_singular": "tablespoon",
+                "name": "tablespoon",
+                "system": "imperial"
+              }
+            }
+          ],
+          "position": 9,
+          "raw_text": "2 tablespoons flour"
+        },
+        {
+          "extra_comment": "",
+          "id": 10268,
+          "ingredient": {
+            "created_at": 1493314644,
+            "display_plural": "salts",
+            "display_singular": "salt",
+            "id": 22,
+            "name": "salt",
+            "updated_at": 1509035288
+          },
+          "measurements": [
+            {
+              "id": 773221,
+              "quantity": "½",
+              "unit": {
+                "abbreviation": "tsp",
+                "display_plural": "teaspoons",
+                "display_singular": "teaspoon",
+                "name": "teaspoon",
+                "system": "imperial"
+              }
+            }
+          ],
+          "position": 10,
+          "raw_text": "½ teaspoon salt"
+        },
+        {
+          "extra_comment": "",
+          "id": 10269,
+          "ingredient": {
+            "created_at": 1493906374,
+            "display_plural": "cinnamons",
+            "display_singular": "cinnamon",
+            "id": 152,
+            "name": "cinnamon",
+            "updated_at": 1509035283
+          },
+          "measurements": [
+            {
+              "id": 773217,
+              "quantity": "1",
+              "unit": {
+                "abbreviation": "tsp",
+                "display_plural": "teaspoons",
+                "display_singular": "teaspoon",
+                "name": "teaspoon",
+                "system": "imperial"
+              }
+            }
+          ],
+          "position": 11,
+          "raw_text": "1 teaspoon cinnamon"
+        },
+        {
+          "extra_comment": "",
+          "id": 10270,
+          "ingredient": {
+            "created_at": 1495588355,
+            "display_plural": "nutmegs",
+            "display_singular": "nutmeg",
+            "id": 677,
+            "name": "nutmeg",
+            "updated_at": 1509035242
+          },
+          "measurements": [
+            {
+              "id": 773230,
+              "quantity": "¼",
+              "unit": {
+                "abbreviation": "tsp",
+                "display_plural": "teaspoons",
+                "display_singular": "teaspoon",
+                "name": "teaspoon",
+                "system": "imperial"
+              }
+            }
+          ],
+          "position": 12,
+          "raw_text": "¼ teaspoon nutmeg"
+        },
+        {
+          "extra_comment": "",
+          "id": 10271,
+          "ingredient": {
+            "created_at": 1493906426,
+            "display_plural": "lemons",
+            "display_singular": "lemon",
+            "id": 155,
+            "name": "lemon",
+            "updated_at": 1509035282
+          },
+          "measurements": [
+            {
+              "id": 773216,
+              "quantity": "½",
+              "unit": {
+                "abbreviation": "",
+                "display_plural": "",
+                "display_singular": "",
+                "name": "",
+                "system": "none"
+              }
+            }
+          ],
+          "position": 13,
+          "raw_text": "½ lemon"
+        },
+        {
+          "extra_comment": "beaten",
+          "id": 10272,
+          "ingredient": {
+            "created_at": 1493314622,
+            "display_plural": "eggs",
+            "display_singular": "egg",
+            "id": 19,
+            "name": "egg",
+            "updated_at": 1509035288
+          },
+          "measurements": [
+            {
+              "id": 773222,
+              "quantity": "1",
+              "unit": {
+                "abbreviation": "",
+                "display_plural": "",
+                "display_singular": "",
+                "name": "",
+                "system": "none"
+              }
+            }
+          ],
+          "position": 14,
+          "raw_text": "1 egg, beaten"
+        },
+        {
+          "extra_comment": "",
+          "id": 10273,
+          "ingredient": {
+            "created_at": 1493314650,
+            "display_plural": "sugars",
+            "display_singular": "sugar",
+            "id": 24,
+            "name": "sugar",
+            "updated_at": 1509035288
+          },
+          "measurements": [
+            {
+              "id": 773225,
+              "quantity": "1",
+              "unit": {
+                "abbreviation": "tbsp",
+                "display_plural": "tablespoons",
+                "display_singular": "tablespoon",
+                "name": "tablespoon",
+                "system": "imperial"
+              }
+            }
+          ],
+          "position": 15,
+          "raw_text": "1 tablespoon sugar"
+        }
+      ],
+      "name": "Filling",
+      "position": 2
+    },
+    {
+      "components": [
+        {
+          "extra_comment": "",
+          "id": 61449,
+          "ingredient": {
+            "created_at": 1494122620,
+            "display_plural": "vanilla ice creams",
+            "display_singular": "vanilla ice cream",
+            "id": 190,
+            "name": "vanilla ice cream",
+            "updated_at": 1509035280
+          },
+          "measurements": [
+            {
+              "id": 773229,
+              "quantity": "1",
+              "unit": {
+                "abbreviation": "scoop",
+                "display_plural": "scoops",
+                "display_singular": "scoop",
+                "name": "scoop",
+                "system": "none"
+              }
+            }
+          ],
+          "position": 17,
+          "raw_text": "n/a"
+        }
+      ],
+      "name": "Topping",
+      "position": 3
+    }
+  ],
+  "seo_path": "9295813,64485,9299680",
+  "seo_title": "Apple Pie From Scratch Recipe - Tasty",
+  "servings_noun_plural": "servings",
+  "servings_noun_singular": "serving",
+  "show": {
+    "id": 17,
+    "name": "Tasty"
+  },
+  "show_id": 17,
+  "slug": "apple-pie-from-scratch",
+  "tags": [
+    {
+      "display_name": "North American",
+      "id": 64444,
+      "name": "north_american",
+      "parent_tag_name": "cuisine",
+      "root_tag_type": "cuisine",
+      "type": "cuisine"
+    },
+    {
+      "display_name": "Comfort Food",
+      "id": 64462,
+      "name": "comfort_food",
+      "parent_tag_name": "cooking_style",
+      "root_tag_type": "cooking_style",
+      "type": "cooking_style"
+    },
+    {
+      "display_name": "Vegetarian",
+      "id": 64469,
+      "name": "vegetarian",
+      "parent_tag_name": "dietary",
+      "root_tag_type": "dietary",
+      "type": "dietary"
+    },
+    {
+      "display_name": "Easy",
+      "id": 64471,
+      "name": "easy",
+      "parent_tag_name": "difficulty",
+      "root_tag_type": "difficulty",
+      "type": "difficulty"
+    },
+    {
+      "display_name": "Christmas",
+      "id": 64473,
+      "name": "christmas",
+      "parent_tag_name": "holidays",
+      "root_tag_type": "seasonal",
+      "type": "holidays"
+    },
+    {
+      "display_name": "Easter",
+      "id": 64474,
+      "name": "easter",
+      "parent_tag_name": "holidays",
+      "root_tag_type": "seasonal",
+      "type": "holidays"
+    },
+    {
+      "display_name": "Thanksgiving",
+      "id": 64479,
+      "name": "thanksgiving",
+      "parent_tag_name": "holidays",
+      "root_tag_type": "seasonal",
+      "type": "holidays"
+    },
+    {
+      "display_name": "Valentine's Day",
+      "id": 64480,
+      "name": "valentines_day",
+      "parent_tag_name": "holidays",
+      "root_tag_type": "seasonal",
+      "type": "holidays"
+    },
+    {
+      "display_name": "Desserts",
+      "id": 64485,
+      "name": "desserts",
+      "parent_tag_name": "meal",
+      "root_tag_type": "meal",
+      "type": "meal"
+    },
+    {
+      "display_name": "Kid-Friendly",
+      "id": 64488,
+      "name": "kid_friendly",
+      "parent_tag_name": "cooking_style",
+      "root_tag_type": "cooking_style",
+      "type": "cooking_style"
+    },
+    {
+      "display_name": "Baking",
+      "id": 64492,
+      "name": "baking",
+      "parent_tag_name": "appliance",
+      "root_tag_type": "appliance",
+      "type": "appliance"
+    },
+    {
+      "display_name": "Date Night",
+      "id": 64500,
+      "name": "date_night",
+      "parent_tag_name": "occasion",
+      "root_tag_type": "seasonal",
+      "type": "occasion"
+    },
+    {
+      "display_name": "Game Day",
+      "id": 64501,
+      "name": "game_day",
+      "parent_tag_name": "occasion",
+      "root_tag_type": "seasonal",
+      "type": "occasion"
+    },
+    {
+      "display_name": "Party",
+      "id": 64503,
+      "name": "party",
+      "parent_tag_name": "occasion",
+      "root_tag_type": "seasonal",
+      "type": "occasion"
+    },
+    {
+      "display_name": "Fall",
+      "id": 64508,
+      "name": "fall",
+      "parent_tag_name": "seasonal",
+      "root_tag_type": "seasonal",
+      "type": "seasonal"
+    },
+    {
+      "display_name": "Spring",
+      "id": 64509,
+      "name": "spring",
+      "parent_tag_name": "seasonal",
+      "root_tag_type": "seasonal",
+      "type": "seasonal"
+    },
+    {
+      "display_name": "Summer",
+      "id": 64510,
+      "name": "summer",
+      "parent_tag_name": "seasonal",
+      "root_tag_type": "seasonal",
+      "type": "seasonal"
+    },
+    {
+      "display_name": "Winter",
+      "id": 64511,
+      "name": "winter",
+      "parent_tag_name": "seasonal",
+      "root_tag_type": "seasonal",
+      "type": "seasonal"
+    },
+    {
+      "display_name": "Indulgent Sweets",
+      "id": 65850,
+      "name": "indulgent_sweets",
+      "parent_tag_name": null,
+      "root_tag_type": "occasion",
+      "type": "occasion"
+    },
+    {
+      "display_name": "Bakery Goods",
+      "id": 65857,
+      "name": "bakery_goods",
+      "parent_tag_name": "appliance",
+      "root_tag_type": "appliance",
+      "type": "appliance"
+    },
+    {
+      "display_name": "Special Occasion",
+      "id": 188967,
+      "name": "special_occasion",
+      "parent_tag_name": "occasion",
+      "root_tag_type": "seasonal",
+      "type": "occasion"
+    },
+    {
+      "display_name": "Oven Mitts",
+      "id": 1247775,
+      "name": "oven_mitts",
+      "parent_tag_name": null,
+      "root_tag_type": "equipment",
+      "type": "equipment"
+    },
+    {
+      "display_name": "Peeler",
+      "id": 1247781,
+      "name": "peeler",
+      "parent_tag_name": null,
+      "root_tag_type": "equipment",
+      "type": "equipment"
+    },
+    {
+      "display_name": "Pie Dish",
+      "id": 1247782,
+      "name": "pie_dish",
+      "parent_tag_name": null,
+      "root_tag_type": "equipment",
+      "type": "equipment"
+    },
+    {
+      "display_name": "Pyrex",
+      "id": 1247785,
+      "name": "pyrex",
+      "parent_tag_name": null,
+      "root_tag_type": "equipment",
+      "type": "equipment"
+    },
+    {
+      "display_name": "Spatula",
+      "id": 1247788,
+      "name": "spatula",
+      "parent_tag_name": null,
+      "root_tag_type": "equipment",
+      "type": "equipment"
+    },
+    {
+      "display_name": "Wooden Spoon",
+      "id": 1247794,
+      "name": "wooden_spoon",
+      "parent_tag_name": null,
+      "root_tag_type": "equipment",
+      "type": "equipment"
+    },
+    {
+      "display_name": "Chef's Knife",
+      "id": 1280501,
+      "name": "chefs_knife",
+      "parent_tag_name": null,
+      "root_tag_type": "equipment",
+      "type": "equipment"
+    },
+    {
+      "display_name": "Cutting Board",
+      "id": 1280503,
+      "name": "cutting_board",
+      "parent_tag_name": null,
+      "root_tag_type": "equipment",
+      "type": "equipment"
+    },
+    {
+      "display_name": "Liquid Measuring Cup",
+      "id": 1280506,
+      "name": "liquid_measuring_cup",
+      "parent_tag_name": null,
+      "root_tag_type": "equipment",
+      "type": "equipment"
+    },
+    {
+      "display_name": "Dry Measuring Cups",
+      "id": 1280507,
+      "name": "dry_measuring_cups",
+      "parent_tag_name": null,
+      "root_tag_type": "equipment",
+      "type": "equipment"
+    },
+    {
+      "display_name": "Measuring Spoons",
+      "id": 1280508,
+      "name": "measuring_spoons",
+      "parent_tag_name": null,
+      "root_tag_type": "equipment",
+      "type": "equipment"
+    },
+    {
+      "display_name": "Mixing Bowl",
+      "id": 1280510,
+      "name": "mixing_bowl",
+      "parent_tag_name": null,
+      "root_tag_type": "equipment",
+      "type": "equipment"
+    },
+    {
+      "display_name": "Rolling Pin",
+      "id": 1280512,
+      "name": "rolling_pin",
+      "parent_tag_name": null,
+      "root_tag_type": "equipment",
+      "type": "equipment"
+    },
+    {
+      "display_name": "Walmart Holiday Bundle",
+      "id": 4708980,
+      "name": "walmart_holiday_bundle",
+      "parent_tag_name": null,
+      "root_tag_type": "business_tags",
+      "type": "business_tags"
+    },
+    {
+      "display_name": "Tasty Holiday: Christmas",
+      "id": 6389772,
+      "name": "tasty_holiday_christmas",
+      "parent_tag_name": null,
+      "root_tag_type": "feature_page",
+      "type": "feature_page"
+    },
+    {
+      "display_name": "Fourth Desserts",
+      "id": 7041340,
+      "name": "fourth_desserts",
+      "parent_tag_name": null,
+      "root_tag_type": "feature_page",
+      "type": "feature_page"
+    },
+    {
+      "display_name": "Thanksgiving Classics",
+      "id": 7510744,
+      "name": "thanksgiving_classics",
+      "parent_tag_name": null,
+      "root_tag_type": "feature_page",
+      "type": "feature_page"
+    },
+    {
+      "display_name": "Shoppable Recipes Seasonal Desserts",
+      "id": 7559501,
+      "name": "shoppable_recipes_seasonal_desserts",
+      "parent_tag_name": null,
+      "root_tag_type": "feature_page",
+      "type": "feature_page"
+    },
+    {
+      "display_name": "Low-Fat",
+      "id": 8091919,
+      "name": "low_fat",
+      "parent_tag_name": "healthy",
+      "root_tag_type": "healthy",
+      "type": "healthy"
+    },
+    {
+      "display_name": "High-Fiber",
+      "id": 8091920,
+      "name": "high_fiber",
+      "parent_tag_name": "healthy",
+      "root_tag_type": "healthy",
+      "type": "healthy"
+    },
+    {
+      "display_name": "New Years",
+      "id": 9299361,
+      "name": "new_years",
+      "parent_tag_name": "holidays",
+      "root_tag_type": "seasonal",
+      "type": "holidays"
+    },
+    {
+      "display_name": "Cakes",
+      "id": 9299665,
+      "name": "cakes",
+      "parent_tag_name": "desserts",
+      "root_tag_type": "meal",
+      "type": "desserts"
+    },
+    {
+      "display_name": "Pie and Cobblers",
+      "id": 9299680,
+      "name": "pie_and_cobblers",
+      "parent_tag_name": "desserts",
+      "root_tag_type": "meal",
+      "type": "desserts"
+    },
+    {
+      "display_name": "Ice Cream",
+      "id": 9299683,
+      "name": "ice_cream",
+      "parent_tag_name": "desserts",
+      "root_tag_type": "meal",
+      "type": "desserts"
+    },
+    {
+      "display_name": "Delectable Desserts",
+      "id": 10554047,
+      "name": "delectable_desserts",
+      "parent_tag_name": null,
+      "root_tag_type": "feature_page",
+      "type": "feature_page"
+    }
+  ],
+  "thumbnail_alt_text": "",
+  "thumbnail_url": "https://img.buzzfeed.com/thumbnailer-prod-us-east-1/2b422cd19f6c488fbe649da9739b5542/fb.jpg",
+  "tips_and_ratings_enabled": true,
+  "topics": [
+    {
+      "name": "Baked Goods",
+      "slug": "baked-goods"
+    },
+    {
+      "name": "Best Vegetarian",
+      "slug": "best-vegetarian"
+    },
+    {
+      "name": "Christmas",
+      "slug": "christmas"
+    },
+    {
+      "name": "Easter",
+      "slug": "easter"
+    },
+    {
+      "name": "Fall Recipes",
+      "slug": "fall"
+    },
+    {
+      "name": "Holiday Party",
+      "slug": "holiday-party"
+    },
+    {
+      "name": "Kid Friendly",
+      "slug": "kid-friendly"
+    },
+    {
+      "name": "Romantic Dinners",
+      "slug": "romantic-dinners"
+    },
+    {
+      "name": "Spring Recipes",
+      "slug": "spring-recipes"
+    },
+    {
+      "name": "Thanksgiving",
+      "slug": "thanksgiving"
+    },
+    {
+      "name": "Winter Recipes",
+      "slug": "winter"
+    },
+    {
+      "name": "Desserts",
+      "slug": "desserts"
+    },
+    {
+      "name": "American",
+      "slug": "american"
+    }
+  ],
+  "total_time_minutes": 120,
+  "total_time_tier": {
+    "display_tier": "Under 2 hours",
+    "tier": "under_2_hours"
+  },
+  "updated_at": 1715971484,
+  "user_ratings": {
+    "count_negative": 186,
+    "count_positive": 6101,
+    "score": 0.9704151423572451
+  },
+  "video_ad_content": "none",
+  "video_id": 14455,
+  "video_url": "https://vid.tasty.co/output/29645/low_1492635519.m3u8",
+  "yields": ""
+}

@@ -8,10 +8,10 @@
 import SwiftUI
 
 @main
-struct Capstone_CookbookApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
+struct CapstoneCookbookApp: App {
+  var body: some Scene {
+    WindowGroup {
+      ContentView()
     }
+  }
 }
