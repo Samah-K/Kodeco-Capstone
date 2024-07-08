@@ -8,7 +8,7 @@
 import Foundation
 
 struct TastyJSON {
-  func getRecipeFromJSONFile() -> Recipe? {
+  func getRecipeFromJSONFile() -> TastyRecipe? {
     guard let jsonFile = Bundle.main.url(forResource: "Recipe", withExtension: "json")
     else {
       print("No file`Recipe.json`")
@@ -16,7 +16,7 @@ struct TastyJSON {
     }
     do {
       let recipeData = try Data(contentsOf: jsonFile)
-      let recipe = try JSONDecoder().decode(Recipe.self, from: recipeData)
+      let recipe = try JSONDecoder().decode(TastyRecipe.self, from: recipeData)
       return recipe
     } catch {
       print(error)

@@ -8,17 +8,16 @@
 import Foundation
 
 // Model for search result, and getting more info and listOfsimilarRecipes
-
 struct Tasty: Codable {
   let count: Int
-  let recipes: [Recipe]
+  let recipes: [TastyRecipe]
   enum CodingKeys: String, CodingKey {
     case count
     case recipes = "results"
   }
 }
 
-struct Recipe: Codable, Identifiable {
+struct TastyRecipe: Codable, Identifiable {
   let id: Int
   let name: String
   let description: String
@@ -26,17 +25,19 @@ struct Recipe: Codable, Identifiable {
   let cookTimeMinutes: Int?
   let totalTimeMinutes: Int?
   let instructions: [Instructions]
-  let sections: [Section]
+  let ingredientSections: [IngredientSections]
   let keywords: String?
   // family dinner, jonah peretti, secret ingredient pasta, tasty, tasty_contains_alcohol, tomato and anchovy pasta recipe, umami pasta
-  let numServing: Int
+  var numServing: Int
+  var numberOfPeople: Int? // custom
   let thumbnailURL: String // https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/109214.jpg
   let beautyURL: String? // https://img.buzzfeed.com/video-api-prod/assets/cf1fdbad99ef4b278ca7b8c61504b6c2/Beauty2_Thumb.jpg
   let originalVideoURL: String? // https://s3.amazonaws.com/video-api-prod/assets/723faf4d7887464b82e81d2604797f83/BFV30681_ApplePieCheescake_FB1080SQ.mp4
   let videoURL: String? // https://vid.tasty.co/output/57946/low_1508803850.m3u8
-  let nutrition: Nutrition?
+  var nutrition: Nutrition?
   let language: String // eng
-  // tags
+  let tags: [Tag]
+  var imageDataURL: URL?
   enum CodingKeys: String, CodingKey {
     case id
     case name
@@ -45,7 +46,7 @@ struct Recipe: Codable, Identifiable {
     case cookTimeMinutes  = "cook_time_minutes"
     case totalTimeMinutes = "total_time_minutes"
     case instructions
-    case sections
+    case ingredientSections = "sections"
     case keywords
     case numServing = "num_servings"
     case originalVideoURL = "original_video_url"
@@ -54,6 +55,8 @@ struct Recipe: Codable, Identifiable {
     case beautyURL = "beauty_url"
     case nutrition = "nutrition"
     case language  = "language"
+    case tags
+    case imageDataURL
   }
   func getRecipeImageURL() -> String {
     if let beautyURL = self.beautyURL {
@@ -65,7 +68,7 @@ struct Recipe: Codable, Identifiable {
 }
 
 struct Nutrition: Codable {
-  let calories: Int?
+  var calories: Int?
   let carbohydrates: Int?
   let fat: Int?
   let fiber: Int?
@@ -87,28 +90,78 @@ struct Nutrition: Codable {
 struct Instructions: Codable, Identifiable {
   let displayText: String
   let appliance: String?
+  let position: Int?
   let id = UUID()
-  //   let start_time: Int
-  //   let end_time: Int
-  //   let temperature: Int
+  let startTime: Int?
+  let endTime: Int?
+  let temperature: Int?
   enum CodingKeys: String, CodingKey {
     case displayText = "display_text"
     case appliance   = "appliance"
+    case position
+    case startTime = "start_time"
+    case endTime = "end_time"
+    case temperature
+  }
+  func getBulletOrNumber() -> String {
+    var bullet = "•"
+    if let position = position {
+      bullet = "Step \(position) -"
+    }
+    return bullet
   }
 }
 
-struct Section: Codable, Identifiable {
-  let components: [Component]
+struct IngredientSections: Codable, Identifiable {
   let id = UUID()
+  let components: [Component]
+  let name: String?
+  let position: Int?
   enum CodingKeys: CodingKey {
-    case components
+    case components, name, position
   }
+}
+
+struct Component: Codable, Identifiable {
+  var id = UUID()
+  let extraComment: String
+  let rawText: String
+  let position: Int?
+  var ingredient: Ingredient
+  var measurements: [Measurement]
+  enum CodingKeys: String, CodingKey {
+    case extraComment = "extra_comment"
+    case rawText      = "raw_text"
+    case ingredient, measurements, position
+  }
+  func getIngredientDescription() -> String {
+    if rawText != "n/a" {
+      return rawText
+    } else {
+      let ingredientName = ingredient.name
+      var ingredientMeasurement = ""
+      if measurements.count <= 1 {
+        let measurement = measurements[0]
+        let quantity = measurement.quantity
+        let name = measurement.unit.name
+        ingredientMeasurement = (quantity == "0") ? "\(name)" : "\(quantity) \(name) of"
+      } else {
+        // metric or imperial
+        let measurement = measurements[0]
+        let quantity = measurement.quantity
+        let name = measurement.unit.name
+        ingredientMeasurement = "\(quantity) \(name)"
+      }
+      return "\(ingredientMeasurement) \(ingredientName)"
+    }
+  }
+
 }
 
 struct Ingredient: Codable {
   let createdAt: Int
-  let displayPlural: String
-  let displaySingular: String
+  let displayPlural: String?
+  let displaySingular: String?
   let id: Int
   let name: String
   let updatedAt: Int
@@ -143,21 +196,10 @@ struct Unit: Codable {
   }
 }
 
-struct Component: Codable, Identifiable {
-  var id = UUID()
-  let extraComment: String
-  let rawText: String
-  var ingredient: Ingredient
-  var measurements: [Measurement]
-  enum CodingKeys: String, CodingKey {
-    case extraComment = "extra_comment"
-    case rawText      = "raw_text"
-    case ingredient, measurements
-  }
-}
+
 
 struct TastyRecipeModel {
-  func getExample() -> Recipe {
+  func getExample() -> TastyRecipe {
     //    let instructionsExample = [
     //      Instructions(displayText: "In a medium-sized bowl, add the flour and salt. Mix with fork until combined.", appliance: nil),
     //      Instructions(displayText: "Add in cubed butter and break up into flour with a fork. Mixture will still have lumps about the size of small peas.", appliance: nil),
@@ -179,7 +221,7 @@ struct TastyRecipeModel {
     //      Instructions(displayText: "Top with ice cream and serve.", appliance: nil),
     //      Instructions(displayText: "Enjoy!", appliance: nil)
     //    ]
-    let example = Recipe(
+    let example = TastyRecipe(
       id: 951,
       name: "Apple Pie From Scratch",
       description: "Homemade apple pie is a timeless, all-time favorite dessert for many." +
@@ -193,7 +235,7 @@ struct TastyRecipeModel {
       cookTimeMinutes: 60,
       totalTimeMinutes: 120,
       instructions: [],
-      sections: [],
+      ingredientSections: [],
       keywords: "apple, apple pie, bake, buzzfeed, comfort food, dessert, easy, "
       + "from scratch, fruit, homemade, pie, tasty, tasty_vegetarian",
       numServing: 8,
@@ -202,7 +244,8 @@ struct TastyRecipeModel {
       originalVideoURL: "https://s3.amazonaws.com/video-api-prod/assets/3593865599de4bf8a15d528c2b18cc69/fb.mp4",
       videoURL: "https://vid.tasty.co/output/29645/low_1492635519.m3u8",
       nutrition: nil,
-      language: "eng")
+      language: "eng",
+      tags: [])
     let recipe = TastyJSON().getRecipeFromJSONFile() ?? example
     return recipe
   }

@@ -12,4 +12,6 @@ enum NetworkError: Error {
   case invalidURL
   case invalidResponse
   case invalidData
+  case apiPlanExceeded
+  case invalidURLForImage
 }
