@@ -21,6 +21,8 @@ struct SearchStateView: View {
       return "Searching ....."
     case .additionalSearch:
       return ""
+    case .none:
+      return ""
     }
   }
   var searchStateCaption: String {
@@ -34,6 +36,8 @@ struct SearchStateView: View {
     case .searching:
       return ""
     case .additionalSearch:
+      return ""
+    case .none:
       return ""
     }
   }

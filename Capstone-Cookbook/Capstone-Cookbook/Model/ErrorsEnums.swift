@@ -15,3 +15,7 @@ enum NetworkError: Error {
   case apiPlanExceeded
   case invalidURLForImage
 }
+
+enum FileErrors: Error {
+  case previewJSONFileNotExists // RecipesSample.json for preview
+}

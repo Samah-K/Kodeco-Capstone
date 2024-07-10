@@ -13,18 +13,27 @@ public extension FileManager {
   }
 }
 
-
 class MyRecipeStore: ObservableObject {
   private let fileName = "MyRecipes"
-  @Published var myRecipes: [TastyRecipe] = [] // read from file and write to file
+  var myRecipes: [Recipe] = [] // read from file and write to file
 
   init() {
     readRecipesFromJSONFile()
   }
 
-  func addNewRecipe(recipe: TastyRecipe) {
+  func addNewRecipe(recipe: Recipe) {
     myRecipes.append(recipe)
+    if let index = myRecipes.firstIndex(where: { recipe.id == $0.id }) {
+      myRecipes[index].isRecipeAddedToMyCookbook = true
+    }
     writeRecipeToFile()
+  }
+  func removeRecipe(recipeID: Int) {
+    if let index = myRecipes.firstIndex(where: { recipeID == $0.id }) {
+      myRecipes[index].isRecipeAddedToMyCookbook = false
+      myRecipes.remove(at: index)
+      writeRecipeToFile()
+    }
   }
 
   func writeRecipeToFile() {
@@ -44,16 +53,25 @@ class MyRecipeStore: ObservableObject {
   }
 
   func readRecipesFromJSONFile() {
-    let decoder = JSONDecoder()
     do {
       let myRecipeURL = URL(
         filePath: fileName,
         relativeTo: FileManager.documentDirectoryURL
       ).appendingPathExtension("JSON")
-      let myRecipesData = try Data(contentsOf: myRecipeURL)
-      myRecipes = try decoder.decode([TastyRecipe].self, from: myRecipesData)
+      print(myRecipeURL)
+      if FileManager().fileExists(atPath: myRecipeURL.path()) {
+        let myRecipesData = try Data(contentsOf: myRecipeURL)
+        myRecipes = try JSONDecoder().decode([Recipe].self, from: myRecipesData)
+      }
     } catch {
       print(error)
     }
+  }
+
+  func checkIfRecipeIsAddedToMyCookbook(tastyRecipeID: Int) -> Bool {
+    if myRecipes.first(where: { tastyRecipeID == $0.id }) != nil {
+      return true
+    }
+    return false
   }
 }

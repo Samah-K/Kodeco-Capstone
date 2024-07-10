@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct AddRecipeView: View {
-    var body: some View {
-      Form {
-        
-      }
+  var body: some View {
+    Form {
     }
+  }
 }
 
 #Preview {
-    AddRecipeView()
+  AddRecipeView()
 }

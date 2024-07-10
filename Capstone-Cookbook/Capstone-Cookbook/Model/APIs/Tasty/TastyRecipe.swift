@@ -155,7 +155,6 @@ struct Component: Codable, Identifiable {
       return "\(ingredientMeasurement) \(ingredientName)"
     }
   }
-
 }
 
 struct Ingredient: Codable {
@@ -196,31 +195,8 @@ struct Unit: Codable {
   }
 }
 
-
-
 struct TastyRecipeModel {
-  func getExample() -> TastyRecipe {
-    //    let instructionsExample = [
-    //      Instructions(displayText: "In a medium-sized bowl, add the flour and salt. Mix with fork until combined.", appliance: nil),
-    //      Instructions(displayText: "Add in cubed butter and break up into flour with a fork. Mixture will still have lumps about the size of small peas.", appliance: nil),
-    //      Instructions(displayText: "Gradually add the ice water and continue to mix until the dough starts to come together. You may not need all of the water, but if the dough is too dry then add more. The dough should not be very tacky or sticky.", appliance: nil),
-    //      Instructions(displayText: "Work the dough together with your hands and turn out onto a surface. Work into a ball and cover with cling wrap. Refrigerate.", appliance: nil),
-    //      Instructions(displayText: "Peel the apples, then core and slice.", appliance: nil),
-    //      Instructions(displayText: "In a bowl, add the sliced apples, sugar, flour, salt, cinnamon, nutmeg, and juice from the lemon.", appliance: nil),
-    //      Instructions(displayText: "Mix until combined and all apples are coated. Refrigerate.", appliance: nil),
-    //      Instructions(displayText: "Preheat the oven to 375°F (200°C).", appliance: "oven"),
-    //      Instructions(displayText: "On a floured surface, cut the pie dough in half and roll out both halves until round and about ⅛-inch (3 mm) thick.", appliance: nil),
-    //      Instructions(displayText: "Roll the dough around the rolling pin and unroll onto a pie dish making sure the dough reaches all edges. Trim extra if necessary.", appliance: nil),
-    //      Instructions(displayText: "Pour in apple filling mixture and pat down.", appliance: nil),
-    //      Instructions(displayText: "Roll the other half of the dough on top.", appliance: nil),
-    //      Instructions(displayText: "Trim the extra dough from the edges and pinch the edges to create a crimp. Make sure edges are sealed together.", appliance: nil),
-    //      Instructions(displayText: "Brush the pie with the beaten egg and sprinkle with the sugar.", appliance: nil),
-    //      Instructions(displayText: "Cut four slits in the top of the pie to create a vent.", appliance: nil),
-    //      Instructions(displayText: "Bake pie for 50-60 minutes or until the crust is golden brown and no greyish or undercooked pastry remains.", appliance: nil),
-    //      Instructions(displayText: "Allow to cool completely before slicing.", appliance: nil),
-    //      Instructions(displayText: "Top with ice cream and serve.", appliance: nil),
-    //      Instructions(displayText: "Enjoy!", appliance: nil)
-    //    ]
+  func getExample() -> Recipe {
     let example = TastyRecipe(
       id: 951,
       name: "Apple Pie From Scratch",
@@ -246,22 +222,14 @@ struct TastyRecipeModel {
       nutrition: nil,
       language: "eng",
       tags: [])
-    let recipe = TastyJSON().getRecipeFromJSONFile() ?? example
-    return recipe
+    let recipeExample = Recipe(id: example.id, tastyRecipe: example, recipeType: .tastyRecipe)
+    guard let tastyFromJSONFile = TastyJSONSample().getRecipeFromJSONFile()
+    else {
+      return recipeExample
+    }
+    if let reciple = tastyFromJSONFile.recipes.last {
+      return Recipe(id: example.id, tastyRecipe: reciple, recipeType: .tastyRecipe)
+    }
+    return recipeExample
   }
-  //  let sectionsExample = [
-  //    Section(components: [
-  //
-  //      Component(extraComment: "",
-  //                rawText: "2½ cups flour",
-  //                ingredient: Ingredient(createdAt: 1493314654, displayPlural: "flours", displaySingular: "flour", id: 25, name: "flour", updatedAt: 1509035288),
-  //                measurements: [
-  //                  Measurement(id: 773220, quantity: "2 ½", unit: Unit(abbreviation: "c", displayPlural: "cups", displaySingular: <#T##String#>, name: <#T##String#>, system: <#T##String#>))
-  //                ])
-  //
-  //    ])
-  //  ]
-  //
-
-  //
 }

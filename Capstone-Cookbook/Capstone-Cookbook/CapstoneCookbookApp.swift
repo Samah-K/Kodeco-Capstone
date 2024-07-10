@@ -9,11 +9,11 @@ import SwiftUI
 
 @main
 struct CapstoneCookbookApp: App {
-  @StateObject var tastyStore = TastyStore()
+//  @StateObject var recipeStoreManager = RecipeStoresManager()
   var body: some Scene {
     WindowGroup {
       ContentView()
-        .environmentObject(tastyStore)
+      //        .environmentObject(recipeStoreManager)
     }
   }
 }

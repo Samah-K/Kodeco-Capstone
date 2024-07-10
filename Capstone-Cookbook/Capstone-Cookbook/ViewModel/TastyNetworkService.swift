@@ -23,7 +23,9 @@ class TastyNetworkService {
       if (response as? HTTPURLResponse)?.statusCode == 429 {
         throw NetworkError.apiPlanExceeded
       }
-      print("Response: \((response as? HTTPURLResponse)?.statusCode)")
+      if let statusCode = (response as? HTTPURLResponse)?.statusCode {
+        print("`connectToTastyEndPoint`: Response - StatusCode: \(statusCode)")
+      }
       throw NetworkError.invalidResponse
     }
     if printResult {
@@ -49,7 +51,6 @@ class TastyNetworkService {
       throw error
     }
   }
-  
   // Get imageDataURL
   func getImageDataURL(for recipe: TastyRecipe) async throws -> URL? {
     if recipe.imageDataURL == nil {
@@ -62,7 +63,9 @@ class TastyNetworkService {
 
       guard (response as? HTTPURLResponse)?.statusCode == 200
       else {
-        print("Response: \((response as? HTTPURLResponse)?.statusCode)")
+        if let statusCode = (response as? HTTPURLResponse)?.statusCode {
+          print("`getImageDataURL`: Response - StatusCode: \(statusCode)")
+        }
         throw NetworkError.invalidResponse
       }
       guard let imageURLData = URL(string: "data:image/jpeg;base64," + data.base64EncodedString())

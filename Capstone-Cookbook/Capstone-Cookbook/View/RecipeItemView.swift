@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct RecipeItemView: View {
-  var recipe: TastyRecipe
+  @ObservedObject var recipeStoreManager: RecipeStoresManager
+  @Binding var recipe: Recipe
+
   var body: some View {
     ZStack(alignment: .topTrailing) {
       ZStack(alignment: .bottom) {
         HStack {
-          if let photoURL = recipe.imageDataURL {
+          if let photoURL = recipe.tastyRecipe.imageDataURL {
             AsyncImage(url: photoURL) { imagePhase in
               switch imagePhase {
               case .empty:
@@ -30,13 +32,6 @@ struct RecipeItemView: View {
                   .fill(.gray)
               }
             }
-            //          AsyncImage(url: recipe.imageDataURL) { image  in
-            //            image.resizable()
-            //          } placeholder: {
-            //            ZStack {
-            //              ProgressView()
-            //            }.frame(maxWidth: .infinity, maxHeight: .infinity)
-            //          }
           } else {
             ZStack {
               RoundedRectangle(cornerRadius: 25.0)
@@ -48,18 +43,16 @@ struct RecipeItemView: View {
         }
         HStack(alignment: .firstTextBaseline) {
           Spacer()
-          Text(recipe.name)
+          Text(recipe.tastyRecipe.name)
             .font(.title)
             .fontDesign(.rounded)
             .fontWeight(.semibold)
             .foregroundStyle(.white)
             .shadow(radius: 4)
             .shadow(color: .black, radius: 1)
-          //          .shadow(color: .black.opacity(0.9), radius: 1)
             .shadow(color: .accent, radius: 1)
             .lineLimit(2)
             .padding(.horizontal, 9)
-          //          .background(.red)
           Spacer()
           Spacer()
           Spacer()
@@ -68,26 +61,20 @@ struct RecipeItemView: View {
         .padding(.vertical, 15)
       }
       HStack {
-        Button(action: {
-          // ADD
-        }, label: {
-          ZStack {
-            Circle()
-              .fill(.white)
-              .shadow(radius: 10)
-              .frame(maxWidth: 30, maxHeight: 30)
-            Image(systemName: "bookmark")
-              .foregroundStyle(.accent)
-          }
-        })
+        ZStack {
+          Circle()
+            .fill(.white)
+            .shadow(radius: 10)
+            .frame(maxWidth: 25, maxHeight: 25)
+          AddRecipeButton(
+            recipeStoreManager: recipeStoreManager, isAddedToMyRecipes: $recipe.isRecipeAddedToMyCookbook, recipeID: recipe.id
+          )
+        }
       }
       .padding(10)
-      //      .background(.accent.opacity(0.8))
-      //      .padding(.trailing, 20)
     }
     .clipShape(RoundedRectangle(cornerRadius: 25))
     .aspectRatio(1, contentMode: .fit)
-//    .frame(height: 250)
     .overlay {
       RoundedRectangle(cornerRadius: 25)
         .strokeBorder(.white, lineWidth: 4.0)
@@ -97,5 +84,7 @@ struct RecipeItemView: View {
 }
 
 #Preview {
-  RecipeItemView(recipe: TastyRecipeModel().getExample())
+  RecipeItemView(
+    recipeStoreManager: RecipeStoresManager(),
+    recipe: .constant(TastyRecipeModel().getExample()))
 }

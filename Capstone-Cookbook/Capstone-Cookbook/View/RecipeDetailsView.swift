@@ -8,89 +8,106 @@
 import SwiftUI
 
 struct RecipeDetailsView: View {
-  @EnvironmentObject var tastyStore: TastyStore
+  @ObservedObject var recipeStoreManager: RecipeStoresManager
   @State private var instructionDisclousureExpand = false
   @State private var ingredientdisclousureExpand = false
+  @State private var descriptionShowingModal = false
+  @State private var descriptionAnimation = false
+  @Binding var recipe: Recipe
 
-  var recipe: TastyRecipe
   var body: some View {
-    GeometryReader { proxy in
-      VStack {
-        // image
+    ZStack {
+      GeometryReader { proxy in
         VStack {
-          AsyncImage(url: URL(string: recipe.getRecipeImageURL()), content: { image in
-            image.resizable()
-          }, placeholder: {
-            ZStack {
-              ProgressView()
+          // image
+          VStack {
+            // TODO: Change image URL
+            AsyncImage(url: URL(string: recipe.tastyRecipe.getRecipeImageURL()), content: { image in
+              image.resizable()
+            }, placeholder: {
+              ZStack {
+                ProgressView()
+              }
+              .frame(width: 300, height: 300)
+            })
+            .clipShape(Circle())
+            .overlay {
+              Circle()
+                .stroke(Color.white, lineWidth: 5.0)
             }
+            .shadow(radius: 3.0)
             .frame(width: 300, height: 300)
-          })
-          .clipShape(Circle())
-          .overlay {
-            Circle()
-              .stroke(Color.white, lineWidth: 5.0)
           }
-          .shadow(radius: 3.0)
-          .frame(width: 300, height: 300)
-        }
-        .frame(height: proxy.size.height * 0.4)
+          .frame(height: proxy.size.height * 0.4)
 
 
-        // Recipe Name + Recipe Description
-        VStack(spacing: 15) {
-          Text(recipe.name)
-            .font(.title)
-          // TODO: Fix this
-          Text(recipe.description)
-            .font(.subheadline)
-            .lineLimit(4)
-            .allowsTightening(true)
+          // Recipe Name + Recipe Description
+          VStack(spacing: 15) {
+            Text(recipe.tastyRecipe.name)
+              .font(.title)
+              .padding(.top, 6)
+            // TODO: Fix this
+            Text(recipe.tastyRecipe.description)
+              .font(.subheadline)
+              .lineLimit(2)
+              .allowsTightening(true)
+              .onTapGesture {
+                descriptionShowingModal = true
+              }
+          }
+          .padding(20)
+          .frame(height: proxy.size.height * 0.25)
+          //         Nutrition
+          //          if !ingredientdisclousureExpand && !instructionDisclousureExpand {
+          //            if let recipeNutrition = recipe.nutrition {
+          //              NutritionView(
+          //                numberOfPeople: recipe.numServing,
+          //                recipeID: recipe.id,
+          //                nutrition: recipeNutrition)
+          //            }
+          //          }
+          ScrollView {
+            if !ingredientdisclousureExpand {
+              InstructionsView(
+                disclousureExpand: $instructionDisclousureExpand,
+                instructions: recipe.tastyRecipe.instructions)
+            }
+            if !instructionDisclousureExpand {
+              IngredientView(
+                disclousureExpand: $ingredientdisclousureExpand,
+                ingredientSections: recipe.tastyRecipe.ingredientSections
+              )
+            }
+          }
+          .frame(height: proxy.size.height * 0.35)
         }
-        .padding(20)
-        .frame(height: proxy.size.height * 0.2)
-        //         Nutrition
-        if !ingredientdisclousureExpand && !instructionDisclousureExpand {
-          if let recipeNutrition = recipe.nutrition {
-            NutritionView(
-              numberOfPeople: recipe.numServing,
-              recipeID: recipe.id,
-              nutrition: recipeNutrition)
+        .toolbar {
+          ToolbarItem(placement: .topBarTrailing) {
+            AddRecipeButton(
+              recipeStoreManager: recipeStoreManager, isAddedToMyRecipes: $recipe.isRecipeAddedToMyCookbook, recipeID: recipe.id)
           }
         }
-        ScrollView {
-          if !ingredientdisclousureExpand {
-            InstructionsViews(disclousureExpand: $instructionDisclousureExpand, instructions: recipe.instructions)
-          }
-          if !instructionDisclousureExpand {
-            IngredientView(
-              disclousureExpand: $ingredientdisclousureExpand,
-              ingredientSections: recipe.ingredientSections
-            )
-          }
-        }
-        .frame(height: proxy.size.height * 0.4)
       }
-      .toolbar {
-        ToolbarItem(placement: .topBarTrailing) {
-          Button("Add") {
-            tastyStore.myRecipesStore.addNewRecipe(recipe: recipe)
-          }
-        }
+      .padding(.bottom, 30)
+      if $descriptionShowingModal.wrappedValue {
+        DescriptionPopup(
+          descriptionShowingModal: $descriptionShowingModal,
+          descriptionAnimation: $descriptionAnimation,
+          recipeDescription: recipe.tastyRecipe.description)
       }
     }
-    .padding(.bottom, 30)
   }
 }
 
 #Preview {
   NavigationStack {
-    RecipeDetailsView(recipe: (TastyRecipeModel().getExample()))
-      .environmentObject(TastyStore())
+    RecipeDetailsView(
+      recipeStoreManager: RecipeStoresManager(),
+      recipe: .constant(TastyRecipeModel().getExample()))
   }
 }
 
-struct InstructionsViews: View {
+struct InstructionsView: View {
   @Binding var disclousureExpand: Bool
   let instructions: [Instructions]
   var body: some View {
@@ -120,8 +137,9 @@ struct InstructionsViews: View {
 }
 
 #Preview("Instructions") {
-  InstructionsViews(disclousureExpand: .constant(true), instructions: TastyRecipeModel().getExample().instructions)
-//    .environmentObject(TastyStore())
+  InstructionsView(
+    disclousureExpand: .constant(true),
+    instructions: TastyRecipeModel().getExample().tastyRecipe.instructions)
 }
 
 struct IngredientView: View {
@@ -157,7 +175,6 @@ struct IngredientView: View {
                   VStack(alignment: .leading, spacing: 5) {
                     Text("• \(component.getIngredientDescription())")
                       .frame(maxWidth: .infinity, alignment: .leading)
-
                   }
                 }
               }
@@ -178,12 +195,11 @@ struct IngredientView: View {
 #Preview("Ingredient") {
   IngredientView(
     disclousureExpand: .constant(false),
-    ingredientSections: TastyRecipeModel().getExample().ingredientSections)
-//  .environmentObject(TastyStore())
+    ingredientSections: TastyRecipeModel().getExample().tastyRecipe.ingredientSections)
 }
 
 struct NutritionView: View {
-  @EnvironmentObject var tastyStore: TastyStore
+  @ObservedObject var tastyStore: RecipeStoresManager
   @State var numberOfPeople: Int
   let recipeID: Int
   let nutrition: Nutrition
@@ -232,7 +248,7 @@ struct NutritionView: View {
         numberOfPeople -= 1
       }
     }
-    tastyStore.scaleRecipe(for: recipeID, numberOfPeople: numberOfPeople)
+//    tastyStore.scaleRecipe(for: recipeID, numberOfPeople: numberOfPeople)
   }
 }
 
@@ -292,5 +308,52 @@ struct DetailsSectionView: View {
         } .padding(20)
       }
     }.padding(20)
+  }
+}
+
+struct DescriptionPopup: View {
+  @Binding var descriptionShowingModal: Bool
+  @Binding var descriptionAnimation: Bool
+  var recipeDescription: String
+  var body: some View {
+    ZStack {
+      Color.black
+        .opacity(0.6)
+        .ignoresSafeArea()
+        .onTapGesture {
+          descriptionAnimation.toggle()
+          DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+            descriptionShowingModal.toggle()
+          }
+        }
+      VStack {
+        ZStack {
+          Circle()
+            .fill(.accent)
+            .frame(width: 40, height: 40)
+            .shadow(radius: 10)
+          Image(systemName: "fork.knife")
+            .foregroundStyle(.white)
+        }
+        .padding(.top, 20)
+        ScrollView {
+          Text(recipeDescription)
+            .padding(.horizontal, 20)
+            .padding(.top, 10)
+            .padding(.bottom, 20)
+        }
+      }
+      .background(.white)
+      .frame(width: 350, height: 400)
+      .clipShape(RoundedRectangle(cornerRadius: 25.0))
+      .shadow(radius: 20)
+    }
+    .onAppear {
+      DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250)) {
+        descriptionAnimation.toggle()
+      }
+    }
+    .opacity(descriptionAnimation ? 1 : 0)
+    .animation(.easeInOut(duration: 0.25), value: descriptionAnimation)
   }
 }

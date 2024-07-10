@@ -14,15 +14,17 @@
 		AC1F4B5E2C33614800855379 /* TastyAutoComplete.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1F4B5D2C33614800855379 /* TastyAutoComplete.swift */; };
 		AC1F4B602C33617100855379 /* TastyTagsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1F4B5F2C33617100855379 /* TastyTagsList.swift */; };
 		AC1F4B622C3361F700855379 /* TastyNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1F4B612C3361F700855379 /* TastyNetworkService.swift */; };
-		AC1F4B642C336AB700855379 /* TastyStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1F4B632C336AB700855379 /* TastyStore.swift */; };
+		AC1F4B642C336AB700855379 /* RecipeStoresManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1F4B632C336AB700855379 /* RecipeStoresManager.swift */; };
 		AC1F4B662C336BFE00855379 /* ErrorsEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1F4B652C336BFE00855379 /* ErrorsEnums.swift */; };
 		AC1F4B682C336CD300855379 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1F4B672C336CD200855379 /* SearchBarView.swift */; };
 		AC1F4B6A2C33700000855379 /* SearchStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1F4B692C33700000855379 /* SearchStateView.swift */; };
 		AC1F4B6D2C3374E900855379 /* RecipeDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1F4B6C2C3374E900855379 /* RecipeDetailsView.swift */; };
-		AC1F4B6F2C337C8A00855379 /* TastyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1F4B6E2C337C8A00855379 /* TastyJSON.swift */; };
-		AC1F4B712C337CFC00855379 /* Recipe.json in Resources */ = {isa = PBXBuildFile; fileRef = AC1F4B702C337CFC00855379 /* Recipe.json */; };
+		AC1F4B6F2C337C8A00855379 /* TastyJSONSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1F4B6E2C337C8A00855379 /* TastyJSONSample.swift */; };
+		AC1F4B712C337CFC00855379 /* RecipesSample.json in Resources */ = {isa = PBXBuildFile; fileRef = AC1F4B702C337CFC00855379 /* RecipesSample.json */; };
 		AC1F4B742C37558D00855379 /* AlertInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1F4B732C37558D00855379 /* AlertInfo.swift */; };
 		AC1F4B762C377A6000855379 /* TastyPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1F4B752C377A6000855379 /* TastyPage.swift */; };
+		AC3EAE6E2C3E09DD003B58D2 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3EAE6D2C3E09DD003B58D2 /* Recipe.swift */; };
+		AC3EAE702C3E0AE1003B58D2 /* TastyStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3EAE6F2C3E0AE1003B58D2 /* TastyStore.swift */; };
 		AC40505C2C3358B200F4D5F6 /* CapstoneCookbookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC40505B2C3358B200F4D5F6 /* CapstoneCookbookApp.swift */; };
 		AC40505E2C3358B200F4D5F6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC40505D2C3358B200F4D5F6 /* ContentView.swift */; };
 		AC4050602C3358B300F4D5F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC40505F2C3358B300F4D5F6 /* Assets.xcassets */; };
@@ -32,7 +34,6 @@
 		AC4050792C3358B300F4D5F6 /* CapstoneCookbookUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4050782C3358B300F4D5F6 /* CapstoneCookbookUITestsLaunchTests.swift */; };
 		AC68D9762C3944F200233E83 /* RecipeItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC68D9752C3944F200233E83 /* RecipeItemView.swift */; };
 		AC7D16FB2C39F86200980AC6 /* Attempt.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7D16FA2C39F86200980AC6 /* Attempt.swift */; };
-		AC7D16FD2C39F94E00980AC6 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7D16FC2C39F94E00980AC6 /* Recipe.swift */; };
 		AC9FC7F92C38C66B00707A78 /* MyRecipeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9FC7F82C38C66B00707A78 /* MyRecipeStore.swift */; };
 		ACC035212C3AC578007ECF4E /* SpoonacularUnitAmounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC035202C3AC578007ECF4E /* SpoonacularUnitAmounts.swift */; };
 		ACC035232C3AC74B007ECF4E /* EdamamNutritionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC035222C3AC74B007ECF4E /* EdamamNutritionData.swift */; };
@@ -43,6 +44,10 @@
 		ACC0352F2C3AD116007ECF4E /* Edamam-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ACC0352E2C3AD116007ECF4E /* Edamam-Info.plist */; };
 		ACC035312C3AD26A007ECF4E /* EdamamNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC035302C3AD26A007ECF4E /* EdamamNetworkService.swift */; };
 		ACC035352C3B4543007ECF4E /* AddRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC035342C3B4543007ECF4E /* AddRecipeView.swift */; };
+		ACC035392C3CA3A3007ECF4E /* ExploreRecipesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC035382C3CA3A3007ECF4E /* ExploreRecipesView.swift */; };
+		ACC0353B2C3CA50C007ECF4E /* MyRecipesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC0353A2C3CA50C007ECF4E /* MyRecipesView.swift */; };
+		ACC0353D2C3CA55B007ECF4E /* RecipeGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC0353C2C3CA55B007ECF4E /* RecipeGridView.swift */; };
+		ACC0353F2C3CB5D3007ECF4E /* AddRecipeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC0353E2C3CB5D3007ECF4E /* AddRecipeButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,15 +75,17 @@
 		AC1F4B5D2C33614800855379 /* TastyAutoComplete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TastyAutoComplete.swift; sourceTree = "<group>"; };
 		AC1F4B5F2C33617100855379 /* TastyTagsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TastyTagsList.swift; sourceTree = "<group>"; };
 		AC1F4B612C3361F700855379 /* TastyNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TastyNetworkService.swift; sourceTree = "<group>"; };
-		AC1F4B632C336AB700855379 /* TastyStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TastyStore.swift; sourceTree = "<group>"; };
+		AC1F4B632C336AB700855379 /* RecipeStoresManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeStoresManager.swift; sourceTree = "<group>"; };
 		AC1F4B652C336BFE00855379 /* ErrorsEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorsEnums.swift; sourceTree = "<group>"; };
 		AC1F4B672C336CD200855379 /* SearchBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		AC1F4B692C33700000855379 /* SearchStateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchStateView.swift; sourceTree = "<group>"; };
 		AC1F4B6C2C3374E900855379 /* RecipeDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsView.swift; sourceTree = "<group>"; };
-		AC1F4B6E2C337C8A00855379 /* TastyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TastyJSON.swift; sourceTree = "<group>"; };
-		AC1F4B702C337CFC00855379 /* Recipe.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Recipe.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
+		AC1F4B6E2C337C8A00855379 /* TastyJSONSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TastyJSONSample.swift; sourceTree = "<group>"; };
+		AC1F4B702C337CFC00855379 /* RecipesSample.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RecipesSample.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
 		AC1F4B732C37558D00855379 /* AlertInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertInfo.swift; sourceTree = "<group>"; };
 		AC1F4B752C377A6000855379 /* TastyPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TastyPage.swift; sourceTree = "<group>"; };
+		AC3EAE6D2C3E09DD003B58D2 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Recipe.swift; path = ../APIs/Tasty/Recipe.swift; sourceTree = "<group>"; };
+		AC3EAE6F2C3E0AE1003B58D2 /* TastyStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TastyStore.swift; sourceTree = "<group>"; };
 		AC4050582C3358B200F4D5F6 /* Capstone-Cookbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Capstone-Cookbook.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC40505B2C3358B200F4D5F6 /* CapstoneCookbookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapstoneCookbookApp.swift; sourceTree = "<group>"; };
 		AC40505D2C3358B200F4D5F6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -91,7 +98,6 @@
 		AC4050782C3358B300F4D5F6 /* CapstoneCookbookUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapstoneCookbookUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		AC68D9752C3944F200233E83 /* RecipeItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeItemView.swift; sourceTree = "<group>"; };
 		AC7D16FA2C39F86200980AC6 /* Attempt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attempt.swift; sourceTree = "<group>"; };
-		AC7D16FC2C39F94E00980AC6 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		AC9FC7F82C38C66B00707A78 /* MyRecipeStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecipeStore.swift; sourceTree = "<group>"; };
 		ACC035202C3AC578007ECF4E /* SpoonacularUnitAmounts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpoonacularUnitAmounts.swift; sourceTree = "<group>"; };
 		ACC035222C3AC74B007ECF4E /* EdamamNutritionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdamamNutritionData.swift; sourceTree = "<group>"; };
@@ -102,6 +108,10 @@
 		ACC0352E2C3AD116007ECF4E /* Edamam-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Edamam-Info.plist"; sourceTree = "<group>"; };
 		ACC035302C3AD26A007ECF4E /* EdamamNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdamamNetworkService.swift; sourceTree = "<group>"; };
 		ACC035342C3B4543007ECF4E /* AddRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeView.swift; sourceTree = "<group>"; };
+		ACC035382C3CA3A3007ECF4E /* ExploreRecipesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreRecipesView.swift; sourceTree = "<group>"; };
+		ACC0353A2C3CA50C007ECF4E /* MyRecipesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecipesView.swift; sourceTree = "<group>"; };
+		ACC0353C2C3CA55B007ECF4E /* RecipeGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeGridView.swift; sourceTree = "<group>"; };
+		ACC0353E2C3CB5D3007ECF4E /* AddRecipeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,10 +154,11 @@
 			isa = PBXGroup;
 			children = (
 				AC1F4B612C3361F700855379 /* TastyNetworkService.swift */,
-				AC1F4B632C336AB700855379 /* TastyStore.swift */,
+				AC1F4B632C336AB700855379 /* RecipeStoresManager.swift */,
 				AC9FC7F82C38C66B00707A78 /* MyRecipeStore.swift */,
 				ACC035242C3ACBC2007ECF4E /* SpoonacularNetworkService.swift */,
 				ACC035302C3AD26A007ECF4E /* EdamamNetworkService.swift */,
+				AC3EAE6F2C3E0AE1003B58D2 /* TastyStore.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -161,6 +172,10 @@
 				AC1F4B6C2C3374E900855379 /* RecipeDetailsView.swift */,
 				AC68D9752C3944F200233E83 /* RecipeItemView.swift */,
 				ACC035342C3B4543007ECF4E /* AddRecipeView.swift */,
+				ACC035382C3CA3A3007ECF4E /* ExploreRecipesView.swift */,
+				ACC0353A2C3CA50C007ECF4E /* MyRecipesView.swift */,
+				ACC0353C2C3CA55B007ECF4E /* RecipeGridView.swift */,
+				ACC0353E2C3CB5D3007ECF4E /* AddRecipeButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -229,13 +244,13 @@
 		ACC0351F2C3AC4D6007ECF4E /* Tasty */ = {
 			isa = PBXGroup;
 			children = (
-				AC1F4B702C337CFC00855379 /* Recipe.json */,
+				AC1F4B702C337CFC00855379 /* RecipesSample.json */,
 				AC1F4B552C335BE700855379 /* TastyAPI.swift */,
 				AC1F4B592C3360AF00855379 /* TastyRecipe.swift */,
 				AC1F4B5B2C33612300855379 /* TastyTips.swift */,
 				AC1F4B5D2C33614800855379 /* TastyAutoComplete.swift */,
 				AC1F4B5F2C33617100855379 /* TastyTagsList.swift */,
-				AC1F4B6E2C337C8A00855379 /* TastyJSON.swift */,
+				AC1F4B6E2C337C8A00855379 /* TastyJSONSample.swift */,
 				AC1F4B752C377A6000855379 /* TastyPage.swift */,
 			);
 			path = Tasty;
@@ -272,8 +287,8 @@
 		ACC035332C3AD605007ECF4E /* Recipe */ = {
 			isa = PBXGroup;
 			children = (
+				AC3EAE6D2C3E09DD003B58D2 /* Recipe.swift */,
 				AC7D16FA2C39F86200980AC6 /* Attempt.swift */,
-				AC7D16FC2C39F94E00980AC6 /* Recipe.swift */,
 			);
 			path = Recipe;
 			sourceTree = "<group>";
@@ -383,7 +398,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC1F4B712C337CFC00855379 /* Recipe.json in Resources */,
+				AC1F4B712C337CFC00855379 /* RecipesSample.json in Resources */,
 				ACC0352F2C3AD116007ECF4E /* Edamam-Info.plist in Resources */,
 				AC1F4B582C335C7100855379 /* Tasty-Info.plist in Resources */,
 				AC4050632C3358B300F4D5F6 /* Preview Assets.xcassets in Resources */,
@@ -436,12 +451,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACC035352C3B4543007ECF4E /* AddRecipeView.swift in Sources */,
-				AC1F4B642C336AB700855379 /* TastyStore.swift in Sources */,
+				AC1F4B642C336AB700855379 /* RecipeStoresManager.swift in Sources */,
+				ACC0353D2C3CA55B007ECF4E /* RecipeGridView.swift in Sources */,
 				AC1F4B662C336BFE00855379 /* ErrorsEnums.swift in Sources */,
 				AC1F4B562C335BE700855379 /* TastyAPI.swift in Sources */,
 				AC1F4B5E2C33614800855379 /* TastyAutoComplete.swift in Sources */,
+				ACC0353B2C3CA50C007ECF4E /* MyRecipesView.swift in Sources */,
 				AC1F4B602C33617100855379 /* TastyTagsList.swift in Sources */,
-				AC1F4B6F2C337C8A00855379 /* TastyJSON.swift in Sources */,
+				AC1F4B6F2C337C8A00855379 /* TastyJSONSample.swift in Sources */,
 				ACC0352D2C3AD0F2007ECF4E /* EdamamAPI.swift in Sources */,
 				AC1F4B5A2C3360AF00855379 /* TastyRecipe.swift in Sources */,
 				AC1F4B6A2C33700000855379 /* SearchStateView.swift in Sources */,
@@ -449,9 +466,12 @@
 				AC1F4B622C3361F700855379 /* TastyNetworkService.swift in Sources */,
 				AC7D16FB2C39F86200980AC6 /* Attempt.swift in Sources */,
 				AC1F4B682C336CD300855379 /* SearchBarView.swift in Sources */,
+				ACC0353F2C3CB5D3007ECF4E /* AddRecipeButton.swift in Sources */,
 				AC9FC7F92C38C66B00707A78 /* MyRecipeStore.swift in Sources */,
 				AC1F4B5C2C33612300855379 /* TastyTips.swift in Sources */,
+				ACC035392C3CA3A3007ECF4E /* ExploreRecipesView.swift in Sources */,
 				ACC035312C3AD26A007ECF4E /* EdamamNetworkService.swift in Sources */,
+				AC3EAE702C3E0AE1003B58D2 /* TastyStore.swift in Sources */,
 				ACC035212C3AC578007ECF4E /* SpoonacularUnitAmounts.swift in Sources */,
 				ACC035252C3ACBC2007ECF4E /* SpoonacularNetworkService.swift in Sources */,
 				AC1F4B742C37558D00855379 /* AlertInfo.swift in Sources */,
@@ -460,8 +480,8 @@
 				AC40505E2C3358B200F4D5F6 /* ContentView.swift in Sources */,
 				AC40505C2C3358B200F4D5F6 /* CapstoneCookbookApp.swift in Sources */,
 				AC68D9762C3944F200233E83 /* RecipeItemView.swift in Sources */,
-				AC7D16FD2C39F94E00980AC6 /* Recipe.swift in Sources */,
 				ACC035232C3AC74B007ECF4E /* EdamamNutritionData.swift in Sources */,
+				AC3EAE6E2C3E09DD003B58D2 /* Recipe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
