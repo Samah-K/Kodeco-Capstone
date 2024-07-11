@@ -9,7 +9,7 @@ import SwiftUI
 
 
 struct ExploreRecipesView: View {
-  @EnvironmentObject var recipeStoreManager: RecipeStoresManager
+  @EnvironmentObject var recipeStoreManager: RecipesStore
   @State var searchQuery = ""
   @State var resetSearchPressed = false
   @State var searchState = SearchState.enterASearch
@@ -91,5 +91,5 @@ struct ExploreRecipesView: View {
 
 #Preview {
   ExploreRecipesView()
-    .environmentObject(RecipeStoresManager())
+    .environmentObject(RecipesStore())
 }

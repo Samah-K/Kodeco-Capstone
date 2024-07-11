@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct AddRecipeView: View {
+  @State private var recipeName = ""
   var body: some View {
     Form {
+      Section {
+        TextField("Recipe Name", text: $recipeName)
+      }
     }
   }
 }

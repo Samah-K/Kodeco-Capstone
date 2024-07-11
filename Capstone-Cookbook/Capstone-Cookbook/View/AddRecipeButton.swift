@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AddRecipeButton: View {
-  @EnvironmentObject var recipeStoreManager: RecipeStoresManager
+  @EnvironmentObject var recipeStoreManager: RecipesStore
   @Binding var isAddedToMyRecipes: Bool
   var recipeID: Int
 
@@ -36,5 +36,5 @@ struct AddRecipeButton: View {
 
 #Preview {
   AddRecipeButton(isAddedToMyRecipes: .constant(true), recipeID: 951)
-    .environmentObject(RecipeStoresManager())
+    .environmentObject(RecipesStore())
 }

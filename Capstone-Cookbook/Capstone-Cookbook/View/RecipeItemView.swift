@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RecipeItemView: View {
-  @EnvironmentObject var recipeStoreManager: RecipeStoresManager
+  @EnvironmentObject var recipeStoreManager: RecipesStore
   @Binding var recipe: Recipe
 
   var body: some View {
@@ -87,5 +87,5 @@ struct RecipeItemView: View {
 #Preview {
   RecipeItemView(
     recipe: .constant(TastyRecipeModel().getExample()))
-  .environmentObject(RecipeStoresManager())
+  .environmentObject(RecipesStore())
 }

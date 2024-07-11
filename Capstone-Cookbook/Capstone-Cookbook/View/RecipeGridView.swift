@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RecipeGridView: View {
-  @EnvironmentObject var recipeStoreManager: RecipeStoresManager
+  @EnvironmentObject var recipeStoreManager: RecipesStore
   @Binding var searchState: SearchState
   let searchQuery: String?
   var recipeType: RecipeType
@@ -54,5 +54,5 @@ struct RecipeGridView: View {
     searchState: .constant(.searching),
     searchQuery: "pie",
     recipeType: .tastyRecipe)
-  .environmentObject(RecipeStoresManager())
+  .environmentObject(RecipesStore())
 }

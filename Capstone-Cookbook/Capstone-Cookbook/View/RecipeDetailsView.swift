@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RecipeDetailsView: View {
-  @EnvironmentObject var recipeStoreManager: RecipeStoresManager
+  @EnvironmentObject var recipeStoreManager: RecipesStore
   @State private var instructionDisclousureExpand = false
   @State private var ingredientdisclousureExpand = false
   @State private var descriptionShowingModal = false
@@ -107,7 +107,7 @@ struct RecipeDetailsView: View {
     RecipeDetailsView(
       recipe: .constant(TastyRecipeModel().getExample()))
   }
-  .environmentObject(RecipeStoresManager())
+  .environmentObject(RecipesStore())
 }
 
 struct InstructionsView: View {
@@ -202,7 +202,7 @@ struct IngredientView: View {
 }
 
 struct NutritionView: View {
-  @ObservedObject var tastyStore: RecipeStoresManager
+  @ObservedObject var tastyStore: RecipesStore
   @State var numberOfPeople: Int
   let recipeID: Int
   let nutrition: Nutrition

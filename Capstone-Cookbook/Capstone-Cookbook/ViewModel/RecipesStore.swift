@@ -7,7 +7,7 @@
 
 import Foundation
 
-class RecipeStoresManager: ObservableObject {
+class RecipesStore: ObservableObject {
   @Published var alertInfo = AlertInfo(isAlertPresented: false, alertMessage: "")
   @Published var tastyRecipes: [Recipe] = []
   @Published var myRecipes: [Recipe] = [] // read from file and write to file
