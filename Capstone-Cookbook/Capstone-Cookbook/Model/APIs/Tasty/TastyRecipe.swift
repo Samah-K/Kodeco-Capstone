@@ -20,7 +20,7 @@ struct Tasty: Codable {
 struct TastyRecipe: Codable, Identifiable {
   let id: Int
   let name: String
-  let description: String
+  let description: String?
   let prepTimeMinutes: Int?
   let cookTimeMinutes: Int?
   let totalTimeMinutes: Int?

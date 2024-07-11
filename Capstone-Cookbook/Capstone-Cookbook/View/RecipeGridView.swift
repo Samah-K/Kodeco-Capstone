@@ -17,10 +17,10 @@ struct RecipeGridView: View {
     ScrollView {
       let columns = [GridItem(.adaptive(minimum: 160, maximum: 180))]
       LazyVGrid(columns: columns, spacing: 4) {
-        ForEach(recipeType == .tastyRecipe ?
-                  $recipeStoreManager.tastyStore.tastyRecipes :
-                  $recipeStoreManager.myRecipesStore.myRecipes) { recipe in
-          //        ForEach(recipes) { recipe in
+        ForEach(
+          recipeType == .tastyRecipe ?
+          $recipeStoreManager.tastyStore.tastyRecipes :
+            $recipeStoreManager.myRecipesStore.myRecipes) { recipe in
           NavigationLink {
             RecipeDetailsView(
               recipeStoreManager: recipeStoreManager,
@@ -29,31 +29,20 @@ struct RecipeGridView: View {
           } label: {
             RecipeItemView(
               recipeStoreManager: recipeStoreManager, recipe: recipe)
-            //            .onAppear {
-            //              if let searchQuery = searchQuery {
-            //                if let last = self.recipeStoreManager.tastyStore.tastyRecipes.last {
-            //                  if last.id == recipe.id {
-            //                    print("NEXT")
-            //                    self.recipeStoreManager.nextSearch(for: searchQuery)
-            //                    self.searchState = .additionalSearch
-            //                  }
-            //                }
-            //              }
-            //            }
+            .onAppear {
+              if let searchQuery = searchQuery {
+                if let last = self.recipeStoreManager.tastyStore.tastyRecipes.last {
+                  if last.id == recipe.id {
+                    print("NEXT")
+                    self.recipeStoreManager.nextSearch(for: searchQuery)
+                    self.searchState = .additionalSearch
+                  }
+                }
+              }
+            }
           }
         }
       }
-      //      .onChange(of: recipeStoreManager.count) {
-      //        print("Changed")
-      //      }
-      .onChange(of: recipeStoreManager.tastyStore.tastyRecipes) {
-        print("tastyRecipes Changed")
-      }
-
-      //      .onReceive(recipeStoreManager.tastyStore.$tastyRecipes) { recipe in
-      //        print(recipe)
-      //        print("ON RECEIVED")
-      //      }
     }
     .frame(maxWidth: .infinity)
   }

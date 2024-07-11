@@ -13,7 +13,7 @@ enum SearchState {
   case foundResults // found results and display them on screen
   case searching // The app is searching
   case additionalSearch
-  case none
+  case none // For "CookBook"'s grid (don't show SearchState view)
 }
 
 struct ContentView: View {

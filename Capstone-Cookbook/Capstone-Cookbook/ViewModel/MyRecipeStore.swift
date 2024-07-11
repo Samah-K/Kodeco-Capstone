@@ -13,7 +13,7 @@ public extension FileManager {
   }
 }
 
-class MyRecipeStore: ObservableObject {
+class MyRecipeStore {
   private let fileName = "MyRecipes"
   var myRecipes: [Recipe] = [] // read from file and write to file
 
@@ -59,7 +59,7 @@ class MyRecipeStore: ObservableObject {
         relativeTo: FileManager.documentDirectoryURL
       ).appendingPathExtension("JSON")
       print(myRecipeURL)
-      if FileManager().fileExists(atPath: myRecipeURL.path()) {
+      if FileManager.default.fileExists(atPath: myRecipeURL.path) {
         let myRecipesData = try Data(contentsOf: myRecipeURL)
         myRecipes = try JSONDecoder().decode([Recipe].self, from: myRecipesData)
       }

@@ -10,14 +10,9 @@ import Foundation
 class RecipeStoresManager: ObservableObject {
   @Published var myRecipesStore = MyRecipeStore()
   @Published var tastyStore = TastyStore()
-//  @Published var count: Int = -1
-  let networkService = TastyNetworkService()
-
-//  @Published var tastyRecipes: [Recipe] = []
-//  let networkService = TastyNetworkService()
-//  var tastyPage = TastyPage()
   @Published var alertInfo = AlertInfo(isAlertPresented: false, alertMessage: "")
-
+  let networkService = TastyNetworkService()
+  var searchCanceled = false
 
   func setError(errorText: String) {
     Task {
@@ -52,6 +47,7 @@ class RecipeStoresManager: ObservableObject {
   }
 
   private func fetchRecipesFromTasty(searchQuery: String) async throws {
+    searchCanceled = false
     var tasty: Tasty
     if TastyJSONSample().isPreview {
       guard let tastyFromJSONFile = TastyJSONSample().getRecipeFromJSONFile() else {
@@ -73,7 +69,7 @@ class RecipeStoresManager: ObservableObject {
           id: recipe.id,
           tastyRecipe: recipe,
           recipeType: .tastyRecipe,
-          isRecipeAddedToMyCookbook: false)
+          isRecipeAddedToMyCookbook: isRecipeAddedToMyCookbook(tastyRecipeID: recipe.id))
       }
       //      for recipe in recipes {
       //        let tastyRecipe = Recipe(
@@ -100,19 +96,15 @@ class RecipeStoresManager: ObservableObject {
         let imageDataURL = try await networkService.getImageDataURL(for: recipe.tastyRecipe)
         if imageDataURL != nil {
           await MainActor.run {
-            tastyStore.tastyRecipes[recipeIndex].tastyRecipe.imageDataURL = imageDataURL
-            objectWillChange.send()
+            if !searchCanceled {
+              tastyStore.tastyRecipes[recipeIndex].tastyRecipe.imageDataURL = imageDataURL
+              objectWillChange.send()
+            }
           }
         }
       }
     }
   }
-
-  //  private func checkIfTastyRecipeIsAddedToMyCookBook(recipeID: Int) -> Bool{
-  //    if let index = tastyRecipes.firstIndex(where: { recipeID == $0.id }) {
-  //
-  //    }
-  //  }
 
   //  func scaleRecipe(for recipeID: Int, numberOfPeople: Int) {
   //    if let index = tastyRecipes.firstIndex(where: { $0.id == recipeID }) {
@@ -128,9 +120,8 @@ class RecipeStoresManager: ObservableObject {
   //  }
 
   func resetSearch() {
-    //    self.tastyStore.tastyRecipes.resetSearch()
     tastyStore.tastyRecipes = []
-    //    recipeCount = -1
+    searchCanceled = true
   }
 
   func nextSearch(for searchQuery: String) {
@@ -184,11 +175,12 @@ class RecipeStoresManager: ObservableObject {
 //    tastyStore.next(for: searchQuery)
 //  }
 
-//  func isRecipeAddedToMyCookbook(tastyRecipeID: Int) -> Bool {
-//    if let index = tastyRecipes.firstIndex(where: { $0.id == tastyRecipeID }) {
-//      
-//    }
-//  }
+  func isRecipeAddedToMyCookbook(tastyRecipeID: Int) -> Bool {
+    if myRecipesStore.myRecipes.firstIndex(where: { $0.id == tastyRecipeID }) != nil {
+      return true
+    }
+    return false
+  }
 
   func addRecipeToMyCookBook(recipeID: Int) -> Bool {
     if let index = tastyStore.tastyRecipes.firstIndex(where: { $0.id == recipeID }) {

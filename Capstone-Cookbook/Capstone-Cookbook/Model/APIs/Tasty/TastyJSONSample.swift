@@ -24,10 +24,10 @@ struct TastyJSONSample {
     }
   }
 
-  var isPreview: Bool {
-    return ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1"
-  }
 //  var isPreview: Bool {
-//    return true
+//    return ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1"
 //  }
+  var isPreview: Bool {
+    return true
+  }
 }

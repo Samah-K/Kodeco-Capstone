@@ -47,7 +47,7 @@ struct RecipeDetailsView: View {
               .font(.title)
               .padding(.top, 6)
             // TODO: Fix this
-            Text(recipe.tastyRecipe.description)
+            Text(recipe.tastyRecipe.description ?? " - ")
               .font(.subheadline)
               .lineLimit(2)
               .allowsTightening(true)
@@ -90,10 +90,12 @@ struct RecipeDetailsView: View {
       }
       .padding(.bottom, 30)
       if $descriptionShowingModal.wrappedValue {
-        DescriptionPopup(
-          descriptionShowingModal: $descriptionShowingModal,
-          descriptionAnimation: $descriptionAnimation,
-          recipeDescription: recipe.tastyRecipe.description)
+        if let description = recipe.tastyRecipe.description {
+          DescriptionPopup(
+            descriptionShowingModal: $descriptionShowingModal,
+            descriptionAnimation: $descriptionAnimation,
+            recipeDescription: description)
+        }
       }
     }
   }
