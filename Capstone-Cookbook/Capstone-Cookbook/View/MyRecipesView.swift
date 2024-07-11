@@ -8,11 +8,10 @@
 import SwiftUI
 
 struct MyRecipesView: View {
-  @ObservedObject var recipeStoreManager: RecipeStoresManager
+  @EnvironmentObject var recipeStoreManager: RecipeStoresManager
   var body: some View {
     NavigationStack {
       RecipeGridView(
-        recipeStoreManager: recipeStoreManager,
         searchState: .constant(.none),
         searchQuery: nil,
         recipeType: .customRecipe
@@ -23,5 +22,6 @@ struct MyRecipesView: View {
 }
 
 #Preview {
-  MyRecipesView(recipeStoreManager: RecipeStoresManager())
+  MyRecipesView()
+    .environmentObject(RecipeStoresManager())
 }

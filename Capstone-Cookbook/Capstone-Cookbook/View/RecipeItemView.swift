@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RecipeItemView: View {
-  @ObservedObject var recipeStoreManager: RecipeStoresManager
+  @EnvironmentObject var recipeStoreManager: RecipeStoresManager
   @Binding var recipe: Recipe
 
   var body: some View {
@@ -67,7 +67,8 @@ struct RecipeItemView: View {
             .shadow(radius: 10)
             .frame(maxWidth: 25, maxHeight: 25)
           AddRecipeButton(
-            recipeStoreManager: recipeStoreManager, isAddedToMyRecipes: $recipe.isRecipeAddedToMyCookbook, recipeID: recipe.id
+            isAddedToMyRecipes: $recipe.isRecipeAddedToMyCookbook,
+            recipeID: recipe.id
           )
         }
       }
@@ -85,6 +86,6 @@ struct RecipeItemView: View {
 
 #Preview {
   RecipeItemView(
-    recipeStoreManager: RecipeStoresManager(),
     recipe: .constant(TastyRecipeModel().getExample()))
+  .environmentObject(RecipeStoresManager())
 }

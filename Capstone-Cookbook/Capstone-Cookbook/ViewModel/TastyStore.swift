@@ -9,12 +9,13 @@ import Foundation
 
 class TastyStore {
   var tastyRecipes: [Recipe] = []
+  var tastyPage = TastyPage()
 //  {
 //    willSet {
 //      print("tastyRecipes, will set")
 //    }
 //  }
-  var tastyPage = TastyPage()
+//  var tastyPage = TastyPage()
 
   //  func scaleRecipe(for recipeID: Int, numberOfPeople: Int) {
   //    if let index = tastyRecipes.firstIndex(where: { $0.id == recipeID }) {

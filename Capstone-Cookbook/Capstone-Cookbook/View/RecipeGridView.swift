@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RecipeGridView: View {
-  @ObservedObject var recipeStoreManager: RecipeStoresManager
+  @EnvironmentObject var recipeStoreManager: RecipeStoresManager
   @Binding var searchState: SearchState
   let searchQuery: String?
   var recipeType: RecipeType
@@ -19,28 +19,28 @@ struct RecipeGridView: View {
       LazyVGrid(columns: columns, spacing: 4) {
         ForEach(
           recipeType == .tastyRecipe ?
-          $recipeStoreManager.tastyStore.tastyRecipes :
-            $recipeStoreManager.myRecipesStore.myRecipes) { recipe in
-          NavigationLink {
-            RecipeDetailsView(
-              recipeStoreManager: recipeStoreManager,
-              recipe: recipe
-            )
-          } label: {
-            RecipeItemView(
-              recipeStoreManager: recipeStoreManager, recipe: recipe)
-            .onAppear {
-              if let searchQuery = searchQuery {
-                if let last = self.recipeStoreManager.tastyStore.tastyRecipes.last {
-                  if last.id == recipe.id {
-                    print("NEXT")
-                    self.recipeStoreManager.nextSearch(for: searchQuery)
-                    self.searchState = .additionalSearch
-                  }
+          $recipeStoreManager.tastyRecipes :
+            $recipeStoreManager.myRecipes) { recipe in
+              NavigationLink {
+                RecipeDetailsView(recipe: recipe
+                )
+                .onChange(of: recipeStoreManager.tastyRecipes.count) {
+                  print("CHANGE")
                 }
+              } label: {
+                RecipeItemView(recipe: recipe)
+                  .onAppear {
+                    if let searchQuery = searchQuery, recipeType == .tastyRecipe {
+                      if let last = self.recipeStoreManager.tastyRecipes.last {
+                        if last.id == recipe.id {
+                          print("NEXT")
+                          self.recipeStoreManager.nextSearch(for: searchQuery)
+                          self.searchState = .additionalSearch
+                        }
+                      }
+                    }
+                  }
               }
-            }
-          }
         }
       }
     }
@@ -51,8 +51,8 @@ struct RecipeGridView: View {
 
 #Preview("RecipeGridView") {
   RecipeGridView(
-    recipeStoreManager: RecipeStoresManager(),
     searchState: .constant(.searching),
     searchQuery: "pie",
     recipeType: .tastyRecipe)
+  .environmentObject(RecipeStoresManager())
 }

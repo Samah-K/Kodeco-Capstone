@@ -33,6 +33,7 @@
 		AC4050772C3358B300F4D5F6 /* CapstoneCookbookUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4050762C3358B300F4D5F6 /* CapstoneCookbookUITests.swift */; };
 		AC4050792C3358B300F4D5F6 /* CapstoneCookbookUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4050782C3358B300F4D5F6 /* CapstoneCookbookUITestsLaunchTests.swift */; };
 		AC68D9762C3944F200233E83 /* RecipeItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC68D9752C3944F200233E83 /* RecipeItemView.swift */; };
+		AC6ADD6F2C3F61BA00E87454 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6ADD6E2C3F61BA00E87454 /* FileManager.swift */; };
 		AC7D16FB2C39F86200980AC6 /* Attempt.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7D16FA2C39F86200980AC6 /* Attempt.swift */; };
 		AC9FC7F92C38C66B00707A78 /* MyRecipeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9FC7F82C38C66B00707A78 /* MyRecipeStore.swift */; };
 		ACC035212C3AC578007ECF4E /* SpoonacularUnitAmounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC035202C3AC578007ECF4E /* SpoonacularUnitAmounts.swift */; };
@@ -97,6 +98,7 @@
 		AC4050762C3358B300F4D5F6 /* CapstoneCookbookUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapstoneCookbookUITests.swift; sourceTree = "<group>"; };
 		AC4050782C3358B300F4D5F6 /* CapstoneCookbookUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapstoneCookbookUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		AC68D9752C3944F200233E83 /* RecipeItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeItemView.swift; sourceTree = "<group>"; };
+		AC6ADD6E2C3F61BA00E87454 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		AC7D16FA2C39F86200980AC6 /* Attempt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attempt.swift; sourceTree = "<group>"; };
 		AC9FC7F82C38C66B00707A78 /* MyRecipeStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecipeStore.swift; sourceTree = "<group>"; };
 		ACC035202C3AC578007ECF4E /* SpoonacularUnitAmounts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpoonacularUnitAmounts.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 		AC40505A2C3358B200F4D5F6 /* Capstone-Cookbook */ = {
 			isa = PBXGroup;
 			children = (
+				AC6ADD6D2C3F619C00E87454 /* Extensions */,
 				AC1F4B542C335BBD00855379 /* View */,
 				AC1F4B532C335BB700855379 /* ViewModel */,
 				AC1F4B522C335BB100855379 /* Model */,
@@ -239,6 +242,14 @@
 				AC4050782C3358B300F4D5F6 /* CapstoneCookbookUITestsLaunchTests.swift */,
 			);
 			path = "Capstone-CookbookUITests";
+			sourceTree = "<group>";
+		};
+		AC6ADD6D2C3F619C00E87454 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AC6ADD6E2C3F61BA00E87454 /* FileManager.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		ACC0351F2C3AC4D6007ECF4E /* Tasty */ = {
@@ -468,6 +479,7 @@
 				AC1F4B682C336CD300855379 /* SearchBarView.swift in Sources */,
 				ACC0353F2C3CB5D3007ECF4E /* AddRecipeButton.swift in Sources */,
 				AC9FC7F92C38C66B00707A78 /* MyRecipeStore.swift in Sources */,
+				AC6ADD6F2C3F61BA00E87454 /* FileManager.swift in Sources */,
 				AC1F4B5C2C33612300855379 /* TastyTips.swift in Sources */,
 				ACC035392C3CA3A3007ECF4E /* ExploreRecipesView.swift in Sources */,
 				ACC035312C3AD26A007ECF4E /* EdamamNetworkService.swift in Sources */,

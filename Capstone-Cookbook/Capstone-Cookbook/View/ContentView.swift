@@ -17,16 +17,15 @@ enum SearchState {
 }
 
 struct ContentView: View {
-  @StateObject var recipeStoreManager = RecipeStoresManager()
   var body: some View {
     TabView {
-      ExploreRecipesView(recipeStoreManager: recipeStoreManager)
+      ExploreRecipesView()
         .tabItem {
           Text("Explore")
           Image(systemName: "magnifyingglass")
         }
 
-      MyRecipesView(recipeStoreManager: recipeStoreManager)
+      MyRecipesView()
         .tabItem {
           Text("CookBook")
           Image(systemName: "book.fill")

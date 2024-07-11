@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RecipeDetailsView: View {
-  @ObservedObject var recipeStoreManager: RecipeStoresManager
+  @EnvironmentObject var recipeStoreManager: RecipeStoresManager
   @State private var instructionDisclousureExpand = false
   @State private var ingredientdisclousureExpand = false
   @State private var descriptionShowingModal = false
@@ -84,7 +84,8 @@ struct RecipeDetailsView: View {
         .toolbar {
           ToolbarItem(placement: .topBarTrailing) {
             AddRecipeButton(
-              recipeStoreManager: recipeStoreManager, isAddedToMyRecipes: $recipe.isRecipeAddedToMyCookbook, recipeID: recipe.id)
+              isAddedToMyRecipes: $recipe.isRecipeAddedToMyCookbook,
+              recipeID: recipe.id)
           }
         }
       }
@@ -104,9 +105,9 @@ struct RecipeDetailsView: View {
 #Preview {
   NavigationStack {
     RecipeDetailsView(
-      recipeStoreManager: RecipeStoresManager(),
       recipe: .constant(TastyRecipeModel().getExample()))
   }
+  .environmentObject(RecipeStoresManager())
 }
 
 struct InstructionsView: View {

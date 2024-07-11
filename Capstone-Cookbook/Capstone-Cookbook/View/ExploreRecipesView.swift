@@ -9,7 +9,7 @@ import SwiftUI
 
 
 struct ExploreRecipesView: View {
-  @ObservedObject var recipeStoreManager: RecipeStoresManager
+  @EnvironmentObject var recipeStoreManager: RecipeStoresManager
   @State var searchQuery = ""
   @State var resetSearchPressed = false
   @State var searchState = SearchState.enterASearch
@@ -38,7 +38,7 @@ struct ExploreRecipesView: View {
           }
         }
 
-        .onChange(of: recipeStoreManager.tastyStore.tastyRecipes.count) { _, newValue in
+        .onChange(of: recipeStoreManager.tastyRecipes.count) { _, newValue in
           if !searchQuery.isEmpty && newValue == 0 {
             searchState = .noResultsFound
           } else if !searchQuery.isEmpty && newValue > 0 {
@@ -52,7 +52,6 @@ struct ExploreRecipesView: View {
         } else {
           VStack {
             RecipeGridView(
-              recipeStoreManager: recipeStoreManager,
               searchState: $searchState,
               searchQuery: searchQuery,
               recipeType: RecipeType.tastyRecipe)
@@ -91,5 +90,6 @@ struct ExploreRecipesView: View {
 }
 
 #Preview {
-  ExploreRecipesView(recipeStoreManager: RecipeStoresManager())
+  ExploreRecipesView()
+    .environmentObject(RecipeStoresManager())
 }
