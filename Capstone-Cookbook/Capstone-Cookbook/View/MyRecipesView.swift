@@ -14,9 +14,22 @@ struct MyRecipesView: View {
       RecipeGridView(
         searchState: .constant(.none),
         searchQuery: nil,
-        recipeType: .customRecipe
+        recipeType: .myRecipe
       )
       .navigationTitle("My Recipes")
+      .toolbar {
+        ToolbarItem(placement: .topBarTrailing) {
+          NavigationLink {
+            //            var recipe = Recipe(tastyRecipe: nil, recipeType: .myRecipe)
+            AddRecipeView()
+          } label: {
+            HStack {
+              Image(systemName: "plus")
+              Text("New Recipe")
+            }
+          }
+        }
+      }
     }
   }
 }

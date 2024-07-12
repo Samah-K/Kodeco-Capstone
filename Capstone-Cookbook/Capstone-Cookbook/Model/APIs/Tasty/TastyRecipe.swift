@@ -19,18 +19,17 @@ struct Tasty: Codable {
 
 struct TastyRecipe: Codable, Identifiable {
   let id: Int
-  let name: String
-  let description: String?
-  let prepTimeMinutes: Int?
-  let cookTimeMinutes: Int?
+  var name: String
+  var description: String?
+  var prepTimeMinutes: Int?
+  var cookTimeMinutes: Int?
   let totalTimeMinutes: Int?
-  let instructions: [Instructions]
-  let ingredientSections: [IngredientSections]
+  var instructions: [Instructions]
+  var ingredientSections: [IngredientSections]
   let keywords: String?
   // family dinner, jonah peretti, secret ingredient pasta, tasty, tasty_contains_alcohol, tomato and anchovy pasta recipe, umami pasta
   var numServing: Int
-  var numberOfPeople: Int? // custom
-  let thumbnailURL: String // https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/109214.jpg
+  var thumbnailURL: String // https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/109214.jpg
   let beautyURL: String? // https://img.buzzfeed.com/video-api-prod/assets/cf1fdbad99ef4b278ca7b8c61504b6c2/Beauty2_Thumb.jpg
   let originalVideoURL: String? // https://s3.amazonaws.com/video-api-prod/assets/723faf4d7887464b82e81d2604797f83/BFV30681_ApplePieCheescake_FB1080SQ.mp4
   let videoURL: String? // https://vid.tasty.co/output/57946/low_1508803850.m3u8
@@ -114,8 +113,8 @@ struct Instructions: Codable, Identifiable {
 
 struct IngredientSections: Codable, Identifiable {
   let id = UUID()
-  let components: [Component]
-  let name: String?
+  var components: [Component]
+  var name: String?
   let position: Int?
   enum CodingKeys: CodingKey {
     case components, name, position
@@ -222,13 +221,13 @@ struct TastyRecipeModel {
       nutrition: nil,
       language: "eng",
       tags: [])
-    let recipeExample = Recipe(id: example.id, tastyRecipe: example, recipeType: .tastyRecipe)
+    let recipeExample = Recipe(id: UUID().uuidString, tastyRecipe: example, recipeType: .tastyRecipe)
     guard let tastyFromJSONFile = TastyJSONSample().getRecipeFromJSONFile()
     else {
       return recipeExample
     }
     if let reciple = tastyFromJSONFile.recipes.last {
-      return Recipe(id: example.id, tastyRecipe: reciple, recipeType: .tastyRecipe)
+      return Recipe(id: UUID().uuidString, tastyRecipe: reciple, recipeType: .tastyRecipe)
     }
     return recipeExample
   }

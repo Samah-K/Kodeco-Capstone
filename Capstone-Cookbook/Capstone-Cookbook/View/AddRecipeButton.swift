@@ -10,7 +10,7 @@ import SwiftUI
 struct AddRecipeButton: View {
   @EnvironmentObject var recipeStoreManager: RecipesStore
   @Binding var isAddedToMyRecipes: Bool
-  var recipeID: Int
+  var recipeID: String
 
   var body: some View {
     Button(action: {
@@ -35,6 +35,6 @@ struct AddRecipeButton: View {
 }
 
 #Preview {
-  AddRecipeButton(isAddedToMyRecipes: .constant(true), recipeID: 951)
+  AddRecipeButton(isAddedToMyRecipes: .constant(true), recipeID: "\(951)")
     .environmentObject(RecipesStore())
 }

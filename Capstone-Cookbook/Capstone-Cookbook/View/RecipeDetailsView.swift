@@ -14,6 +14,7 @@ struct RecipeDetailsView: View {
   @State private var descriptionShowingModal = false
   @State private var descriptionAnimation = false
   @Binding var recipe: Recipe
+  var addFavoriteButton: Bool
 
   var body: some View {
     ZStack {
@@ -83,9 +84,11 @@ struct RecipeDetailsView: View {
         }
         .toolbar {
           ToolbarItem(placement: .topBarTrailing) {
-            AddRecipeButton(
-              isAddedToMyRecipes: $recipe.isRecipeAddedToMyCookbook,
-              recipeID: recipe.id)
+            if recipe.recipeType == .tastyRecipe {
+              AddRecipeButton(
+                isAddedToMyRecipes: $recipe.isRecipeAddedToMyCookbook,
+                recipeID: recipe.id)
+            }
           }
         }
       }
@@ -105,7 +108,7 @@ struct RecipeDetailsView: View {
 #Preview {
   NavigationStack {
     RecipeDetailsView(
-      recipe: .constant(TastyRecipeModel().getExample()))
+      recipe: .constant(TastyRecipeModel().getExample()), addFavoriteButton: true)
   }
   .environmentObject(RecipesStore())
 }

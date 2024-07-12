@@ -12,6 +12,7 @@ struct CapstoneCookbookApp: App {
   @StateObject var recipeStoreManager = RecipesStore()
   var body: some Scene {
     WindowGroup {
+      //      AddRecipeView()
       ContentView()
         .environmentObject(recipeStoreManager)
     }

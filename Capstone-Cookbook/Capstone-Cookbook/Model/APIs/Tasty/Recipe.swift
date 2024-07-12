@@ -9,7 +9,7 @@ import Foundation
 
 enum RecipeType: Codable {
   case tastyRecipe
-  case customRecipe
+  case myRecipe
 }
 
 struct Recipe: Identifiable, Codable, Equatable {
@@ -17,8 +17,35 @@ struct Recipe: Identifiable, Codable, Equatable {
     lhs.id == rhs.id
   }
 
-  var id: Int
+  var id: String
   var tastyRecipe: TastyRecipe
-  let recipeType: RecipeType
+  var recipeType: RecipeType
   var isRecipeAddedToMyCookbook = false
+
+  init(id: String = UUID().uuidString, tastyRecipe: TastyRecipe?, recipeType: RecipeType, isRecipeAddedToMyCookbook: Bool = false) {
+    self.id = id
+    self.recipeType = recipeType
+    self.isRecipeAddedToMyCookbook = isRecipeAddedToMyCookbook
+    if let tastyRecipe = tastyRecipe {
+      self.tastyRecipe = tastyRecipe
+    } else {
+      self.tastyRecipe = TastyRecipe(
+        id: UUID().hashValue,
+        name: "",
+        description: "",
+        prepTimeMinutes: nil,
+        cookTimeMinutes: nil,
+        totalTimeMinutes: nil,
+        instructions: [],
+        ingredientSections: [],
+        keywords: nil,
+        numServing: 0,
+        thumbnailURL: "",
+        beautyURL: nil,
+        originalVideoURL: nil,
+        videoURL: nil,
+        language: "eng",
+        tags: [])
+    }
+  }
 }

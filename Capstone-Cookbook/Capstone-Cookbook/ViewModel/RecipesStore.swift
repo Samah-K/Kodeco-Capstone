@@ -71,10 +71,10 @@ class RecipesStore: ObservableObject {
     await MainActor.run {
       let recipes = filteredRecipes.map { recipe in
         Recipe(
-          id: recipe.id,
+          id: UUID().uuidString,
           tastyRecipe: recipe,
           recipeType: .tastyRecipe,
-          isRecipeAddedToMyCookbook: isRecipeAddedToMyCookbook(tastyRecipeID: recipe.id))
+          isRecipeAddedToMyCookbook: isRecipeAddedToMyCookbook(tastyRecipeID: "\(recipe.id)"))
       }
       self.tastyRecipes.append(contentsOf: recipes)
     }
@@ -142,14 +142,14 @@ class RecipesStore: ObservableObject {
     return recipes
   }
 
-  func isRecipeAddedToMyCookbook(tastyRecipeID: Int) -> Bool {
+  func isRecipeAddedToMyCookbook(tastyRecipeID: String) -> Bool {
     if myRecipes.firstIndex(where: { $0.id == tastyRecipeID }) != nil {
       return true
     }
     return false
   }
 
-  func addRecipeToMyCookBook(recipeID: Int) -> Bool {
+  func addRecipeToMyCookBook(recipeID: String) -> Bool {
     if let index = tastyRecipes.firstIndex(where: { $0.id == recipeID }) {
       tastyRecipes[index].isRecipeAddedToMyCookbook = true
       addNewRecipeToCookBook(recipe: tastyRecipes[index])
@@ -158,21 +158,22 @@ class RecipesStore: ObservableObject {
     return false
   }
 
-  func removeRecipeFromMyCookBook(recipeID: Int) {
+  func removeRecipeFromMyCookBook(recipeID: String) {
     if let index = tastyRecipes.firstIndex(where: { $0.id == recipeID }) {
       tastyRecipes[index].isRecipeAddedToMyCookbook = false
-      removeRecipe(recipeID: recipeID)
     }
+    removeRecipe(recipeID: recipeID)
   }
 
   private func addNewRecipeToCookBook(recipe: Recipe) {
     myRecipes.append(recipe)
     if let index = myRecipes.firstIndex(where: { recipe.id == $0.id }) {
+      myRecipes[index].recipeType = .myRecipe
       myRecipes[index].isRecipeAddedToMyCookbook = true
     }
     myRecipeFileStore.writeRecipeToFile(myRecipes: myRecipes)
   }
-  private func removeRecipe(recipeID: Int) {
+  private func removeRecipe(recipeID: String) {
     if let index = myRecipes.firstIndex(where: { recipeID == $0.id }) {
       myRecipes[index].isRecipeAddedToMyCookbook = false
       myRecipes.remove(at: index)
@@ -180,10 +181,25 @@ class RecipesStore: ObservableObject {
     }
   }
 
-  func getTastyRecipeIndex(from recipeID: Int) -> Int? {
+  func getTastyRecipeIndex(from recipeID: String) -> Int? {
     if let index = tastyRecipes.firstIndex(where: { $0.id == recipeID }) {
       return index
     }
     return nil
+  }
+
+  func saveImage(imageName: String, data: Data) throws -> String {
+    do {
+      let fileName = FileManager.documentDirectoryURL.appending(component: imageName)
+      if FileManager.default.fileExists(atPath: fileName.path()) {
+        try FileManager.default.removeItem(at: fileName)
+      }
+      try data.write(to: fileName)
+      return fileName.path()
+    } catch {
+      print(error.localizedDescription)
+      alertInfo = AlertInfo(isAlertPresented: true, alertMessage: "Can't load image")
+      throw FileErrors.previewJSONFileNotExists
+    }
   }
 }

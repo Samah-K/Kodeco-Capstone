@@ -22,7 +22,7 @@ struct RecipeGridView: View {
           $recipeStoreManager.tastyRecipes :
             $recipeStoreManager.myRecipes) { recipe in
               NavigationLink {
-                RecipeDetailsView(recipe: recipe
+                RecipeDetailsView(recipe: recipe, addFavoriteButton: true
                 )
                 .onChange(of: recipeStoreManager.tastyRecipes.count) {
                   print("CHANGE")

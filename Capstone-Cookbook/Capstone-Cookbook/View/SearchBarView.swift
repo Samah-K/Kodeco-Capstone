@@ -21,6 +21,7 @@ struct SearchBarView: View {
         .frame(maxWidth: 240, maxHeight: 50)
         .padding(.horizontal, 10)
         .autocorrectionDisabled()
+        .submitLabel(.search)
       Button {
         searchQuery = ""
         resetSearchPressed = true

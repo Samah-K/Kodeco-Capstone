@@ -18,4 +18,5 @@ enum NetworkError: Error {
 
 enum FileErrors: Error {
   case previewJSONFileNotExists // RecipesSample.json for preview
+  case cannotSaveImage // AddEditRecipe pick an image
 }
