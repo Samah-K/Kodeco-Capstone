@@ -48,7 +48,7 @@ struct HandleMeasurement {
       if fractionsKeys.contains(where: { $0 == "\(char)" }) {
         fractionValue = vulgarFractionDic["\(char)"] ?? 0.0
         quantityValue.replace("\(char)", with: "")
-        print("\(quantity) -> \(quantityValue)")
+//        print("\(quantity) -> \(quantityValue)")
       }
     }
     if let quantityInt = Double(quantityValue) { //

@@ -96,7 +96,6 @@ struct AddRecipeView: View {
           // Instructions
         }
         .onAppear {
-          print("onAppear")
           recipeName = recipe.tastyRecipe.name
           recipeDescription = recipe.tastyRecipe.description ?? ""
           prepTime = recipe.tastyRecipe.prepTimeMinutes ?? 0

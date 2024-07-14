@@ -12,10 +12,8 @@ struct RecipeDetailsView: View {
   @State private var instructionDisclousureExpand = false
   @State private var ingredientdisclousureExpand = false
   @State private var descriptionShowingModal = false
-  @State private var descriptionAnimation = false
   @State var isNewRecipeSheetPresented = false
   @State var recipe: Recipe
-//  @Binding var recipe: Recipe
   var addFavoriteButton: Bool
 
   var body: some View {
@@ -112,10 +110,9 @@ struct RecipeDetailsView: View {
       .padding(.bottom, 30)
       if $descriptionShowingModal.wrappedValue {
         if let description = recipe.tastyRecipe.description {
-          DescriptionPopup(
-            descriptionShowingModal: $descriptionShowingModal,
-            descriptionAnimation: $descriptionAnimation,
-            recipeDescription: description)
+          CustomPopup(
+            isPopPresented: $descriptionShowingModal,
+            popText: description)
         }
       }
     }
@@ -331,52 +328,5 @@ struct DetailsSectionView: View {
         } .padding(20)
       }
     }.padding(20)
-  }
-}
-
-struct DescriptionPopup: View {
-  @Binding var descriptionShowingModal: Bool
-  @Binding var descriptionAnimation: Bool
-  var recipeDescription: String
-  var body: some View {
-    ZStack {
-      Color.black
-        .opacity(0.6)
-        .ignoresSafeArea()
-        .onTapGesture {
-          descriptionAnimation.toggle()
-          DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
-            descriptionShowingModal.toggle()
-          }
-        }
-      VStack {
-        ZStack {
-          Circle()
-            .fill(.accent)
-            .frame(width: 40, height: 40)
-            .shadow(radius: 10)
-          Image(systemName: "fork.knife")
-            .foregroundStyle(.white)
-        }
-        .padding(.top, 20)
-        ScrollView {
-          Text(recipeDescription)
-            .padding(.horizontal, 20)
-            .padding(.top, 10)
-            .padding(.bottom, 20)
-        }
-      }
-      .background(.white)
-      .frame(width: 350, height: 400)
-      .clipShape(RoundedRectangle(cornerRadius: 25.0))
-      .shadow(radius: 20)
-    }
-//    .onAppear {
-//      DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250)) {
-//        descriptionAnimation.toggle()
-//      }
-//    }
-//    .opacity(descriptionAnimation ? 1 : 0)
-//    .animation(.easeInOut(duration: 0.25), value: descriptionAnimation)
   }
 }

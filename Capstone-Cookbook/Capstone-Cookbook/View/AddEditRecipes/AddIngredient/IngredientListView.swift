@@ -62,9 +62,6 @@ struct IngredientListView: View {
         }
       }
     }
-    .onAppear {
-      print("IngredientListView: onAppear")
-    }
     .toolbar {
       ToolbarItem(placement: .topBarTrailing) {
         NavigationLink {

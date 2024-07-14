@@ -41,10 +41,9 @@ struct AddIngredientView: View {
       }
       VStack {
         if isHowPopOverPresent {
-          DescriptionPopup(
-            descriptionShowingModal: $isHowPopOverPresent,
-            descriptionAnimation: .constant(false),
-            recipeDescription: TextsConstants().measurementHowTo)
+          CustomPopup(
+            isPopPresented: $isHowPopOverPresent,
+            popText: TextsConstants().measurementHowTo)
         }
       }
       .onAppear {
@@ -140,12 +139,10 @@ struct MeasurementView: View {
       }
     }
     .onAppear {
-      print("onAppear: MeasurementView")
       setPropertiesOnAppear()
     }
   }
   func calculateAmount(from amount: Double, _ fromUnit: UnitsName, to toUnit: UnitsName) {
-    // TODO: using Spooncular
     recipeStore.convertAmount(of: ingredient.name, from: amount, fromUnit, to: toUnit, delegate: self)
   }
   func setPropertiesOnAppear() {

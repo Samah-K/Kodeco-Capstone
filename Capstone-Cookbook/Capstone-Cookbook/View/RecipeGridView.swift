@@ -21,28 +21,31 @@ struct RecipeGridView: View {
           recipeType == .tastyRecipe ?
           $recipeStoreManager.tastyRecipes :
             $recipeStoreManager.myRecipes) { recipe in
+//              NavigationLink(value: recipe) {
+//                RecipeItemView(recipe: recipe)
+//              }
               NavigationLink {
-                RecipeDetailsView(recipe: recipe, addFavoriteButton: true
+                RecipeDetailsView(recipe: recipe.wrappedValue, addFavoriteButton: true
                 )
-                .onChange(of: recipeStoreManager.tastyRecipes.count) {
-                  print("CHANGE")
-                }
               } label: {
                 RecipeItemView(recipe: recipe)
-                  .onAppear {
-                    if let searchQuery = searchQuery, recipeType == .tastyRecipe {
-                      if let last = self.recipeStoreManager.tastyRecipes.last {
-                        if last.id == recipe.id {
-                          print("NEXT")
-                          self.recipeStoreManager.nextSearch(for: searchQuery)
-                          self.searchState = .additionalSearch
-                        }
-                      }
-                    }
-                  }
+////                  .onAppear {
+////                    if let searchQuery = searchQuery, recipeType == .tastyRecipe {
+////                      if let last = self.recipeStoreManager.tastyRecipes.last {
+////                        if last.id == recipe.id {
+////                          print("NEXT")
+////                          self.recipeStoreManager.nextSearch(for: searchQuery)
+////                          self.searchState = .additionalSearch
+////                        }
+////                      }
+////                    }
+//                  }
               }
         }
       }
+//      .navigationDestination(for: String.self) { string in
+//        RecipeDetailsView(recipe:.constant(Recipe(tastyRecipe: nil, recipeType: .myRecipe)), addFavoriteButton: true)
+//      }
     }
     .frame(maxWidth: .infinity)
   }
