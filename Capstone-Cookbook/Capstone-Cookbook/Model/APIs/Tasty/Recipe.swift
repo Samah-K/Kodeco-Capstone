@@ -12,10 +12,10 @@ enum RecipeType: Codable {
   case myRecipe
 }
 
-struct Recipe: Identifiable, Codable, Equatable {
-  static func == (lhs: Recipe, rhs: Recipe) -> Bool {
-    lhs.id == rhs.id
-  }
+struct Recipe: Identifiable, Codable {
+//  static func == (lhs: Recipe, rhs: Recipe) -> Bool {
+//    lhs.id == rhs.id
+//  }
 
   var id: String
   var tastyRecipe: TastyRecipe
@@ -30,7 +30,7 @@ struct Recipe: Identifiable, Codable, Equatable {
       self.tastyRecipe = tastyRecipe
     } else {
       self.tastyRecipe = TastyRecipe(
-        id: UUID().hashValue,
+        id: id.hashValue,
         name: "",
         description: "",
         prepTimeMinutes: nil,
@@ -43,9 +43,39 @@ struct Recipe: Identifiable, Codable, Equatable {
         thumbnailURL: "",
         beautyURL: nil,
         originalVideoURL: nil,
-        videoURL: nil,
+        videoURL: "",
         language: "eng",
         tags: [])
     }
+  }
+
+  func createEmptyIngredientSection() -> IngredientSections {
+    let ingredient = Ingredient(
+      createdAt: Int(TimeInterval(Date().timeIntervalSince1970)),
+      displayPlural: "",
+      displaySingular: "",
+      name: "",
+      updatedAt: Int(TimeInterval(Date().timeIntervalSince1970)))
+
+    let unit = Unit(
+      abbreviation: "",
+      displayPlural: "",
+      displaySingular: "",
+      name: "",
+      system: UnitsSystem.none.rawValue)
+
+    let measurement = Measurement(
+      id: UUID().hashValue,
+      quantity: "0",
+      unit: unit)
+
+    let component = Component(
+      extraComment: "",
+      rawText: "",
+      position: 1,
+      ingredient: ingredient,
+      measurements: [measurement])
+
+    return IngredientSections(components: [component], position: 1)
   }
 }

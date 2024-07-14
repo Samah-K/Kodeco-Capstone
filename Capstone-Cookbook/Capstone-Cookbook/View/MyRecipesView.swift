@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MyRecipesView: View {
-  @EnvironmentObject var recipeStoreManager: RecipesStore
+//  @EnvironmentObject var recipeStoreManager: RecipesStore
   var body: some View {
     NavigationStack {
       RecipeGridView(
@@ -20,8 +20,14 @@ struct MyRecipesView: View {
       .toolbar {
         ToolbarItem(placement: .topBarTrailing) {
           NavigationLink {
-            //            var recipe = Recipe(tastyRecipe: nil, recipeType: .myRecipe)
-            AddRecipeView()
+            var recipe = Recipe(tastyRecipe: nil, recipeType: RecipeType.myRecipe)
+            var recipeBinding: Binding<Recipe> {
+              Binding(
+                get: { recipe },
+                set: { recipe = $0 }
+              )
+            }
+            AddRecipeView(recipe: recipeBinding)
           } label: {
             HStack {
               Image(systemName: "plus")
@@ -36,5 +42,4 @@ struct MyRecipesView: View {
 
 #Preview {
   MyRecipesView()
-    .environmentObject(RecipesStore())
 }

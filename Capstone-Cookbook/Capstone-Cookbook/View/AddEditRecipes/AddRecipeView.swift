@@ -8,9 +8,14 @@
 import SwiftUI
 import PhotosUI
 
+enum AddOrEditEnum: String {
+  case addRecipe = "Add New Recipe"
+  case editRecipe = "Edit Recipe"
+}
+
 struct AddRecipeView: View {
-//  @Binding var recipe: Recipe
-  var recipeID = UUID().uuidString
+  @EnvironmentObject var recipeStore: RecipesStore
+  @Binding var recipe: Recipe
   @State private var recipeName = ""
   @State private var recipeDescription = ""
   @State private var prepTime = 20
@@ -18,81 +23,119 @@ struct AddRecipeView: View {
   @State private var numServing = 0
   @State private var thumbnail = ""
   @State private var video = ""
+  @State var ingredientSections: [IngredientSections] = []
   @State private var presentingIngredientSheet = false
-
-
   @State private var thumbnailURL: String?
   @State private var recipeImage: Image?
-
-  @State var section = TastyJSONSample().getRecipeFromJSONFile()?.recipes[0].ingredientSections ?? []
+  var addOrEdit: AddOrEditEnum = .addRecipe
 
   var body: some View {
-    VStack {
-      Form {
-        Section {
-          HStack {
-            Spacer()
-            AddRecipeThumbnailView(thumbnailURL: $thumbnailURL, recipeID: recipeID)
-            Spacer()
-          }
-        }
-        .listRowBackground(Color.clear)
-
-        Section {
-          TextField("Recipe Name", text: $recipeName)
-          TextField("Recipe description", text: $recipeDescription, axis: .vertical)
-            .lineLimit(5...20)
-        }
-
-        Section {
-          Button {
-            presentingIngredientSheet = true
-          } label: {
-            Text("Add Ingredient")
-          }
-          .sheet(isPresented: $presentingIngredientSheet) {
-            AddIngredientSectionsView(ingredientSections: $section)
-          }
-        }
-
-        Section {
-          HStack {
-            TimePicker(timePickerTitle: "Preparation Time", time: $prepTime)
-            Spacer()
-            Divider()
-            Spacer()
-            TimePicker(timePickerTitle: "Cooking Time", time: $cookTime)
-          }
-          HStack {
-            Text("Total Time")
-            Spacer()
-            Text("\(calculateTotalTime(prepTime: prepTime, cookTime: cookTime))")
-          }
-          .foregroundStyle(.gray)
-        }
-        Section {
-          TextField("Add video URL", text: $video)
-            .textContentType(.URL)
-        }
-        Section {
-          Picker("Number of Served People", selection: $numServing) {
-            ForEach(1..<20) { peopleNumber in
-              Text("\(peopleNumber)")
-                .tag(peopleNumber)
-                .frame(maxWidth: 20)
+    ZStack(alignment: .bottom) {
+      VStack {
+//        Text(addOrEdit.rawValue)
+//          .font(.title)
+//          .padding(.top)
+        Form {
+          Section {
+            HStack {
+              Spacer()
+              AddRecipeThumbnailView(
+                thumbnailURL: $thumbnailURL,
+                recipeID: recipe.id)
+              Spacer()
             }
           }
+          .listRowBackground(Color.clear)
+
+          Section {
+            TextField("Recipe Name", text: $recipeName)
+            TextField("Recipe description", text: $recipeDescription, axis: .vertical)
+              .lineLimit(5...20)
+          }
+
+          Section {
+            Button {
+              presentingIngredientSheet = true
+            } label: {
+              Text("Add Ingredient")
+            }
+            .sheet(isPresented: $presentingIngredientSheet) {
+              AddIngredientSectionsView(ingredientSections: $ingredientSections)
+            }
+          }
+
+          Section {
+            HStack {
+              TimePicker(timePickerTitle: "Preparation Time", time: $prepTime)
+              Spacer()
+              Divider()
+              Spacer()
+              TimePicker(timePickerTitle: "Cooking Time", time: $cookTime)
+            }
+            HStack {
+              Text("Total Time")
+              Spacer()
+              Text("\(calculateTotalTime(prepTime: prepTime, cookTime: cookTime))")
+            }
+            .foregroundStyle(.gray)
+          }
+          Section {
+            TextField("Add video URL", text: $video)
+              .textContentType(.URL)
+          }
+          Section {
+            Picker("Number of Served People", selection: $numServing) {
+              ForEach(1..<20) { peopleNumber in
+                Text("\(peopleNumber)")
+                  .tag("\(peopleNumber)")
+                  .frame(maxWidth: 20)
+              }
+            }
+          }
+          // Ingredient
+          // Instructions
         }
-        // Ingredient
-        // Instructions
-      }
-      .navigationTitle("Add New Recipe")
-      .toolbar {
-        ToolbarItem(placement: .topBarTrailing) {
-          Text("Save")
+        .onAppear {
+          print("onAppear")
+          recipeName = recipe.tastyRecipe.name
+          recipeDescription = recipe.tastyRecipe.description ?? ""
+          prepTime = recipe.tastyRecipe.prepTimeMinutes ?? 0
+          cookTime = recipe.tastyRecipe.cookTimeMinutes ?? 0
+          numServing = recipe.tastyRecipe.numServing
+          video = recipe.tastyRecipe.videoURL ?? ""
+          ingredientSections = recipe.tastyRecipe.ingredientSections
+        }
+        .navigationTitle(addOrEdit.rawValue)
+        .toolbar {
+          ToolbarItem(placement: .topBarTrailing) {
+            Button(action: {
+              saveRecipe()
+            }, label: {
+              Text("Save")
+            })
+          }
         }
       }
+//      VStack {
+//        Button(action: {
+//          saveRecipe()
+//        }, label: {
+//          Text("Save")
+//            .padding()
+//            .background(.accent)
+//        })
+//      }
     }
+  }
+  private func saveRecipe() {
+    recipe.tastyRecipe.name = recipeName
+    recipe.tastyRecipe.description = recipeDescription
+    recipe.tastyRecipe.prepTimeMinutes = prepTime
+    recipe.tastyRecipe.cookTimeMinutes = cookTime
+    recipe.tastyRecipe.numServing = numServing
+    recipe.tastyRecipe.videoURL = video
+    recipe.tastyRecipe.ingredientSections = ingredientSections
+    recipeStore.saveChangesOnRecipe(recipe)
   }
   private func calculateTotalTime(prepTime: Int, cookTime: Int) -> String {
     let totalTime = prepTime + cookTime
@@ -133,7 +176,7 @@ struct TimePicker: View {
           Picker("Hours", selection: $hours) {
             ForEach(0..<11) { hour in
               Text("\(hour)")
-                .tag(hour)
+                .tag("\(hour)")
             }
           }
           .pickerStyle(.wheel)
@@ -147,7 +190,7 @@ struct TimePicker: View {
           Picker("Minutes", selection: $minutes) {
             ForEach(0..<60) { minutes in
               Text("\(minutes)")
-                .tag(minutes)
+                .tag("(minutes)")
             }
           }
           .pickerStyle(.wheel)
@@ -184,5 +227,13 @@ struct TimePicker: View {
   return Preview()
 }
 #Preview {
-  AddRecipeView()
+  struct Preview: View {
+    private static let tastyRecipe = TastyJSONSample().getRecipeFromJSONFile()?.recipes[0]
+    @State var recipe = Recipe(tastyRecipe: tastyRecipe, recipeType: .myRecipe)
+    var body: some View {
+      AddRecipeView(recipe: $recipe)
+        .environmentObject(RecipesStore())
+    }
+  }
+  return Preview()
 }

@@ -32,7 +32,7 @@ struct TastyRecipe: Codable, Identifiable {
   var thumbnailURL: String // https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/109214.jpg
   let beautyURL: String? // https://img.buzzfeed.com/video-api-prod/assets/cf1fdbad99ef4b278ca7b8c61504b6c2/Beauty2_Thumb.jpg
   let originalVideoURL: String? // https://s3.amazonaws.com/video-api-prod/assets/723faf4d7887464b82e81d2604797f83/BFV30681_ApplePieCheescake_FB1080SQ.mp4
-  let videoURL: String? // https://vid.tasty.co/output/57946/low_1508803850.m3u8
+  var videoURL: String? // https://vid.tasty.co/output/57946/low_1508803850.m3u8
   var nutrition: Nutrition?
   let language: String // eng
   let tags: [Tag]
@@ -124,8 +124,8 @@ struct IngredientSections: Codable, Identifiable {
 struct Component: Codable, Identifiable {
   var id = UUID()
   let extraComment: String
-  let rawText: String
-  let position: Int?
+  var rawText: String
+  var position: Int?
   var ingredient: Ingredient
   var measurements: [Measurement]
   enum CodingKeys: String, CodingKey {
@@ -133,36 +133,15 @@ struct Component: Codable, Identifiable {
     case rawText      = "raw_text"
     case ingredient, measurements, position
   }
-  func getIngredientDescription() -> String {
-    if rawText != "n/a" {
-      return rawText
-    } else {
-      let ingredientName = ingredient.name
-      var ingredientMeasurement = ""
-      if measurements.count <= 1 {
-        let measurement = measurements[0]
-        let quantity = measurement.quantity
-        let name = measurement.unit.name
-        ingredientMeasurement = (quantity == "0") ? "\(name)" : "\(quantity) \(name) of"
-      } else {
-        // metric or imperial
-        let measurement = measurements[0]
-        let quantity = measurement.quantity
-        let name = measurement.unit.name
-        ingredientMeasurement = "\(quantity) \(name)"
-      }
-      return "\(ingredientMeasurement) \(ingredientName)"
-    }
-  }
 }
 
-struct Ingredient: Codable {
+struct Ingredient: Codable, Identifiable {
   let createdAt: Int
-  let displayPlural: String?
-  let displaySingular: String?
-  let id: Int
-  let name: String
-  let updatedAt: Int
+  var displayPlural: String?
+  var displaySingular: String?
+  let id: Int = UUID().hashValue
+  var name: String
+  var updatedAt: Int
   enum CodingKeys: String, CodingKey {
     case createdAt     = "created_at"
     case updatedAt     = "updated_at"
@@ -175,8 +154,8 @@ struct Ingredient: Codable {
 
 struct Measurement: Codable {
   let id: Int
-  let quantity: String
-  let unit: Unit
+  var quantity: String
+  var unit: Unit
 }
 
 struct Unit: Codable {

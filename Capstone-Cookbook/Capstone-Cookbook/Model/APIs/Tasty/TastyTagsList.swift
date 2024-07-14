@@ -11,7 +11,7 @@ struct TagsList: Codable {
   let count: Int
   let results: [Tag]
 }
-struct Tag: Codable {
+struct Tag: Codable, Hashable {
   let id: Int
   let type: String // difficulty
   let name: String // under_15_minutes

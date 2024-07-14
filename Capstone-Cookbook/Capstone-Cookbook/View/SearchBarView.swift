@@ -22,6 +22,7 @@ struct SearchBarView: View {
         .padding(.horizontal, 10)
         .autocorrectionDisabled()
         .submitLabel(.search)
+        .accessibilityIdentifier("searchTextField")
       Button {
         searchQuery = ""
         resetSearchPressed = true

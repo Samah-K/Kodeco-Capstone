@@ -13,7 +13,9 @@ struct RecipeDetailsView: View {
   @State private var ingredientdisclousureExpand = false
   @State private var descriptionShowingModal = false
   @State private var descriptionAnimation = false
-  @Binding var recipe: Recipe
+  @State var isNewRecipeSheetPresented = false
+  @State var recipe: Recipe
+//  @Binding var recipe: Recipe
   var addFavoriteButton: Bool
 
   var body: some View {
@@ -82,12 +84,27 @@ struct RecipeDetailsView: View {
           }
           .frame(height: proxy.size.height * 0.35)
         }
+//        .sheet(isPresented: $isNewRecipeSheetPresented) {
+//          AddRecipeView(recipe: $recipe, addOrEdit: .editRecipe)
+//        }
         .toolbar {
           ToolbarItem(placement: .topBarTrailing) {
             if recipe.recipeType == .tastyRecipe {
               AddRecipeButton(
                 isAddedToMyRecipes: $recipe.isRecipeAddedToMyCookbook,
                 recipeID: recipe.id)
+            } else {
+              NavigationLink {
+                AddRecipeView(recipe: $recipe, addOrEdit: .editRecipe)
+              } label: {
+                Text("Edit")
+              }
+
+//              Button(action: {
+//                isNewRecipeSheetPresented = true
+//              }, label: {
+//                Text("Edit")
+//              })
             }
           }
         }
@@ -105,13 +122,13 @@ struct RecipeDetailsView: View {
   }
 }
 
-#Preview {
-  NavigationStack {
-    RecipeDetailsView(
-      recipe: .constant(TastyRecipeModel().getExample()), addFavoriteButton: true)
-  }
-  .environmentObject(RecipesStore())
-}
+//#Preview {
+//  NavigationStack {
+//    RecipeDetailsView(
+//      recipe: .constant(TastyRecipeModel().getExample()), addFavoriteButton: true)
+//  }
+//  .environmentObject(RecipesStore())
+//}
 
 struct InstructionsView: View {
   @Binding var disclousureExpand: Bool
@@ -152,49 +169,49 @@ struct IngredientView: View {
   @Binding var disclousureExpand: Bool
   let ingredientSections: [IngredientSections]
   var body: some View {
-    VStack {
-      DisclosureGroup(
-        isExpanded: $disclousureExpand,
-        content: {
-          VStack {
-            ForEach(ingredientSections) { section in
-              if ingredientSections.count > 1 {
-                DisclosureGroup(
-                  content: {
-                    ScrollView {
-                      VStack(alignment: .leading, spacing: 5) {
-                        ForEach(section.components) { component in
-                          Text("• \(component.getIngredientDescription())")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        }
-                      }
-                    }
-                  },
-                  label: {
-                    Text("\(section.name ?? "")")
-                      .font(.title2)
-                  }
-                )
-                .padding(.horizontal, 20)
-              } else {
-                ForEach(section.components) { component in
-                  VStack(alignment: .leading, spacing: 5) {
-                    Text("• \(component.getIngredientDescription())")
-                      .frame(maxWidth: .infinity, alignment: .leading)
-                  }
-                }
-              }
-            }
-          }
-        },
-        label: {
-          Text("Ingredient")
-            .font(.title)
-        }
-      )
-    }
-    //    .frame(width: .infinity, height: 200)
-    .padding(.horizontal, 20)
+    VStack { }
+//      DisclosureGroup(
+//        isExpanded: $disclousureExpand,
+//        content: {
+//          VStack {
+//            ForEach(ingredientSections) { section in
+//              if ingredientSections.count > 1 {
+//                DisclosureGroup(
+//                  content: {
+//                    ScrollView {
+//                      VStack(alignment: .leading, spacing: 5) {
+//                        ForEach(section.components) { component in
+//                          Text("• \(component.getIngredientDescription(measurement: component.measurements[0]))")
+//                            .frame(maxWidth: .infinity, alignment: .leading)
+//                        }
+//                      }
+//                    }
+//                  },
+//                  label: {
+//                    Text("\(section.name ?? "")")
+//                      .font(.title2)
+//                  }
+//                )
+//                .padding(.horizontal, 20)
+//              } else {
+//                ForEach(section.components) { component in
+//                  VStack(alignment: .leading, spacing: 5) {
+//                    Text("• \(component.getIngredientDescription())")
+//                      .frame(maxWidth: .infinity, alignment: .leading)
+//                  }
+//                }
+//              }
+//            }
+//          }
+//        },
+//        label: {
+//          Text("Ingredient")
+//            .font(.title)
+//        }
+//      )
+//    }
+//    //    .frame(width: .infinity, height: 200)
+//    .padding(.horizontal, 20)
   }
 }
 
@@ -354,12 +371,12 @@ struct DescriptionPopup: View {
       .clipShape(RoundedRectangle(cornerRadius: 25.0))
       .shadow(radius: 20)
     }
-    .onAppear {
-      DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250)) {
-        descriptionAnimation.toggle()
-      }
-    }
-    .opacity(descriptionAnimation ? 1 : 0)
-    .animation(.easeInOut(duration: 0.25), value: descriptionAnimation)
+//    .onAppear {
+//      DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250)) {
+//        descriptionAnimation.toggle()
+//      }
+//    }
+//    .opacity(descriptionAnimation ? 1 : 0)
+//    .animation(.easeInOut(duration: 0.25), value: descriptionAnimation)
   }
 }

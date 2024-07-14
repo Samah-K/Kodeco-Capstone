@@ -8,6 +8,7 @@
 import Foundation
 
 class SpoonacularNetworkService {
+
   private func connectToSpoonacularEndPoint(unitAmount: UnitAmounts) async throws -> Data {
     let urlString = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/convert"
     let header = SpoonacularAPI().getAPIHeader()
@@ -35,8 +36,8 @@ class SpoonacularNetworkService {
     }
     return data
   }
-  func covertingAmounts(ingredient: String, sourceUnit: String, sourceAmount: Double, targetUnit: String) {
-    Task {
+  func covertingAmounts(ingredient: String, sourceUnit: String, sourceAmount: Double, targetUnit: String) async throws -> UnitAmounts {
+//    Task {
       do {
         let unitAmount = UnitAmounts(
           sourceUnit: sourceUnit,
@@ -46,9 +47,10 @@ class SpoonacularNetworkService {
           ingredient: ingredient
         )
         let data = try await connectToSpoonacularEndPoint(unitAmount: unitAmount)
-        let convertAmount = try JSONDecoder().decode(UnitAmounts.self, from: data)
-        print("\(ingredient) - \(convertAmount.sourceAmount)\(convertAmount.sourceUnit) ->", terminator: "\n")
-        print("\(convertAmount.targetAmount)\(convertAmount.targetUnit)", terminator: "\n")
+        let convertedAmount = try JSONDecoder().decode(UnitAmounts.self, from: data)
+        print("\(ingredient) - \(convertedAmount.sourceAmount)\(convertedAmount.sourceUnit) ->", terminator: "\n")
+        print("\(convertedAmount.targetAmount)\(convertedAmount.targetUnit)", terminator: "\n")
+        return convertedAmount
         //      print(ingredient)
         //      print(convertAmount.sourceUnit)
         //      print(convertAmount.sourceAmount)
@@ -57,7 +59,8 @@ class SpoonacularNetworkService {
 
       } catch {
         print(error)
+        throw error
       }
-    }
+//    }
   }
 }

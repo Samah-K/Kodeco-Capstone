@@ -13,7 +13,8 @@ class RecipesStore: ObservableObject {
   @Published var myRecipes: [Recipe] = [] // read from file and write to file
 
   var tastyPage = TastyPage()
-  let networkService = TastyNetworkService()
+  let tastyNetworkService = TastyNetworkService()
+  let spoonacularNetworkService = SpoonacularNetworkService()
   var searchCanceled = false
   let myRecipeFileStore = MyCookbookFileStore()
 
@@ -62,7 +63,7 @@ class RecipesStore: ObservableObject {
       }
       tasty = tastyFromJSONFile
     } else {
-      tasty = try await networkService.getListOfRecipes(
+      tasty = try await tastyNetworkService.getListOfRecipes(
         from: tastyPage.from,
         size: tastyPage.size,
         searchQuery: searchQuery)
@@ -82,7 +83,7 @@ class RecipesStore: ObservableObject {
     // images
     for recipe in tastyRecipes {
       if let recipeIndex = tastyRecipes.firstIndex(where: { $0.id == recipe.id }) {
-        let imageDataURL = try await networkService.getImageDataURL(for: recipe.tastyRecipe)
+        let imageDataURL = try await tastyNetworkService.getImageDataURL(for: recipe.tastyRecipe)
         if imageDataURL != nil {
           await MainActor.run {
             if !searchCanceled {
@@ -165,7 +166,7 @@ class RecipesStore: ObservableObject {
     removeRecipe(recipeID: recipeID)
   }
 
-  private func addNewRecipeToCookBook(recipe: Recipe) {
+  func addNewRecipeToCookBook(recipe: Recipe) {
     myRecipes.append(recipe)
     if let index = myRecipes.firstIndex(where: { recipe.id == $0.id }) {
       myRecipes[index].recipeType = .myRecipe
@@ -188,6 +189,15 @@ class RecipesStore: ObservableObject {
     return nil
   }
 
+  func saveChangesOnRecipe(_ recipe: Recipe) {
+    if let index = myRecipes.firstIndex(where: { $0.id == recipe.id }) {
+      myRecipes[index] = recipe
+    } else {
+      myRecipes.append(recipe)
+    }
+    myRecipeFileStore.writeRecipeToFile(myRecipes: myRecipes)
+  }
+
   func saveImage(imageName: String, data: Data) throws -> String {
     do {
       let fileName = FileManager.documentDirectoryURL.appending(component: imageName)
@@ -200,6 +210,24 @@ class RecipesStore: ObservableObject {
       print(error.localizedDescription)
       alertInfo = AlertInfo(isAlertPresented: true, alertMessage: "Can't load image")
       throw FileErrors.previewJSONFileNotExists
+    }
+  }
+
+  func convertAmount(of ingredientName: String, from amount: Double, _ fromUnit: UnitsName, to toUnit: UnitsName, delegate: CalculateAmountProtocol) {
+    Task {
+      do {
+        let unitAmount = try await spoonacularNetworkService.covertingAmounts(
+          ingredient: ingredientName,
+          sourceUnit: fromUnit.rawValue,
+          sourceAmount: amount,
+          targetUnit: toUnit.rawValue)
+
+        if let toSystem = toUnit.getUnitSystem() {
+          delegate.updateUI(to: unitAmount, toSystem)
+        }
+      } catch {
+        print(error)
+      }
     }
   }
 }
