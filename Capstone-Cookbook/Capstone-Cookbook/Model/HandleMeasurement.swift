@@ -8,6 +8,28 @@
 import Foundation
 
 struct HandleMeasurement {
+  // [½, ⅓, ⅔, ¼, ¾, ⅕, ⅖, ⅗, ⅘, ⅙, ⅚, ⅐, ⅛, ⅜, ⅝,⅞, ⅑, ⅒]
+  let vulgarFractionDic: [String: Double] = [
+    "½": 1.0 / 2.0,
+    "⅓": 1.0 / 3.0,
+    "⅔": 2.0 / 3.0,
+    "¼": 1.0 / 4.0,
+    "¾": 3.0 / 4.0,
+    "⅕": 1.0 / 5.0,
+    "⅖": 2.0 / 5.0,
+    "⅗": 3.0 / 5.0,
+    "⅘": 4.0 / 5.0,
+    "⅙": 1.0 / 6.0,
+    "⅚": 5.0 / 6.0,
+    "⅐": 1.0 / 7.0,
+    "⅛": 1.0 / 8.0,
+    "⅜": 3.0 / 8.0,
+    "⅝": 5.0 / 8.0,
+    "⅞": 7.0 / 8.0,
+    "⅑": 1.0 / 9.0,
+    "⅒": 1.0 / 10.0
+  ]
+
   func convertQuantity(quantity: String) -> Double {
     if let quantity = Double(quantity) {
       return quantity

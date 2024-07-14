@@ -27,6 +27,8 @@
 		AC37284D2C432CC200FDF9BC /* HandleMeasurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC37284C2C432CC200FDF9BC /* HandleMeasurement.swift */; };
 		AC37284F2C43469600FDF9BC /* TextsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC37284E2C43469600FDF9BC /* TextsConstants.swift */; };
 		AC3728512C4356C100FDF9BC /* ButtonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3728502C4356C100FDF9BC /* ButtonLabel.swift */; };
+		AC3728782C44920E00FDF9BC /* IngredientListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3728772C44920E00FDF9BC /* IngredientListView.swift */; };
+		AC37287A2C44922D00FDF9BC /* AddIngredientAndMeasurementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3728792C44922D00FDF9BC /* AddIngredientAndMeasurementView.swift */; };
 		AC3EAE6E2C3E09DD003B58D2 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3EAE6D2C3E09DD003B58D2 /* Recipe.swift */; };
 		AC40505C2C3358B200F4D5F6 /* CapstoneCookbookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC40505B2C3358B200F4D5F6 /* CapstoneCookbookApp.swift */; };
 		AC40505E2C3358B200F4D5F6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC40505D2C3358B200F4D5F6 /* ContentView.swift */; };
@@ -96,6 +98,8 @@
 		AC37284C2C432CC200FDF9BC /* HandleMeasurement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleMeasurement.swift; sourceTree = "<group>"; };
 		AC37284E2C43469600FDF9BC /* TextsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextsConstants.swift; sourceTree = "<group>"; };
 		AC3728502C4356C100FDF9BC /* ButtonLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonLabel.swift; sourceTree = "<group>"; };
+		AC3728772C44920E00FDF9BC /* IngredientListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientListView.swift; sourceTree = "<group>"; };
+		AC3728792C44922D00FDF9BC /* AddIngredientAndMeasurementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIngredientAndMeasurementView.swift; sourceTree = "<group>"; };
 		AC3EAE6D2C3E09DD003B58D2 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Recipe.swift; path = ../APIs/Tasty/Recipe.swift; sourceTree = "<group>"; };
 		AC4050582C3358B200F4D5F6 /* Capstone-Cookbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Capstone-Cookbook.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC40505B2C3358B200F4D5F6 /* CapstoneCookbookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapstoneCookbookApp.swift; sourceTree = "<group>"; };
@@ -199,6 +203,16 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		AC3728762C4491D600FDF9BC /* AddIngredient */ = {
+			isa = PBXGroup;
+			children = (
+				ACB722C52C40A103000B2A8F /* AddIngredientSectionsView.swift */,
+				AC3728772C44920E00FDF9BC /* IngredientListView.swift */,
+				AC3728792C44922D00FDF9BC /* AddIngredientAndMeasurementView.swift */,
+			);
+			path = AddIngredient;
+			sourceTree = "<group>";
+		};
 		AC40504F2C3358B200F4D5F6 = {
 			isa = PBXGroup;
 			children = (
@@ -274,7 +288,7 @@
 		AC6ADD712C400B3000E87454 /* AddEditRecipes */ = {
 			isa = PBXGroup;
 			children = (
-				ACB722C52C40A103000B2A8F /* AddIngredientSectionsView.swift */,
+				AC3728762C4491D600FDF9BC /* AddIngredient */,
 				ACC035342C3B4543007ECF4E /* AddRecipeView.swift */,
 				AC31BA122C41DCBE003735D4 /* AddRecipeThumbnailView.swift */,
 			);
@@ -491,6 +505,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACC035352C3B4543007ECF4E /* AddRecipeView.swift in Sources */,
+				AC3728782C44920E00FDF9BC /* IngredientListView.swift in Sources */,
 				AC1F4B642C336AB700855379 /* RecipesStore.swift in Sources */,
 				ACC0353D2C3CA55B007ECF4E /* RecipeGridView.swift in Sources */,
 				AC1F4B662C336BFE00855379 /* ErrorsEnums.swift in Sources */,
@@ -517,6 +532,7 @@
 				AC8166F12C40406E003B89EA /* PhotosPickerItemExtension.swift in Sources */,
 				AC37284F2C43469600FDF9BC /* TextsConstants.swift in Sources */,
 				ACC035312C3AD26A007ECF4E /* EdamamNetworkService.swift in Sources */,
+				AC37287A2C44922D00FDF9BC /* AddIngredientAndMeasurementView.swift in Sources */,
 				ACC035212C3AC578007ECF4E /* SpoonacularUnitAmounts.swift in Sources */,
 				ACC035252C3ACBC2007ECF4E /* SpoonacularNetworkService.swift in Sources */,
 				AC1F4B742C37558D00855379 /* AlertInfo.swift in Sources */,
