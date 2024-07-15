@@ -224,8 +224,11 @@ class RecipesStore: ObservableObject {
 
         if let toSystem = toUnit.getUnitSystem() {
           delegate.updateUI(to: unitAmount, toSystem)
+        } else {
+          delegate.noResultWasFound()
         }
       } catch {
+        delegate.noResultWasFound()
         print(error)
       }
     }

@@ -48,7 +48,7 @@ struct HandleMeasurement {
       if fractionsKeys.contains(where: { $0 == "\(char)" }) {
         fractionValue = vulgarFractionDic["\(char)"] ?? 0.0
         quantityValue.replace("\(char)", with: "")
-//        print("\(quantity) -> \(quantityValue)")
+        //        print("\(quantity) -> \(quantityValue)")
       }
     }
     if let quantityInt = Double(quantityValue) { //
@@ -64,7 +64,10 @@ struct HandleMeasurement {
     var ingredientMeasurement = ""
     let quantity = convertQuantity(quantity: measurement.quantity)
     if measurement.unit.system == "none" && measurement.unit.abbreviation.isEmpty {
-      if quantity <= 1.0 {
+      if quantity == 0 {
+        let name = ingredient.displaySingular ?? ingredientName
+        return "\(name)" // salt
+      } else if quantity > 0 && quantity <= 1.0 {
         let name = ingredient.displaySingular ?? ingredientName
         return "\(measurement.quantity) \(name)" // 1 egg
       } else {

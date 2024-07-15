@@ -12,6 +12,8 @@ struct AddIngredientSectionsView: View {
   @Binding var ingredientSections: [IngredientSections]
   @State private var isAlertShown = false // Add sections name
   @State private var sectionName = ""
+//  @Environment (\.dismiss)
+//  var dismiss
 
   var body: some View {
     NavigationStack {
@@ -29,8 +31,11 @@ struct AddIngredientSectionsView: View {
                 NavigationLink {
                   IngredientListView(
                     sectionName: $section.name,
+                    sectionID: section.id.uuidString,
                     components: $section.components,
-                    sectionNameInAlert: section.name ?? defaultSectionName)
+                    sectionNameInAlert: section.name ?? defaultSectionName,
+                    delegate: self
+                  )
                 } label: {
                   Text(section.name ?? defaultSectionName)
                 }
@@ -42,6 +47,7 @@ struct AddIngredientSectionsView: View {
       .navigationTitle("Ingredient List")
       .alert("Add Section", isPresented: $isAlertShown, actions: {
         TextField("Section Name", text: $sectionName)
+          .autocorrectionDisabled()
         Button("OK", role: .none) {
           addSection()
         }
@@ -54,7 +60,10 @@ struct AddIngredientSectionsView: View {
             // Add
             isAlertShown = true
           }, label: {
-            Image(systemName: "plus.square.on.square")
+            HStack {
+              Image(systemName: "plus.square.on.square")
+              Text("Section")
+            }
           })
         }
       }
@@ -67,11 +76,20 @@ struct AddIngredientSectionsView: View {
   }
 }
 
+extension AddIngredientSectionsView: UpdateIngredientSections {
+  func removeSection(sectionID: String) {
+    if let index = ingredientSections.firstIndex(where: { $0.id.uuidString == sectionID }) {
+      ingredientSections.remove(at: index)
+    }
+  }
+}
+
 #Preview {
   struct Preview: View {
     @State var section = TastyJSONSample().getRecipeFromJSONFile()?.recipes[0].ingredientSections ?? []
     var body: some View {
-      AddIngredientSectionsView(ingredientSections: $section)
+      AddIngredientSectionsView(
+        ingredientSections: $section)
     }
   }
   return Preview()

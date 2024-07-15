@@ -18,9 +18,9 @@ struct SearchBarView: View {
         .frame(width: 20, height: 20)
         .padding(.leading, 10)
       TextField("Search A Recipe...", text: $searchQuery)
+        .autocorrectionDisabled()
         .frame(maxWidth: 240, maxHeight: 50)
         .padding(.horizontal, 10)
-        .autocorrectionDisabled()
         .submitLabel(.search)
         .accessibilityIdentifier("searchTextField")
       Button {

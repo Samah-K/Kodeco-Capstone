@@ -82,9 +82,9 @@ struct RecipeDetailsView: View {
           }
           .frame(height: proxy.size.height * 0.35)
         }
-//        .sheet(isPresented: $isNewRecipeSheetPresented) {
-//          AddRecipeView(recipe: $recipe, addOrEdit: .editRecipe)
-//        }
+        //        .sheet(isPresented: $isNewRecipeSheetPresented) {
+        //          AddRecipeView(recipe: $recipe, addOrEdit: .editRecipe)
+        //        }
         .toolbar {
           ToolbarItem(placement: .topBarTrailing) {
             if recipe.recipeType == .tastyRecipe {
@@ -98,11 +98,11 @@ struct RecipeDetailsView: View {
                 Text("Edit")
               }
 
-//              Button(action: {
-//                isNewRecipeSheetPresented = true
-//              }, label: {
-//                Text("Edit")
-//              })
+              //              Button(action: {
+              //                isNewRecipeSheetPresented = true
+              //              }, label: {
+              //                Text("Edit")
+              //              })
             }
           }
         }
@@ -119,13 +119,13 @@ struct RecipeDetailsView: View {
   }
 }
 
-//#Preview {
+// #Preview {
 //  NavigationStack {
 //    RecipeDetailsView(
 //      recipe: .constant(TastyRecipeModel().getExample()), addFavoriteButton: true)
 //  }
 //  .environmentObject(RecipesStore())
-//}
+// }
 
 struct InstructionsView: View {
   @Binding var disclousureExpand: Bool

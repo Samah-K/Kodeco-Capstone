@@ -8,7 +8,6 @@
 import Foundation
 
 class SpoonacularNetworkService {
-
   private func connectToSpoonacularEndPoint(unitAmount: UnitAmounts) async throws -> Data {
     let urlString = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/convert"
     let header = SpoonacularAPI().getAPIHeader()
@@ -37,30 +36,27 @@ class SpoonacularNetworkService {
     return data
   }
   func covertingAmounts(ingredient: String, sourceUnit: String, sourceAmount: Double, targetUnit: String) async throws -> UnitAmounts {
-//    Task {
-      do {
-        let unitAmount = UnitAmounts(
-          sourceUnit: sourceUnit,
-          sourceAmount: sourceAmount,
-          targetUnit: targetUnit,
-          targetAmount: 0,
-          ingredient: ingredient
-        )
-        let data = try await connectToSpoonacularEndPoint(unitAmount: unitAmount)
-        let convertedAmount = try JSONDecoder().decode(UnitAmounts.self, from: data)
-        print("\(ingredient) - \(convertedAmount.sourceAmount)\(convertedAmount.sourceUnit) ->", terminator: "\n")
-        print("\(convertedAmount.targetAmount)\(convertedAmount.targetUnit)", terminator: "\n")
-        return convertedAmount
-        //      print(ingredient)
-        //      print(convertAmount.sourceUnit)
-        //      print(convertAmount.sourceAmount)
-        //      print(convertAmount.targetUnit)
-        //      print(convertAmount.targetAmount)
-
-      } catch {
-        print(error)
-        throw error
-      }
-//    }
+    do {
+      let unitAmount = UnitAmounts(
+        sourceUnit: sourceUnit,
+        sourceAmount: sourceAmount,
+        targetUnit: targetUnit,
+        targetAmount: 0,
+        ingredient: ingredient
+      )
+      let data = try await connectToSpoonacularEndPoint(unitAmount: unitAmount)
+      let convertedAmount = try JSONDecoder().decode(UnitAmounts.self, from: data)
+      print("\(ingredient) - \(convertedAmount.sourceAmount)\(convertedAmount.sourceUnit) ->", terminator: "\n")
+      print("\(convertedAmount.targetAmount)\(convertedAmount.targetUnit)", terminator: "\n")
+      return convertedAmount
+      //      print(ingredient)
+      //      print(convertAmount.sourceUnit)
+      //      print(convertAmount.sourceAmount)
+      //      print(convertAmount.targetUnit)
+      //      print(convertAmount.targetAmount)
+    } catch {
+      print(error)
+      throw error
+    }
   }
 }

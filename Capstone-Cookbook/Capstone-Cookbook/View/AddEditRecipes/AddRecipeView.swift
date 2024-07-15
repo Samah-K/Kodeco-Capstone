@@ -8,6 +8,7 @@
 import SwiftUI
 import PhotosUI
 
+// TODO: Fix this to add instead of addRecipe
 enum AddOrEditEnum: String {
   case addRecipe = "Add New Recipe"
   case editRecipe = "Edit Recipe"
@@ -27,105 +28,130 @@ struct AddRecipeView: View {
   @State private var presentingIngredientSheet = false
   @State private var thumbnailURL: String?
   @State private var recipeImage: Image?
+  @State private var isAreYouSureYouWantToLeaveAlertPresent = false
+  @State private var isEmptyRecipeNameAlertPresent = false
   var addOrEdit: AddOrEditEnum = .addRecipe
+  @Environment(\.dismiss)
+  var dismiss
 
   var body: some View {
-    ZStack(alignment: .bottom) {
-      VStack {
-//        Text(addOrEdit.rawValue)
-//          .font(.title)
-//          .padding(.top)
-        Form {
-          Section {
-            HStack {
-              Spacer()
-              AddRecipeThumbnailView(
-                thumbnailURL: $thumbnailURL,
-                recipeID: recipe.id)
-              Spacer()
-            }
+    VStack {
+      Form {
+        Section {
+          HStack {
+            Spacer()
+            AddRecipeThumbnailView(
+              thumbnailURL: $thumbnailURL,
+              recipeID: recipe.id)
+            Spacer()
           }
-          .listRowBackground(Color.clear)
-
-          Section {
-            TextField("Recipe Name", text: $recipeName)
-            TextField("Recipe description", text: $recipeDescription, axis: .vertical)
-              .lineLimit(5...20)
-          }
-
-          Section {
-            Button {
-              presentingIngredientSheet = true
-            } label: {
-              Text("Add Ingredient")
-            }
-            .sheet(isPresented: $presentingIngredientSheet) {
-              AddIngredientSectionsView(ingredientSections: $ingredientSections)
-            }
-          }
-
-          Section {
-            HStack {
-              TimePicker(timePickerTitle: "Preparation Time", time: $prepTime)
-              Spacer()
-              Divider()
-              Spacer()
-              TimePicker(timePickerTitle: "Cooking Time", time: $cookTime)
-            }
-            HStack {
-              Text("Total Time")
-              Spacer()
-              Text("\(calculateTotalTime(prepTime: prepTime, cookTime: cookTime))")
-            }
-            .foregroundStyle(.gray)
-          }
-          Section {
-            TextField("Add video URL", text: $video)
-              .textContentType(.URL)
-          }
-          Section {
-            Picker("Number of Served People", selection: $numServing) {
-              ForEach(1..<20) { peopleNumber in
-                Text("\(peopleNumber)")
-                  .tag("\(peopleNumber)")
-                  .frame(maxWidth: 20)
-              }
-            }
-          }
-          // Ingredient
-          // Instructions
         }
-        .onAppear {
-          recipeName = recipe.tastyRecipe.name
-          recipeDescription = recipe.tastyRecipe.description ?? ""
-          prepTime = recipe.tastyRecipe.prepTimeMinutes ?? 0
-          cookTime = recipe.tastyRecipe.cookTimeMinutes ?? 0
-          numServing = recipe.tastyRecipe.numServing
-          video = recipe.tastyRecipe.videoURL ?? ""
-          ingredientSections = recipe.tastyRecipe.ingredientSections
+        .listRowBackground(Color.clear)
+        Section {
+          TextField("Recipe Name", text: $recipeName)
+            .autocorrectionDisabled()
+          TextField("Recipe description", text: $recipeDescription, axis: .vertical)
+            .lineLimit(5...20)
+            .autocorrectionDisabled()
         }
+        Section {
+          Button {
+            presentingIngredientSheet = true
+          } label: {
+            ButtonLabel(buttonText: "Add Ingredient")
+          }
+          .sheet(isPresented: $presentingIngredientSheet) {
+            AddIngredientSectionsView(
+              ingredientSections: $ingredientSections
+            )
+          }
+        }
+        Section {
+          HStack {
+            TimePicker(timePickerTitle: "Preparation Time", time: $prepTime)
+            Spacer()
+            Divider()
+            Spacer()
+            TimePicker(timePickerTitle: "Cooking Time", time: $cookTime)
+          }
+          HStack {
+            Text("Total Time")
+            Spacer()
+            Text("\(calculateTotalTime(prepTime: prepTime, cookTime: cookTime))")
+          }
+          .foregroundStyle(.gray)
+        }
+        Section {
+          TextField("Add video URL", text: $video)
+            .textContentType(.URL)
+        }
+        Section {
+          Picker("Number of Served People", selection: $numServing) {
+            ForEach(1..<20) { peopleNumber in
+              Text("\(peopleNumber)")
+                .tag("\(peopleNumber)")
+                .frame(maxWidth: 20)
+            }
+          }
+        }
+        // Ingredient
+        // Instructions
+      }
+      .onAppear {
+        recipeName = recipe.tastyRecipe.name
+        recipeDescription = recipe.tastyRecipe.description ?? ""
+        prepTime = recipe.tastyRecipe.prepTimeMinutes ?? 0
+        cookTime = recipe.tastyRecipe.cookTimeMinutes ?? 0
+        numServing = recipe.tastyRecipe.numServing
+        video = recipe.tastyRecipe.videoURL ?? ""
+        ingredientSections = recipe.tastyRecipe.ingredientSections
+      }
+      .alert(
+        TextsConstants().leavingRecipeConfirmation,
+        isPresented: $isAreYouSureYouWantToLeaveAlertPresent) {
+          Button("Yes", role: .none) {
+            isAreYouSureYouWantToLeaveAlertPresent = false
+            dismiss()
+          }
+          Button("No", role: .none) {}
+      }
+        .alert(
+          TextsConstants().pleaseEnterRecipeNameAlertTitle,
+          isPresented: $isEmptyRecipeNameAlertPresent,
+          actions: {
+            Button("OK", role: .none) {
+              isEmptyRecipeNameAlertPresent = false
+            }
+          },
+          message: {
+            Text(TextsConstants().pleaseEnterRecipeNameAlertMessage)
+          })
+        .navigationBarBackButtonHidden()
         .navigationTitle(addOrEdit.rawValue)
         .toolbar {
           ToolbarItem(placement: .topBarTrailing) {
             Button(action: {
-              saveRecipe()
+              if recipeName.isEmpty {
+                isEmptyRecipeNameAlertPresent = true
+              } else {
+                saveRecipe()
+              }
             }, label: {
               Text("Save")
             })
           }
+          ToolbarItem(placement: .topBarLeading) {
+            Button(action: {
+              isAreYouSureYouWantToLeaveAlertPresent = true
+            }, label: {
+              BackNavigationButton()
+            })
+          }
+          //          KeyboardToolbarItem()
         }
-      }
-//      VStack {
-//        Button(action: {
-//          saveRecipe()
-//        }, label: {
-//          Text("Save")
-//            .padding()
-//            .background(.accent)
-//        })
-//      }
     }
   }
+
   private func saveRecipe() {
     recipe.tastyRecipe.name = recipeName
     recipe.tastyRecipe.description = recipeDescription
@@ -134,6 +160,7 @@ struct AddRecipeView: View {
     recipe.tastyRecipe.numServing = numServing
     recipe.tastyRecipe.videoURL = video
     recipe.tastyRecipe.ingredientSections = ingredientSections
+    recalculateComponentPosition()
     recipeStore.saveChangesOnRecipe(recipe)
   }
   private func calculateTotalTime(prepTime: Int, cookTime: Int) -> String {
@@ -159,6 +186,17 @@ struct AddRecipeView: View {
     }
 
     return "\(hoursText) \(minutesText)"
+  }
+
+  func recalculateComponentPosition() {
+    for ingredientSection in ingredientSections {
+      var components = ingredientSection.components
+      for _ in components {
+        for index in 0..<components.count {
+          components[index].position = index + 1
+        }
+      }
+    }
   }
 }
 

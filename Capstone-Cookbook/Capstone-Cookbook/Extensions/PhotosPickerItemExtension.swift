@@ -8,9 +8,8 @@
 import SwiftUI
 import PhotosUI
 
-
+// From SwiftUI Views Mastery by [Big Mountine Studio] - page 377
 extension PhotosPickerItem {
-  // From SwiftUI Views Mastery by [Big Mountine Studio] - page 377
   // Load and return an image from a PhotosPickerItem
   @MainActor
   func convert() async -> Image {

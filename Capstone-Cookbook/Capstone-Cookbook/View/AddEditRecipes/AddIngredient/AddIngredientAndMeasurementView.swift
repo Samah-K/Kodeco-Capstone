@@ -8,25 +8,31 @@
 import SwiftUI
 
 struct AddIngredientView: View {
-  @Binding var ingredient: Ingredient
-  @Binding var measurement: [Measurement]
+  let componentID: String
+  @State var ingredient: Ingredient
+  @State var measurement: [Measurement]
+  var addOrEdit: AddOrEditEnum
   @State var ingredientName = ""
   @State var ingredientPlural = ""
   @State var ingredientSignal = ""
-  @State var quantity = 0.0
-  @State var unitString = UnitsName.none
-  @State var unit: Unit?
-  @State var system = UnitsSystem.metric.rawValue
-  @State var systemGroup = UnitSystemGroup.metricOrImperial.rawValue
   @State var isHowPopOverPresent = false
+  @State var isAreYouSureYouWantToLeaveAlertPresent = false
+  @State var isEnterIngredientNameAlertPresent = false
+  @State var shouldSaveComponent = false
+  var delegate: UpdateIngredientComponent?
+  @Environment(\.dismiss)
+  var dismiss
   var body: some View {
     ZStack(alignment: .center) {
       VStack {
         Form {
           Section {
             TextField("Ingredient Name", text: $ingredientName)
+              .autocorrectionDisabled()
             TextField("Ingredient Name (Singular)", text: $ingredientSignal)
+              .autocorrectionDisabled()
             TextField("Ingredient Name (Plural)", text: $ingredientPlural)
+              .autocorrectionDisabled()
           } header: {
             Text("Ingredient Name")
           } footer: {
@@ -34,9 +40,14 @@ struct AddIngredientView: View {
               .font(.caption)
           }
           MeasurementView(
-            measurement: $measurement,
+            componentID: componentID,
+            measurement: measurement,
             ingredient: $ingredient,
-            isHowPopOverPresent: $isHowPopOverPresent)
+            ingredientName: $ingredientName,
+            addOrEdit: addOrEdit,
+            isHowPopOverPresent: $isHowPopOverPresent,
+            shouldSaveComponent: $shouldSaveComponent,
+            delegate: delegate)
         }
       }
       VStack {
@@ -50,40 +61,73 @@ struct AddIngredientView: View {
         self.ingredientName = ingredient.name
         self.ingredientPlural = ingredient.displayPlural ?? ingredient.name
         self.ingredientSignal = ingredient.displaySingular ?? ingredient.name
-        measurement.forEach { measurement in
-          print(measurement)
-        }
-        self.quantity = HandleMeasurement().convertQuantity(quantity: measurement[0].quantity)
-        self.unit = measurement[0].unit
-        self.unitString = UnitsName(rawValue: unit?.name ?? "none") ?? .none
       }
-      .navigationTitle("Add New Ingredient")
+      .interactiveDismissDisabled()
+      .navigationTitle(addOrEdit == .addRecipe ? "Add New Ingredient" : "Edit Ingredient")
+      .navigationBarBackButtonHidden()
+      .alert(
+        TextsConstants().leavingIngredientConfirmation,
+        isPresented: $isAreYouSureYouWantToLeaveAlertPresent) {
+          Button("Yes", role: .none) { dismiss() }
+          Button("No", role: .cancel) {}
+      }
+      .alert(
+        TextsConstants().pleaseEnterIngredientNameAlertTitle,
+        isPresented: $isEnterIngredientNameAlertPresent,
+        actions: {
+          Button("OK", role: .cancel) { isEnterIngredientNameAlertPresent = false }
+        }, message: {
+          Text(TextsConstants().pleaseEnterIngredientNameAlertMessage)
+        })
       .toolbar {
         ToolbarItem(placement: .topBarTrailing) {
           Button(action: {
+            // saving
+            if ingredientName.isEmpty {
+              isEnterIngredientNameAlertPresent = true
+            } else {
+              saveIngredientOnly()
+              shouldSaveComponent = true // continue saving the measurements too
+              dismiss()
+            }
           }, label: {
-            Text("Save")
+            Text(addOrEdit == .addRecipe ? "Add" : "Save")
           })
+        }
+        ToolbarItem(placement: .topBarLeading) {
+          Button {
+            isAreYouSureYouWantToLeaveAlertPresent = true
+          } label: {
+            BackNavigationButton()
+          }
         }
       }
     }
   }
-}
-
-protocol CalculateAmountProtocol {
-  func updateUI(to unitAmount: UnitAmounts, _ toSystem: UnitsSystem)
+  func saveIngredientOnly() {
+    ingredient.name = self.ingredientName
+    ingredient.displayPlural = self.ingredientPlural.isEmpty ? self.ingredientName : self.ingredientPlural
+    ingredient.displaySingular = self.ingredientPlural.isEmpty ? self.ingredientName : self.ingredientSignal
+  }
 }
 
 struct MeasurementView: View {
   @EnvironmentObject var recipeStore: RecipesStore
-  @Binding var measurement: [Measurement]
+  let componentID: String
+  @State var measurement: [Measurement]
   @Binding var ingredient: Ingredient
+  @Binding var ingredientName: String
+  var addOrEdit: AddOrEditEnum
   @Binding var isHowPopOverPresent: Bool
+  @Binding var shouldSaveComponent: Bool
   @State var unit: Unit?
   @State var systemGroup = UnitSystemGroup.metricOrImperial.rawValue.uppercased()
   @State var metricSystem = MeasurementAndUnit(quantity: 0, unit: .gram)
   @State var imperialSystem = MeasurementAndUnit(quantity: 0, unit: .cup)
   @State var noneSystem = MeasurementAndUnit(quantity: 0, unit: .none)
+  @State var showProgressView = false
+  @State var isCalculateAmountAlertPresent = false
+  var delegate: UpdateIngredientComponent?
 
   var body: some View {
     Section {
@@ -112,38 +156,67 @@ struct MeasurementView: View {
       }
     } footer: {
       if systemGroup.capitalized == UnitSystemGroup.metricOrImperial.rawValue {
-        HStack {
-          Spacer()
-          Button(
-            action: {
-              print("Calculate metrics")
-              calculateAmount(
-                from: imperialSystem.quantity,
-                imperialSystem.unit,
-                to: metricSystem.unit)
-            }, label: {
-              ButtonLabel(buttonText: "Calculate\n\(metricSystem.unit)", padding: 15.0, font: .callout)
-            })
-          Button(
-            action: {
-              print("Calculate imperial")
-              calculateAmount(
-                from: metricSystem.quantity,
-                metricSystem.unit,
-                to: imperialSystem.unit)
-            }, label: {
-              ButtonLabel(buttonText: "Calculate\n\(imperialSystem.unit)", padding: 15.0, font: .callout)
-            })
+        VStack {
+          HStack {
+            Spacer()
+            Button(
+              action: {
+                print("Calculate metrics")
+                calculateAmount(
+                  of: ingredientName,
+                  from: imperialSystem.quantity,
+                  imperialSystem.unit,
+                  to: metricSystem.unit)
+              }, label: {
+                ButtonLabel(buttonText: "Calculate\n\(metricSystem.unit)", padding: 15.0, font: .callout)
+              })
+            .disabled(showProgressView)
+            Button(
+              action: {
+                print("Calculate imperial")
+                calculateAmount(
+                  of: ingredientName,
+                  from: metricSystem.quantity,
+                  metricSystem.unit,
+                  to: imperialSystem.unit)
+              }, label: {
+                ButtonLabel(buttonText: "Calculate\n\(imperialSystem.unit)", padding: 15.0, font: .callout)
+              })
+            .disabled(showProgressView)
+          }
+          .padding(.top, 10)
+          if showProgressView {
+            ProgressView()
+              .padding(.top, 10)
+          }
         }
-        .padding(.top, 10)
       }
     }
     .onAppear {
       setPropertiesOnAppear()
     }
+    .alert(TextsConstants().failedToConvetAmountAlertTitle, isPresented: $isCalculateAmountAlertPresent, actions: {
+      Button("OK", role: .cancel) {
+        isCalculateAmountAlertPresent = false
+      }
+    }, message: {
+      Text("\(TextsConstants().failedToConvetAmountAlertMessage)")
+    })
+    .onChange(of: shouldSaveComponent) { _, newValue in
+      if newValue {
+        print("Saving Measurements")
+        self.saveMeasurement()
+        shouldSaveComponent = false
+      }
+    }
   }
-  func calculateAmount(from amount: Double, _ fromUnit: UnitsName, to toUnit: UnitsName) {
-    recipeStore.convertAmount(of: ingredient.name, from: amount, fromUnit, to: toUnit, delegate: self)
+  func calculateAmount(of ingredientName: String, from amount: Double, _ fromUnit: UnitsName, to toUnit: UnitsName) {
+    if !showProgressView {
+      if !ingredientName.isEmpty && amount != 0.0 {
+        showProgressView = true
+        recipeStore.convertAmount(of: ingredientName, from: amount, fromUnit, to: toUnit, delegate: self)
+      }
+    }
   }
   func setPropertiesOnAppear() {
     if measurement.count == 2 {
@@ -180,10 +253,48 @@ struct MeasurementView: View {
         unit: UnitsName(rawValue: measurement[0].unit.name) ?? .none)
     }
   }
+
+  func saveMeasurement() {
+    if systemGroup == UnitSystemGroup.none.rawValue.uppercased() {
+      var noneMeasurement = EmptyObjects().createEmptyMeasurement()
+      noneMeasurement.quantity = "\(noneSystem.quantity)"
+      if let unitInfo = noneSystem.unit.getUnitInfo() {
+        noneMeasurement.unit = unitInfo
+      }
+      measurement = [noneMeasurement]
+    } else {
+      var metricMeasurement = EmptyObjects().createEmptyMeasurement()
+      metricMeasurement.quantity = "\(metricSystem.quantity)"
+      if let unitInfo = metricSystem.unit.getUnitInfo() {
+        metricMeasurement.unit = unitInfo
+      }
+      var imperialMeasurement = EmptyObjects().createEmptyMeasurement()
+      imperialMeasurement.quantity = "\(imperialSystem.quantity)"
+      if let unitInfo = imperialSystem.unit.getUnitInfo() {
+        imperialMeasurement.unit = unitInfo
+      }
+      measurement = [metricMeasurement, imperialMeasurement]
+    }
+    if let delegate = delegate {
+      delegate.saveComponent(
+        componentID: componentID,
+        ingredient: ingredient,
+        measurement: measurement,
+        shouldAddComponent: addOrEdit)
+    } else {
+      print("Couldn't save - Please pass in a delegate")
+    }
+  }
 }
 
 extension MeasurementView: CalculateAmountProtocol {
+  func noResultWasFound() {
+    isCalculateAmountAlertPresent = true
+    showProgressView = false
+  }
+
   func updateUI(to unitAmount: UnitAmounts, _ toSystem: UnitsSystem) {
+    showProgressView = false
     if toSystem == .metric {
       // update the metric value
       metricSystem.quantity = unitAmount.targetAmount
@@ -201,6 +312,7 @@ struct MeasurementAndUnitView: View {
     VStack {
       HStack {
         TextField("Quantity", value: $measurementAndUnit.quantity, format: .number)
+          .autocorrectionDisabled()
           .keyboardType(.decimalPad)
         Spacer()
         Picker("Unit", selection: $measurementAndUnit.unit) {
@@ -222,14 +334,18 @@ struct MeasurementAndUnitView: View {
   struct Preview: View {
     private static let tastyRecipe = TastyJSONSample().getRecipeFromJSONFile()?.recipes[0]
     private static let recipe = Recipe(tastyRecipe: tastyRecipe, recipeType: .myRecipe)
-    @State var ingredient = recipe.tastyRecipe.ingredientSections[0].components[1].ingredient
-    @State var measurement = recipe.tastyRecipe.ingredientSections[0].components[0].measurements
+    var component = recipe.tastyRecipe.ingredientSections[0].components[0]
     @State var isHowPopOverPresent = false
     var body: some View {
       return NavigationStack {
         VStack {
-          AddIngredientView(ingredient: $ingredient, measurement: $measurement)
-            .environmentObject(RecipesStore())
+          AddIngredientView(
+            componentID: component.id.uuidString,
+            ingredient: component.ingredient,
+            measurement: component.measurements,
+            addOrEdit: .editRecipe,
+            delegate: nil)
+          .environmentObject(RecipesStore())
         }
       }
     }
@@ -241,14 +357,22 @@ struct MeasurementAndUnitView: View {
   struct Preview: View {
     private static let tastyRecipe = TastyJSONSample().getRecipeFromJSONFile()?.recipes[0]
     private static let recipe = Recipe(tastyRecipe: tastyRecipe, recipeType: .myRecipe)
-    @State var ingredient = recipe.tastyRecipe.ingredientSections[0].components[1].ingredient
-    @State var measurement = recipe.tastyRecipe.ingredientSections[0].components[0].measurements
+    private static let component = recipe.tastyRecipe.ingredientSections[0].components[0]
+    @State var ingredient = component.ingredient
+    var measurement = component.measurements
     @State var isHowPopOverPresent = false
+    @State var shouldSaveComponent = true
     var body: some View {
       return NavigationStack {
         VStack {
-          MeasurementView(measurement: $measurement, ingredient: $ingredient, isHowPopOverPresent: $isHowPopOverPresent)
-            .environmentObject(RecipesStore())
+          MeasurementView(
+            componentID: Preview.component.id.uuidString,
+            measurement: measurement,
+            ingredient: $ingredient,
+            ingredientName: $ingredient.name,
+            addOrEdit: .editRecipe,
+            isHowPopOverPresent: $isHowPopOverPresent,
+            shouldSaveComponent: $shouldSaveComponent)
         }
       }
     }
