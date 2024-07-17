@@ -7,6 +7,33 @@
 
 import SwiftUI
 
+struct RecipeListView: View {
+  @EnvironmentObject var recipeStoreManager: RecipesStore
+  @Binding var searchState: SearchState
+  let searchQuery: String?
+  var recipeType: RecipeType
+
+  var body: some View {
+    //    List {
+    ScrollView {
+    ForEach(
+      recipeType == .tastyRecipe ?
+      $recipeStoreManager.tastyRecipes :
+        $recipeStoreManager.myRecipes) { recipe in
+          NavigationLink {
+            RecipeDetailsView(recipe: recipe.wrappedValue, addFavoriteButton: true)
+          } label: {
+            RecipeItemView(recipe: recipe)
+              .frame(maxWidth: .infinity, maxHeight: 200)
+          }
+        }
+  }
+//    }
+//    .listStyle(.plain)
+  }
+//    .frame(maxWidth: .infinity)
+}
+
 struct RecipeGridView: View {
   @EnvironmentObject var recipeStoreManager: RecipesStore
   @Binding var searchState: SearchState
@@ -56,6 +83,20 @@ struct RecipeGridView: View {
   RecipeGridView(
     searchState: .constant(.searching),
     searchQuery: "pie",
-    recipeType: .tastyRecipe)
+    recipeType: .myRecipe)
   .environmentObject(RecipesStore())
+}
+
+#Preview("RecipeListView") {
+  struct Preview: View {
+
+    var body: some View {
+      RecipeListView(
+        searchState: .constant(.searching),
+        searchQuery: "pie",
+        recipeType: .tastyRecipe)
+      .environmentObject(RecipesStore())
+    }
+  }
+  return Preview()
 }

@@ -29,7 +29,7 @@ struct AddRecipeButton: View {
       }
     }, label: {
       Image(systemName: isAddedToMyRecipes ? "heart.fill" : "heart")
-        .tint(.accent)
+        .tint(Color.tint)
     })
   }
 }

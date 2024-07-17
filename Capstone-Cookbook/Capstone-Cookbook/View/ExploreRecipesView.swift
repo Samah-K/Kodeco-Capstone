@@ -52,11 +52,17 @@ struct ExploreRecipesView: View {
               .frame(maxWidth: .infinity, maxHeight: .infinity)
           } else {
             VStack {
-              RecipeGridView(
+              RecipeListView(
                 searchState: $searchState,
                 searchQuery: searchQuery,
                 recipeType: RecipeType.tastyRecipe)
+//              RecipeGridView(
+//                searchState: $searchState,
+//                searchQuery: searchQuery,
+//                recipeType: RecipeType.tastyRecipe)
+              
               .frame(maxWidth: .infinity)
+
               if searchState == .additionalSearch {
                 ProgressView()
               }

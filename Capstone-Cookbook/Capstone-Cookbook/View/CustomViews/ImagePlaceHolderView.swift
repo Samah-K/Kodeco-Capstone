@@ -1,0 +1,29 @@
+//
+//  ImagePlaceHolder.swift
+//  Capstone-Cookbook
+//
+//  Created by Samah Ktaifan on 18/07/2024.
+//
+
+import SwiftUI
+
+struct ImagePlaceHolderView: View {
+  var body: some View {
+    ZStack {
+      Color.accentSecondary
+      Image(ImagesConstants.ImagePlaceHolder)
+        .resizable()
+        .frame(width: 160, height: 160)
+    }
+  }
+}
+
+
+#Preview {
+  struct Preview: View {
+    var body: some View {
+      ImagePlaceHolderView()
+    }
+  }
+  return Preview()
+}

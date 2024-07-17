@@ -77,7 +77,7 @@ struct AddRecipeView: View {
           HStack {
             Text("Total Time")
             Spacer()
-            Text("\(calculateTotalTime(prepTime: prepTime, cookTime: cookTime))")
+            Text("\(HandleMeasurement().calculateTotalTime(prepTime: prepTime, cookTime: cookTime))")
           }
           .foregroundStyle(.gray)
         }
@@ -105,6 +105,7 @@ struct AddRecipeView: View {
         numServing = recipe.tastyRecipe.numServing
         video = recipe.tastyRecipe.videoURL ?? ""
         ingredientSections = recipe.tastyRecipe.ingredientSections
+        thumbnailURL = recipe.tastyRecipe.thumbnailURL
       }
       .alert(
         TextsConstants().leavingRecipeConfirmation,
@@ -160,32 +161,12 @@ struct AddRecipeView: View {
     recipe.tastyRecipe.numServing = numServing
     recipe.tastyRecipe.videoURL = video
     recipe.tastyRecipe.ingredientSections = ingredientSections
+    if let thumbnailURL = thumbnailURL {
+      print(thumbnailURL)
+      recipe.tastyRecipe.thumbnailURL = recipe.id
+    }
     recalculateComponentPosition()
     recipeStore.saveChangesOnRecipe(recipe)
-  }
-  private func calculateTotalTime(prepTime: Int, cookTime: Int) -> String {
-    let totalTime = prepTime + cookTime
-    let hours = totalTime / 60
-    let minutes = totalTime % 60
-    var minutesText = ""
-    var hoursText = ""
-
-    if hours == 1 {
-      hoursText = "\(hours) hour"
-    } else if hours == 0 {
-      hoursText = ""
-    } else {
-      hoursText = "\(hours) hours"
-    }
-    if minutes == 1 {
-      minutesText = "\(minutes) minute"
-    } else if minutes == 0 {
-      minutesText = ""
-    } else {
-      minutesText = "\(minutes) minutes"
-    }
-
-    return "\(hoursText) \(minutesText)"
   }
 
   func recalculateComponentPosition() {
@@ -274,3 +255,15 @@ struct TimePicker: View {
   }
   return Preview()
 }
+
+
+// file:///var/mobile/Containers/Data/Application/16936438-A9E7-4388-86E7-9B0584B654DB/Documents/
+
+
+// file:///Users/samahktaifan/Library/Developer/CoreSimulator/Devices/CBBC831E-805D-4FEF-B156-A00FD6141A0A/data/Containers/Data/Application/C02BF1E7-899B-4284-B2B7-5CAE4FD513B0/Documents/
+
+///Users/samahktaifan/Library/Developer/CoreSimulator/Devices/CBBC831E-805D-4FEF-B156-A00FD6141A0A/data/Containers/Data/Application/EC771B7D-1F61-4EB6-ACCA-18115D6560E0/Documents/Image-DC48EE96-06E8-4538-8CFB-D168ADF9D218.jpg
+
+
+/// var/mobile/Containers/Data/Application/5EB8A798-0945-42B8-83FC-E29C4F14831F/Documents/Image-5E5ADE34-0E97-47A3-8FB6-99D491582DD7.jpg
+// file:///var/mobile/Containers/Data/Application/5EB8A798-0945-42B8-83FC-E29C4F14831F/Documents/

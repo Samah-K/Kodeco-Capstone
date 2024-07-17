@@ -45,4 +45,22 @@ struct Recipe: Identifiable, Codable {
         tags: [])
     }
   }
+
+  func getRecipeName() -> String {
+    tastyRecipe.name
+  }
+  func getTotalCookTime() -> String {
+    let totalTime = HandleMeasurement().calculateTotalTime(
+      prepTime: tastyRecipe.prepTimeMinutes ?? 0,
+      cookTime: tastyRecipe.cookTimeMinutes ?? 0)
+    if totalTime == "0" {
+      if let totalTimeMinutes = tastyRecipe.totalTimeMinutes {
+        return "\(totalTimeMinutes)"
+      } else {
+        return "-"
+      }
+    } else {
+      return totalTime
+    }
+  }
 }

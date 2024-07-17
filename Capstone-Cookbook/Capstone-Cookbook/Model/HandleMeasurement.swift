@@ -38,6 +38,30 @@ struct HandleMeasurement {
     }
   }
 
+  func calculateTotalTime(prepTime: Int, cookTime: Int) -> String {
+    let totalTime = prepTime + cookTime
+    let hours = totalTime / 60
+    let minutes = totalTime % 60
+    var minutesText = ""
+    var hoursText = ""
+
+    if hours == 1 {
+      hoursText = "\(hours) hour"
+    } else if hours == 0 {
+      hoursText = ""
+    } else {
+      hoursText = "\(hours) hours"
+    }
+    if minutes == 1 {
+      minutesText = "\(minutes) minute"
+    } else if minutes == 0 {
+      minutesText = ""
+    } else {
+      minutesText = "\(minutes) minutes"
+    }
+    return "\(hoursText) \(minutesText)"
+  }
+
   // Some quantity has vulgar fraction [½], and it can't be converted to Double, so we need to replace that with the actual value [0.5 instead of ½]
   private func removeVulgarFunction(from  quantity: String) -> Double {
     let fractionsKeys = Array(vulgarFractionDic.keys)

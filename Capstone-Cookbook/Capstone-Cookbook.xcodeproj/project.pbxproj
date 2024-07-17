@@ -38,6 +38,11 @@
 		AC6ADD6F2C3F61BA00E87454 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6ADD6E2C3F61BA00E87454 /* FileManager.swift */; };
 		AC8166F12C40406E003B89EA /* PhotosPickerItemExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8166F02C40406E003B89EA /* PhotosPickerItemExtension.swift */; };
 		AC956FE22C473EDC00B1E7D9 /* TastyTagsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC956FE12C473EDC00B1E7D9 /* TastyTagsList.swift */; };
+		AC956FE62C4818B900B1E7D9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC956FE52C4818B900B1E7D9 /* Color.swift */; };
+		AC956FE82C481BC500B1E7D9 /* ViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC956FE72C481BC500B1E7D9 /* ViewConstants.swift */; };
+		AC956FEA2C4863ED00B1E7D9 /* RecipeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC956FE92C4863ED00B1E7D9 /* RecipeImage.swift */; };
+		AC956FEC2C486A9300B1E7D9 /* ImagesConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC956FEB2C486A9300B1E7D9 /* ImagesConstants.swift */; };
+		AC956FEE2C486AE900B1E7D9 /* ImagePlaceHolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC956FED2C486AE900B1E7D9 /* ImagePlaceHolderView.swift */; };
 		AC9FC7F92C38C66B00707A78 /* MyCookbookFileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9FC7F82C38C66B00707A78 /* MyCookbookFileStore.swift */; };
 		ACAF98522C44955B007D52C5 /* CustomPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAF98512C44955B007D52C5 /* CustomPopup.swift */; };
 		ACAF98542C44A699007D52C5 /* EmptyObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAF98532C44A699007D52C5 /* EmptyObjects.swift */; };
@@ -111,6 +116,11 @@
 		AC6ADD6E2C3F61BA00E87454 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		AC8166F02C40406E003B89EA /* PhotosPickerItemExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosPickerItemExtension.swift; sourceTree = "<group>"; };
 		AC956FE12C473EDC00B1E7D9 /* TastyTagsList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TastyTagsList.swift; sourceTree = "<group>"; };
+		AC956FE52C4818B900B1E7D9 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		AC956FE72C481BC500B1E7D9 /* ViewConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConstants.swift; sourceTree = "<group>"; };
+		AC956FE92C4863ED00B1E7D9 /* RecipeImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeImage.swift; sourceTree = "<group>"; };
+		AC956FEB2C486A9300B1E7D9 /* ImagesConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesConstants.swift; sourceTree = "<group>"; };
+		AC956FED2C486AE900B1E7D9 /* ImagePlaceHolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePlaceHolderView.swift; sourceTree = "<group>"; };
 		AC9FC7F82C38C66B00707A78 /* MyCookbookFileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCookbookFileStore.swift; sourceTree = "<group>"; };
 		ACAF98512C44955B007D52C5 /* CustomPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopup.swift; sourceTree = "<group>"; };
 		ACAF98532C44A699007D52C5 /* EmptyObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyObjects.swift; sourceTree = "<group>"; };
@@ -197,6 +207,8 @@
 				ACC0353C2C3CA55B007ECF4E /* RecipeGridView.swift */,
 				ACC0353E2C3CB5D3007ECF4E /* AddRecipeButton.swift */,
 				AC37284E2C43469600FDF9BC /* TextsConstants.swift */,
+				AC956FE72C481BC500B1E7D9 /* ViewConstants.swift */,
+				AC956FEB2C486A9300B1E7D9 /* ImagesConstants.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -280,6 +292,7 @@
 				AC6ADD6E2C3F61BA00E87454 /* FileManager.swift */,
 				AC8166F02C40406E003B89EA /* PhotosPickerItemExtension.swift */,
 				ACAF98592C454A45007D52C5 /* NavigationExtension.swift */,
+				AC956FE52C4818B900B1E7D9 /* Color.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -301,6 +314,8 @@
 				ACAF98512C44955B007D52C5 /* CustomPopup.swift */,
 				ACAF98572C45456E007D52C5 /* BackNavigationButton.swift */,
 				ACFF6EF62C4594D300BD9F72 /* DismissKeyboardToolbarItem.swift */,
+				AC956FE92C4863ED00B1E7D9 /* RecipeImage.swift */,
+				AC956FED2C486AE900B1E7D9 /* ImagePlaceHolderView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -501,6 +516,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC956FEC2C486A9300B1E7D9 /* ImagesConstants.swift in Sources */,
+				AC956FE82C481BC500B1E7D9 /* ViewConstants.swift in Sources */,
 				ACC035352C3B4543007ECF4E /* AddRecipeView.swift in Sources */,
 				AC3728782C44920E00FDF9BC /* IngredientListView.swift in Sources */,
 				AC1F4B642C336AB700855379 /* RecipesStore.swift in Sources */,
@@ -514,6 +531,7 @@
 				ACB722C62C40A103000B2A8F /* AddIngredientSectionsView.swift in Sources */,
 				ACC0353B2C3CA50C007ECF4E /* MyRecipesView.swift in Sources */,
 				AC37284D2C432CC200FDF9BC /* HandleMeasurement.swift in Sources */,
+				AC956FEE2C486AE900B1E7D9 /* ImagePlaceHolderView.swift in Sources */,
 				AC1F4B6F2C337C8A00855379 /* TastyJSONSample.swift in Sources */,
 				AC1F4B5A2C3360AF00855379 /* TastyRecipe.swift in Sources */,
 				ACAF98522C44955B007D52C5 /* CustomPopup.swift in Sources */,
@@ -527,6 +545,7 @@
 				AC6ADD6F2C3F61BA00E87454 /* FileManager.swift in Sources */,
 				ACC035392C3CA3A3007ECF4E /* ExploreRecipesView.swift in Sources */,
 				AC8166F12C40406E003B89EA /* PhotosPickerItemExtension.swift in Sources */,
+				AC956FE62C4818B900B1E7D9 /* Color.swift in Sources */,
 				AC37284F2C43469600FDF9BC /* TextsConstants.swift in Sources */,
 				AC37287A2C44922D00FDF9BC /* AddIngredientAndMeasurementView.swift in Sources */,
 				ACC035212C3AC578007ECF4E /* SpoonacularUnitAmounts.swift in Sources */,
@@ -534,6 +553,7 @@
 				AC1F4B742C37558D00855379 /* AlertInfo.swift in Sources */,
 				AC1F4B762C377A6000855379 /* TastyPage.swift in Sources */,
 				AC956FE22C473EDC00B1E7D9 /* TastyTagsList.swift in Sources */,
+				AC956FEA2C4863ED00B1E7D9 /* RecipeImage.swift in Sources */,
 				AC1F4B6D2C3374E900855379 /* RecipeDetailsView.swift in Sources */,
 				AC40505E2C3358B200F4D5F6 /* ContentView.swift in Sources */,
 				ACB722C82C40AA67000B2A8F /* UnitsConstant.swift in Sources */,
