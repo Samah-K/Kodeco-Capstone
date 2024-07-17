@@ -13,6 +13,7 @@ struct ExploreRecipesView: View {
   @State private var searchQuery = ""
   @State private var resetSearchPressed = false
   @State private var searchState = SearchState.enterASearch
+//  @State private var isSearchQueryIsEmpty = false
   private var isAlertPresented: Binding<Bool> {
     Binding(
       get: { self.recipeStoreManager.alertInfo.isAlertPresented },
@@ -28,10 +29,10 @@ struct ExploreRecipesView: View {
             searchQuery: $searchQuery,
             resetSearchPressed: $resetSearchPressed
           ).onSubmit {
-            resetSearch()
-            searchState = .searching
-            print("onSubmit \(searchQuery)")
-            recipeStoreManager.searchRecipes(for: searchQuery)
+              resetSearch()
+              searchState = .searching
+              print("onSubmit \(searchQuery)")
+              recipeStoreManager.searchRecipes(for: searchQuery)
           }
           .onChange(of: resetSearchPressed) { _, _ in
             if resetSearchPressed {
@@ -73,6 +74,11 @@ struct ExploreRecipesView: View {
           Text("OK")
         })
       }
+//      .alert(TextsConstants().emptySearchAlertTitle, isPresented: $isSearchQueryIsEmpty) {
+//        Button("OK", role: .none) {
+//          isSearchQueryIsEmpty = false
+//        }
+//      }
       //      .toolbar {
       //        KeyboardToolbarItem()
       //        ToolbarItem(placement: .keyboard) {

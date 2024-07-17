@@ -18,13 +18,14 @@ struct Recipe: Identifiable, Codable {
   var recipeType: RecipeType
   var isRecipeAddedToMyCookbook = false
 
-  init(id: String = UUID().uuidString, tastyRecipe: TastyRecipe?, recipeType: RecipeType, isRecipeAddedToMyCookbook: Bool = false) {
-    self.id = id
+  init(tastyRecipe: TastyRecipe?, recipeType: RecipeType, isRecipeAddedToMyCookbook: Bool = false) {
     self.recipeType = recipeType
     self.isRecipeAddedToMyCookbook = isRecipeAddedToMyCookbook
     if let tastyRecipe = tastyRecipe {
+      self.id = "\(tastyRecipe.id)"
       self.tastyRecipe = tastyRecipe
     } else {
+      self.id = UUID().uuidString
       self.tastyRecipe = TastyRecipe(
         id: id.hashValue,
         name: "",

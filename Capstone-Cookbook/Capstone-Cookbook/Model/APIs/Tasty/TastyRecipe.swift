@@ -200,13 +200,13 @@ struct TastyRecipeModel {
       nutrition: nil,
       language: "eng",
       tags: [])
-    let recipeExample = Recipe(id: UUID().uuidString, tastyRecipe: example, recipeType: .tastyRecipe)
+    let recipeExample = Recipe(tastyRecipe: example, recipeType: .tastyRecipe)
     guard let tastyFromJSONFile = TastyJSONSample().getRecipeFromJSONFile()
     else {
       return recipeExample
     }
     if let reciple = tastyFromJSONFile.recipes.last {
-      return Recipe(id: UUID().uuidString, tastyRecipe: reciple, recipeType: .tastyRecipe)
+      return Recipe(tastyRecipe: reciple, recipeType: .tastyRecipe)
     }
     return recipeExample
   }

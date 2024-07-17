@@ -37,14 +37,6 @@ class RecipesStore: ObservableObject {
     Task {
       do {
         try await fetchRecipesFromTasty(searchQuery: searchQuery)
-      } catch NetworkError.invalidURL {
-        setError(errorText: "Invalid URL")
-      } catch NetworkError.invalidResponse {
-        setError(errorText: "Invalid Response")
-      } catch NetworkError.invalidData {
-        setError(errorText: "Invalid Data")
-      } catch NetworkError.apiPlanExceeded {
-        setError(errorText: "Oh no!\nPlease call the developer")
       } catch {
         Task {
           await MainActor.run {
@@ -78,7 +70,6 @@ class RecipesStore: ObservableObject {
     await MainActor.run {
       let recipes = filteredRecipes.map { recipe in
         Recipe(
-          id: UUID().uuidString,
           tastyRecipe: recipe,
           recipeType: .tastyRecipe,
           isRecipeAddedToMyCookbook: isRecipeAddedToMyCookbook(tastyRecipeID: "\(recipe.id)"))
@@ -92,8 +83,8 @@ class RecipesStore: ObservableObject {
         let imageDataURL = try await tastyNetworkService.getImageDataURL(for: recipe.tastyRecipe)
         if imageDataURL != nil {
           await MainActor.run {
-            if !searchCanceled {
-              tastyRecipes[recipeIndex].tastyRecipe.imageDataURL = imageDataURL
+            if !searchCanceled && !tastyRecipes.isEmpty {
+                tastyRecipes[recipeIndex].tastyRecipe.imageDataURL = imageDataURL
             }
           }
         }
