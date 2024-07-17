@@ -23,4 +23,5 @@ struct TextsConstants {
   let failedToConvetAmountAlertMessage = "Try changing the ingredient name."
   let removeSectionConfirmationAlertTitle = "Are you sure you want to remove the section?"
   let removeSectionConfirmationAlertMessage = "You will lose all the added ingredient"
+  let emptySearchAlertTitle = "Please enter something to search"
 }

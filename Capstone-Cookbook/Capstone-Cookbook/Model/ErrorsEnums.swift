@@ -19,7 +19,7 @@ enum NetworkError: LocalizedError {
   var errorDescription: String? {
     switch self {
     case .invalidSearchQuery:
-      TextsConstants.emptySearchAlertTitle
+      TextsConstants().emptySearchAlertTitle
     case .invalidURL:
       "Invalid URL"
     case .invalidResponse:
