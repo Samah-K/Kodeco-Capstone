@@ -8,9 +8,18 @@
 import Foundation
 
 class SpoonacularNetworkService {
+  var session: URLSession
+
+  init() {
+    let configuration = URLSessionConfiguration.default
+    let header = SpoonacularAPI().getAPIHeader()
+    configuration.httpAdditionalHeaders = header
+    self.session = URLSession(configuration: configuration)
+  }
+
   private func connectToSpoonacularEndPoint(unitAmount: UnitAmounts) async throws -> Data {
     let urlString = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/convert"
-    let header = SpoonacularAPI().getAPIHeader()
+
     guard var urlComponents = URLComponents(string: urlString) else {
       throw NetworkError.invalidURL
     }
@@ -23,9 +32,7 @@ class SpoonacularNetworkService {
     guard let url = urlComponents.url else {
       throw NetworkError.invalidURL
     }
-    let configuration = URLSessionConfiguration.default
-    configuration.httpAdditionalHeaders = header
-    let session = URLSession(configuration: configuration)
+
     let (data, response) = try await session.data(from: url)
     guard (response as? HTTPURLResponse)?.statusCode == 200
     else {
@@ -35,6 +42,7 @@ class SpoonacularNetworkService {
     }
     return data
   }
+
   func covertingAmounts(ingredient: String, sourceUnit: String, sourceAmount: Double, targetUnit: String) async throws -> UnitAmounts {
     do {
       let unitAmount = UnitAmounts(
@@ -45,9 +53,10 @@ class SpoonacularNetworkService {
         ingredient: ingredient
       )
       let data = try await connectToSpoonacularEndPoint(unitAmount: unitAmount)
-      let convertedAmount = try JSONDecoder().decode(UnitAmounts.self, from: data)
+      var convertedAmount = try JSONDecoder().decode(UnitAmounts.self, from: data)
       print("\(ingredient) - \(convertedAmount.sourceAmount)\(convertedAmount.sourceUnit) ->", terminator: "\n")
       print("\(convertedAmount.targetAmount)\(convertedAmount.targetUnit)", terminator: "\n")
+      convertedAmount.ingredient = ingredient
       return convertedAmount
       //      print(ingredient)
       //      print(convertAmount.sourceUnit)

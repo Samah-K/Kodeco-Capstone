@@ -13,5 +13,5 @@ struct UnitAmounts: Decodable {
   let sourceAmount: Double
   let targetUnit: String//
   let targetAmount: Double
-  let ingredient: String?//
+  var ingredient: String?//
 }

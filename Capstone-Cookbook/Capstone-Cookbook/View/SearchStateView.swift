@@ -49,6 +49,7 @@ struct SearchStateView: View {
             ProgressView {
               Text("Searching...")
             }
+            .accessibilityIdentifier("ProgressView")
             .foregroundStyle(.accent)
           }
         }
@@ -57,9 +58,11 @@ struct SearchStateView: View {
           Image(systemName: "magnifyingglass")
             .resizable()
             .frame(width: 40, height: 40)
+            .accessibilityIdentifier("searchStateImage")
           VStack(spacing: 4) {
             Text(searchStateTitle)
               .font(.title3)
+              .accessibilityIdentifier("searchStateTitle")
             if searchState == .noResultsFound {
               Text(searchStateCaption)
                 .font(.caption)
@@ -69,6 +72,7 @@ struct SearchStateView: View {
         .foregroundStyle(.accent)
       }
     }
+    .accessibilityIdentifier("SearchStateView")
   }
 }
 

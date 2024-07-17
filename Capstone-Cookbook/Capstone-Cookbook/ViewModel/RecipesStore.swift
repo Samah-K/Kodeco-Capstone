@@ -27,8 +27,10 @@ class RecipesStore: ObservableObject {
     }
   }
 
-  init() {
-    myRecipes = myRecipeFileStore.readRecipesFromJSONFile()
+  init(fetchFromFile: Bool = true) {
+    if fetchFromFile {
+      myRecipes = myRecipeFileStore.readRecipesFromJSONFile()
+    }
   }
 
   func searchRecipes(for searchQuery: String) {
@@ -54,9 +56,13 @@ class RecipesStore: ObservableObject {
     }
   }
 
-  private func fetchRecipesFromTasty(searchQuery: String) async throws {
+  func fetchRecipesFromTasty(searchQuery: String) async throws {
     searchCanceled = false
     var tasty: Tasty
+    guard !searchQuery.isEmpty
+    else {
+      throw NetworkError.invalidSearchQuery
+    }
     if TastyJSONSample().isPreview {
       guard let tastyFromJSONFile = TastyJSONSample().getRecipeFromJSONFile() else {
         throw FileErrors.previewJSONFileNotExists
@@ -221,7 +227,6 @@ class RecipesStore: ObservableObject {
           sourceUnit: fromUnit.rawValue,
           sourceAmount: amount,
           targetUnit: toUnit.rawValue)
-
         if let toSystem = toUnit.getUnitSystem() {
           delegate.updateUI(to: unitAmount, toSystem)
         } else {

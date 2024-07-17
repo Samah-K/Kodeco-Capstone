@@ -81,16 +81,6 @@ struct HandleMeasurement {
       } else {
         measurementName = measurement.unit.displayPlural
       }
-      //      if measurements.count <= 1 {
-      ////        let measurement = measurements[0]
-      //        let quantity = measurement.quantity
-      //        let name = measurement.unit.name
-      //        ingredientMeasurement = (quantity == "0") ? "\(name)" : "\(quantity) \(name) of"
-      //      } else {
-      // metric or imperial
-      //        let measurement = measurements[0]
-      //      let quantity = measurement.quantity
-      //      let name = measurement.unit.displayPlural // measurement.unit.name
       ingredientMeasurement = "\(quantity) \(measurementName) of"
       return "\(ingredientMeasurement) \(ingredientName)"
     }
