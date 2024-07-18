@@ -11,54 +11,37 @@ struct RecipeImage: View {
   @EnvironmentObject var recipeStore: RecipesStore
   @State var thumbnailURL: String?
   var body: some View {
-    ZStack(alignment: .bottom) {
-      if let thumbnailURL = thumbnailURL {
-        ZStack {
-          if thumbnailURL.starts(with: "https") {
-            // Async Image
-            AsyncImage(url: URL(string: thumbnailURL)) { phase in
-              switch phase {
-              case .empty:
-                ImagePlaceHolderView()
-              case .success(let image):
-                image.resizable()
-              case .failure(let error):
-                ZStack {
-                  // To silent the warning
-                  Text(error.localizedDescription)
-                    .foregroundStyle(.white.opacity(0))
-                  ImagePlaceHolderView()
-                }
-              @unknown default:
-                ImagePlaceHolderView()
-              }
-            }
-          } else if thumbnailURL.starts(with: "/") {
-            if let uiImage = UIImage(contentsOfFile: thumbnailURL) {
-              Image(uiImage: uiImage)
-                .resizable()
-            } else {
-              ImagePlaceHolderView()
-            }
-          } else {
-            if let imagePath = recipeStore.loadImage(imageName: thumbnailURL) {
-              if let uiImage = UIImage(contentsOfFile: imagePath) {
-                Text(thumbnailURL)
-                Image(uiImage: uiImage)
-                  .resizable()
-              } else {
-                ImagePlaceHolderView()
-              }
-            } else {
-              ImagePlaceHolderView()
-            }
-          }
+    if let thumbnailURL = thumbnailURL {
+
+      if thumbnailURL.starts(with: "https") {
+        // Async Image
+        if let thumbnailURL = self.thumbnailURL {
+          RecipeAsyncImage(thumbnailURL: URL(string: thumbnailURL))
+        }
+      } else if thumbnailURL.starts(with: "/") {
+        if let uiImage = UIImage(contentsOfFile: thumbnailURL) {
+          Image(uiImage: uiImage)
+            .resizable()
+        } else {
+          ImagePlaceHolderView()
         }
       } else {
-        ImagePlaceHolderView()
+        if let imagePath = recipeStore.loadImage(imageName: thumbnailURL) {
+          if let uiImage = UIImage(contentsOfFile: imagePath) {
+            Text(thumbnailURL)
+            Image(uiImage: uiImage)
+              .resizable()
+          } else {
+            ImagePlaceHolderView()
+          }
+        } else {
+          ImagePlaceHolderView()
+        }
       }
+    } else {
+      ImagePlaceHolderView()
     }
-  }
+    }
 }
 
 #Preview {

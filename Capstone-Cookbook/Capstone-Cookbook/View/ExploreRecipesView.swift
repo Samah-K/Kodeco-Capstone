@@ -70,7 +70,7 @@ struct ExploreRecipesView: View {
           }
         }
       }
-      .padding()
+//      .padding()
       .navigationTitle("Explore")
       .alert(recipeStoreManager.alertInfo.alertMessage, isPresented: isAlertPresented) {
         Button(action: {

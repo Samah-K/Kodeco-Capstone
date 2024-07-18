@@ -112,6 +112,9 @@ struct AddRecipeView: View {
         isPresented: $isAreYouSureYouWantToLeaveAlertPresent) {
           Button("Yes", role: .none) {
             isAreYouSureYouWantToLeaveAlertPresent = false
+            if addOrEdit == .addRecipe {
+              setToInitialState()
+            }
             dismiss()
           }
           Button("No", role: .none) {}
@@ -164,9 +167,22 @@ struct AddRecipeView: View {
     if let thumbnailURL = thumbnailURL {
       print(thumbnailURL)
       recipe.tastyRecipe.thumbnailURL = recipe.id
+      recipe.tastyRecipe.beautyURL = recipe.id
     }
     recalculateComponentPosition()
     recipeStore.saveChangesOnRecipe(recipe)
+  }
+
+  private func setToInitialState() {
+    print("setToInitialState")
+    recipe.tastyRecipe.name = ""
+    recipe.tastyRecipe.description = ""
+    recipe.tastyRecipe.prepTimeMinutes = nil
+    recipe.tastyRecipe.cookTimeMinutes = nil
+    recipe.tastyRecipe.numServing = 0
+    recipe.tastyRecipe.videoURL = ""
+    recipe.tastyRecipe.ingredientSections = []
+    recipe.tastyRecipe.thumbnailURL = ""
   }
 
   func recalculateComponentPosition() {

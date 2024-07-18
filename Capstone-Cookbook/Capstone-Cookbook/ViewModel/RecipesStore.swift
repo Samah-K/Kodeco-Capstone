@@ -84,7 +84,7 @@ class RecipesStore: ObservableObject {
         if imageDataURL != nil {
           await MainActor.run {
             if !searchCanceled && !tastyRecipes.isEmpty {
-                tastyRecipes[recipeIndex].tastyRecipe.imageDataURL = imageDataURL
+              tastyRecipes[recipeIndex].tastyRecipe.imageDataURL = imageDataURL
             }
           }
         }

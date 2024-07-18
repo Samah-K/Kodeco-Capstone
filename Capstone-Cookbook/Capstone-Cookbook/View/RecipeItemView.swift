@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct RecipeItemView: View {
+  let widthPercentage = 0.4
+  let heightPercentage = 0.4
   @EnvironmentObject var recipeStoreManager: RecipesStore
   @Binding var recipe: Recipe
 
@@ -16,78 +18,60 @@ struct RecipeItemView: View {
       RoundedRectangle(cornerRadius: ViewConstants.roundCorner)
         .fill(.white)
         .shadow(radius: 10)
-        .padding(5)
+        .frame(
+          maxWidth: .infinity,
+          minHeight: ViewConstants.minListHeight,
+          maxHeight: ViewConstants.maxListHeight)
       GeometryReader { proxy in
-      HStack(alignment: .center) {
-        VStack {
-          Spacer()
+        HStack(alignment: .center, spacing: 10) {
           VStack {
-            if let photoURL = recipe.tastyRecipe.imageDataURL {
-              AsyncImage(url: photoURL) { imagePhase in
-                switch imagePhase {
-                case .empty:
-                  RoundedRectangle(cornerRadius: ViewConstants.roundCorner)
-                    .fill(.gray)
-                case .success(let image):
-                  image.resizable()
-                case .failure(let error):
-                  Text(error.localizedDescription)
-                  RoundedRectangle(cornerRadius: ViewConstants.roundCorner)
-                    .fill(.gray)
-                @unknown default:
-                  RoundedRectangle(cornerRadius: ViewConstants.roundCorner)
-                    .fill(.gray)
+            VStack {
+              // Check the type
+              if let url = recipe.tastyRecipe.imageDataURL {
+                RecipeAsyncImage(thumbnailURL: url)
+                  .frame(width: 130, height: 130)
+                  .clipShape(RoundedRectangle(cornerRadius: ViewConstants.roundCorner))
+              } else {
+                ZStack {
+                  RecipeImage(thumbnailURL: recipe.tastyRecipe.getRecipeImageURL())
+                    .frame(width: 130, height: 130)
+                    .clipShape(RoundedRectangle(cornerRadius: ViewConstants.roundCorner))
                 }
               }
-            } else {
-              ZStack {
-                RoundedRectangle(cornerRadius: ViewConstants.roundCorner)
-                  .fill(.gray)
-                ProgressView()
-                  .tint(.accent)
-              }
             }
+            .padding(.leading, 12)
           }
-          .aspectRatio(contentMode: .fill)
-          .padding(.leading, 10)
-          Spacer()
-        }
-        .frame(width: proxy.size.width * 0.4)
-
-//        .frame(maxWidth: .infinity)
-        VStack(alignment: .leading) {
-          Spacer()
-            Text(recipe.getRecipeName())
-              .font(.title3)
-              .foregroundStyle(.text)
-              .multilineTextAlignment(.leading)
-              .shadow(color: .tint.opacity(0.3), radius: 1)
-              .lineLimit(2)
-            HStack (spacing: 5) {
+          .frame(width: proxy.size.width * 0.4)
+          VStack(alignment: .leading, spacing: 0) {
+            VStack(alignment: .leading) {
+              Text(recipe.getRecipeName())
+                .font(.body)
+                .foregroundStyle(.text)
+                .multilineTextAlignment(.leading)
+                .shadow(color: .tint.opacity(0.3), radius: 1)
+                .lineLimit(2)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            }
+            .frame(height: proxy.size.height * 0.5)
+            if !recipe.getTotalCookTime().isEmpty {
+                HStack(spacing: 5) {
               Image(systemName: "timer")
               Text(recipe.getTotalCookTime())
             }
-            .font(.caption)
-            .foregroundStyle(.accentSecondary)
-          Spacer()
-          Spacer()
+              .frame(height: proxy.size.height * 0.5, alignment: .center)
+//              .background(.green)
+              .font(.caption)
+              .foregroundStyle(.accentSecondary)
           }
-        .frame(maxWidth: proxy.size.width * (1 - 0.4), maxHeight: .infinity)
-//          .background(.yellow)
-
-
+//            Spacer()
+//            Spacer()
+          }
+          .frame(maxWidth: proxy.size.width * (1 - 0.4))
+          .padding(.leading, 10)
+//          .background(.red)
+//          .frame(width: proxy.size.width * 0.6)
         }
       }
-//      .frame(
-//        maxWidth: .infinity,
-//        minHeight: ViewConstants.listHeight,
-//        maxHeight: ViewConstants.listHeight)
-//      .overlay {
-//        RoundedRectangle(cornerRadius: ViewConstants.roundCorner)
-//          .fill(.clear)
-//      }
-
-
       ZStack {
         Circle()
           .fill(.white)
@@ -102,47 +86,9 @@ struct RecipeItemView: View {
     }
     .frame(
       maxWidth: .infinity,
-      minHeight: ViewConstants.listHeight,
-      maxHeight: ViewConstants.listHeight)
-//    .padding(5)
-//    .overlay {
-//      RoundedRectangle(cornerRadius: ViewConstants.roundCorner)
-////        .fill(.clear)
-////        .shadow(radius: 10)
-//        .padding(5)
-//    }
-
-
-
-
-//      ZStack(alignment: .bottom) {
-//        HStack {
-//
-//        }
-//        HStack(alignment: .firstTextBaseline) {
-//          Spacer()
-//
-//          Spacer()
-//          Spacer()
-//          Spacer()
-//        }
-//        .frame(maxWidth: .infinity)
-//        .padding(.vertical, 15)
-//      }
-//      HStack {
-//        ZStack {
-//
-//        }
-//      }
-//      .padding(10)
-//    }
-//    .clipShape(RoundedRectangle(cornerRadius: 25))
-//    .aspectRatio(1, contentMode: .fit)
-//    .overlay {
-//      RoundedRectangle(cornerRadius: 25)
-//        .strokeBorder(.white, lineWidth: 4.0)
-//    }
-//    .shadow(radius: 1)
+      minHeight: ViewConstants.minListHeight,
+      maxHeight: ViewConstants.minListHeight)
+        .padding()
   }
 }
 

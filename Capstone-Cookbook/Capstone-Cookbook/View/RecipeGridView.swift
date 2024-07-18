@@ -14,25 +14,26 @@ struct RecipeListView: View {
   var recipeType: RecipeType
 
   var body: some View {
-    //    List {
     ScrollView {
-    ForEach(
-      recipeType == .tastyRecipe ?
-      $recipeStoreManager.tastyRecipes :
-        $recipeStoreManager.myRecipes) { recipe in
-          NavigationLink {
-            RecipeDetailsView(recipe: recipe.wrappedValue, addFavoriteButton: true)
-          } label: {
-            RecipeItemView(recipe: recipe)
-              .frame(maxWidth: .infinity, maxHeight: 200)
+      ForEach(
+        recipeType == .tastyRecipe ?
+        $recipeStoreManager.tastyRecipes :
+          $recipeStoreManager.myRecipes) { recipe in
+            NavigationLink {
+              RecipeDetailsView(recipe: recipe.wrappedValue, addFavoriteButton: true)
+            } label: {
+              RecipeItemView(recipe: recipe)
+                .frame(height: ViewConstants.minListHeight)
+                .padding()
+            }
+            Divider()
+              .padding(.horizontal, 20)
           }
-        }
+    }
   }
-//    }
-//    .listStyle(.plain)
-  }
-//    .frame(maxWidth: .infinity)
 }
+
+
 
 struct RecipeGridView: View {
   @EnvironmentObject var recipeStoreManager: RecipesStore
@@ -48,33 +49,31 @@ struct RecipeGridView: View {
           recipeType == .tastyRecipe ?
           $recipeStoreManager.tastyRecipes :
             $recipeStoreManager.myRecipes) { recipe in
-              //              NavigationLink(value: recipe) {
-              //                RecipeItemView(recipe: recipe)
-              //              }
               NavigationLink {
                 RecipeDetailsView(recipe: recipe.wrappedValue, addFavoriteButton: true
                 )
               } label: {
                 RecipeItemView(recipe: recipe)
-                ////                  .onAppear {
-                ////                    if let searchQuery = searchQuery, recipeType == .tastyRecipe {
-                ////                      if let last = self.recipeStoreManager.tastyRecipes.last {
-                ////                        if last.id == recipe.id {
-                ////                          print("NEXT")
-                ////                          self.recipeStoreManager.nextSearch(for: searchQuery)
-                ////                          self.searchState = .additionalSearch
-                ////                        }
-                ////                      }
-                ////                    }
-                //                  }
+                  .onAppear {
+                    if let searchQuery = searchQuery, recipeType == .tastyRecipe {
+                      if let last = self.recipeStoreManager.tastyRecipes.last {
+                        if last.id == recipe.id {
+                          print("NEXT")
+                          self.recipeStoreManager.nextSearch(for: searchQuery)
+                          self.searchState = .additionalSearch
+                        }
+                      }
+                    }
+                  }
               }
-        }
+            }
+
+        //      .navigationDestination(for: String.self) { string in
+        //        RecipeDetailsView(recipe:.constant(Recipe(tastyRecipe: nil, recipeType: .myRecipe)), addFavoriteButton: true)
+        //      }
       }
-      //      .navigationDestination(for: String.self) { string in
-      //        RecipeDetailsView(recipe:.constant(Recipe(tastyRecipe: nil, recipeType: .myRecipe)), addFavoriteButton: true)
-      //      }
+      .frame(maxWidth: .infinity)
     }
-    .frame(maxWidth: .infinity)
   }
 }
 
@@ -90,11 +89,12 @@ struct RecipeGridView: View {
 #Preview("RecipeListView") {
   struct Preview: View {
 
+
     var body: some View {
       RecipeListView(
         searchState: .constant(.searching),
         searchQuery: "pie",
-        recipeType: .tastyRecipe)
+        recipeType: .myRecipe)
       .environmentObject(RecipesStore())
     }
   }

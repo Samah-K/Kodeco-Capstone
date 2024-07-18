@@ -30,7 +30,7 @@ struct TastyRecipe: Codable, Identifiable {
   // family dinner, jonah peretti, secret ingredient pasta, tasty, tasty_contains_alcohol, tomato and anchovy pasta recipe, umami pasta
   var numServing: Int
   var thumbnailURL: String // https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/109214.jpg
-  let beautyURL: String? // https://img.buzzfeed.com/video-api-prod/assets/cf1fdbad99ef4b278ca7b8c61504b6c2/Beauty2_Thumb.jpg
+  var beautyURL: String? // https://img.buzzfeed.com/video-api-prod/assets/cf1fdbad99ef4b278ca7b8c61504b6c2/Beauty2_Thumb.jpg
   let originalVideoURL: String? // https://s3.amazonaws.com/video-api-prod/assets/723faf4d7887464b82e81d2604797f83/BFV30681_ApplePieCheescake_FB1080SQ.mp4
   var videoURL: String? // https://vid.tasty.co/output/57946/low_1508803850.m3u8
   var nutrition: Nutrition?

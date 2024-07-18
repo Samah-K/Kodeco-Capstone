@@ -8,12 +8,18 @@
 import SwiftUI
 
 struct ImagePlaceHolderView: View {
+  var isProgressViewPresented = false
   var body: some View {
     ZStack {
       Color.accentSecondary
       Image(ImagesConstants.ImagePlaceHolder)
         .resizable()
         .frame(width: 160, height: 160)
+      if isProgressViewPresented {
+        ProgressView()
+          .tint(.highlights)
+          .font(.title)
+      }
     }
   }
 }

@@ -11,7 +11,7 @@ struct MyRecipesView: View {
 //  @EnvironmentObject var recipeStoreManager: RecipesStore
   var body: some View {
     NavigationStack {
-      RecipeGridView(
+      RecipeListView(
         searchState: .constant(.none),
         searchQuery: nil,
         recipeType: .myRecipe

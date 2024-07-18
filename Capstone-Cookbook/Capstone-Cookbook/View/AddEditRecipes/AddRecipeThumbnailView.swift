@@ -15,43 +15,7 @@ struct AddRecipeThumbnailView: View {
   var recipeID: String
   var body: some View {
     ZStack(alignment: .bottom) {
-//      if let thumbnailURL = thumbnailURL {
-        RecipeImage(thumbnailURL: thumbnailURL)
-//      }
-//        ZStack {
-//          if thumbnailURL.starts(with: "https") {
-//            // Async Image
-//            AsyncImage(url: URL(string: thumbnailURL)) { phase in
-//              switch phase {
-//              case .empty:
-//                ImagePlaceHolderView()
-//              case .success(let image):
-//                image.resizable()
-//              case .failure( _):
-//                ZStack {
-//                  ImagePlaceHolderView()
-//                }
-//              @unknown default:
-//                ImagePlaceHolderView()
-//              }
-//            }
-//          } else {
-//            if let imagePath = recipeStore.loadImage(imageName: recipeID) {
-//              if let uiImage = UIImage(contentsOfFile: imagePath) {
-//                Text(thumbnailURL)
-//                Image(uiImage: uiImage)
-//                  .resizable()
-//              } else {
-//                ImagePlaceHolderView()
-//              }
-//            } else {
-//              ImagePlaceHolderView()
-//            }
-//          }
-//        }
-//      } else {
-//        ImagePlaceHolderView()
-//      }
+      RecipeImage(thumbnailURL: thumbnailURL)
       PhotosPicker(selection: $photo, matching: .images) {
         VStack(spacing: 1) {
           Image(systemName: "photo.badge.plus")
@@ -76,7 +40,8 @@ struct AddRecipeThumbnailView: View {
           // Save to disk
           if let data = data {
             let imageURL = try recipeStore.saveImage(imageName: "Image-\(recipeID).jpg", data: data)
-              thumbnailURL = imageURL
+            print(imageURL)
+            thumbnailURL = imageURL
           }
         }
       }
