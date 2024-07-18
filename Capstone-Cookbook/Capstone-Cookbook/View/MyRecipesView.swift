@@ -42,4 +42,5 @@ struct MyRecipesView: View {
 
 #Preview {
   MyRecipesView()
+    .environmentObject(RecipesStore())
 }

@@ -168,6 +168,7 @@ struct AddRecipeView: View {
       print(thumbnailURL)
       recipe.tastyRecipe.thumbnailURL = recipe.id
       recipe.tastyRecipe.beautyURL = recipe.id
+      recipe.tastyRecipe.imageDataURL = nil
     }
     recalculateComponentPosition()
     recipeStore.saveChangesOnRecipe(recipe)

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct IngredientListView: View {
+struct AddIngredientListView: View {
   @Binding var sectionName: String?
   var sectionID: String
   @Binding var components: [Component]
@@ -67,7 +67,7 @@ struct IngredientListView: View {
             } label: {
               // Can't split the next line, which causes `Line Length Violation`
               // swiftlint:disable:next line_length
-              Text("\(HandleMeasurement().getIngredientDescription(ingredient: component.wrappedValue.ingredient, measurement: component.wrappedValue.measurements[0]))")
+              Text("\(HandleMeasurement().getIngredientDescription(ingredient: component.wrappedValue.ingredient, measurements: component.wrappedValue.measurements))")
             }
           }
           .onMove { indices, newOffset in
@@ -121,7 +121,7 @@ struct IngredientListView: View {
   }
 }
 
-extension IngredientListView: UpdateIngredientComponent {
+extension AddIngredientListView: UpdateIngredientComponent {
   func saveComponent(componentID: String, ingredient: Ingredient, measurement: [Measurement], shouldAddComponent: AddOrEditEnum) {
     if shouldAddComponent == .addRecipe {
       let component = Component(
@@ -149,7 +149,7 @@ extension IngredientListView: UpdateIngredientComponent {
     var body: some View {
       return NavigationStack {
         VStack {
-          IngredientListView(
+          AddIngredientListView(
             sectionName: $sectionName,
             sectionID: sectionID,
             components: $components,

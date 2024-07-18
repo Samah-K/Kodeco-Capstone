@@ -23,21 +23,41 @@ struct RecipeDetailsView: View {
           // image
           VStack {
             // TODO: Change image URL
-            AsyncImage(url: URL(string: recipe.tastyRecipe.getRecipeImageURL()), content: { image in
-              image.resizable()
-            }, placeholder: {
-              ZStack {
-                ProgressView()
+            VStack {
+              if let url = recipe.tastyRecipe.imageDataURL {
+                RecipeAsyncImage(thumbnailURL: url)
+
+              } else {
+                RecipeImage(thumbnailURL: recipe.tastyRecipe.getRecipeImageURL())
+
               }
-              .frame(width: 300, height: 300)
-            })
-            .clipShape(Circle())
-            .overlay {
-              Circle()
-                .stroke(Color.white, lineWidth: 5.0)
             }
-            .shadow(radius: 3.0)
+//            .clipShape(Circle())
+//            .overlay {
+//              Circle()
+//                .stroke(Color.white, lineWidth: 5.0)
+//            }
+//            .frame(width: 130, height: 130)
             .frame(width: 300, height: 300)
+            .clipShape(RoundedRectangle(cornerRadius: ViewConstants.roundCorner))
+            .shadow(radius: 3.0)
+//            .background(.red)
+
+//            AsyncImage(url: URL(string: recipe.tastyRecipe.getRecipeImageURL()), content: { image in
+//              image.resizable()
+//            }, placeholder: {
+//              ZStack {
+//                ProgressView()
+//              }
+//              .frame(width: 300, height: 300)
+//            })
+//            .clipShape(Circle())
+//            .overlay {
+//              Circle()
+//                .stroke(Color.white, lineWidth: 5.0)
+//            }
+//            .shadow(radius: 3.0)
+//            .frame(width: 300, height: 300)
           }
           .frame(height: proxy.size.height * 0.4)
 
@@ -47,7 +67,28 @@ struct RecipeDetailsView: View {
             Text(recipe.tastyRecipe.name)
               .font(.title)
               .padding(.top, 6)
-            // TODO: Fix this
+            HStack (alignment: .firstTextBaseline){
+              Spacer()
+              Spacer()
+              HStack (alignment: .center) {
+                if let prepareTime = recipe.tastyRecipe.prepTimeMinutes {
+                  Image("PrepareTime")
+                    .resizable()
+                    .frame(width: 25, height: 25)
+                  Text(HandleMeasurement().calculateTotalTime(prepTime: prepareTime, cookTime: 0))
+                }
+              }
+              Spacer()
+              if let cookTime = recipe.tastyRecipe.cookTimeMinutes {
+                HStack {
+                  Image(systemName: "frying.pan")
+                    .frame(width: 25, height: 25)
+                  Text(HandleMeasurement().calculateTotalTime(prepTime: 0, cookTime: cookTime))
+                }
+              }
+              Spacer()
+              Spacer()
+            }
             Text(recipe.tastyRecipe.description ?? " - ")
               .font(.subheadline)
               .lineLimit(2)
@@ -55,9 +96,11 @@ struct RecipeDetailsView: View {
               .onTapGesture {
                 descriptionShowingModal = true
               }
+            
           }
-          .padding(20)
+          .padding(.horizontal, 20)
           .frame(height: proxy.size.height * 0.25)
+
           //         Nutrition
           //          if !ingredientdisclousureExpand && !instructionDisclousureExpand {
           //            if let recipeNutrition = recipe.nutrition {
@@ -67,18 +110,27 @@ struct RecipeDetailsView: View {
           //                nutrition: recipeNutrition)
           //            }
           //          }
-          ScrollView {
-            if !ingredientdisclousureExpand {
-              InstructionsView(
-                disclousureExpand: $instructionDisclousureExpand,
-                instructions: recipe.tastyRecipe.instructions)
+//          ScrollView {
+//            if !ingredientdisclousureExpand {
+//              InstructionsView(
+//                disclousureExpand: $instructionDisclousureExpand,
+//                instructions: recipe.tastyRecipe.instructions)
+//            }
+//            if !instructionDisclousureExpand {
+//              IngredientView(
+//                disclousureExpand: $ingredientdisclousureExpand,
+//                ingredientSections: recipe.tastyRecipe.ingredientSections
+//              )
+//            }
+//          }
+          VStack {
+            NavigationLink {
+              IngredientListView(ingredientSection: recipe.tastyRecipe.ingredientSections)
+            } label: {
+              Text("Ingredient")
             }
-            if !instructionDisclousureExpand {
-              IngredientView(
-                disclousureExpand: $ingredientdisclousureExpand,
-                ingredientSections: recipe.tastyRecipe.ingredientSections
-              )
-            }
+
+
           }
           .frame(height: proxy.size.height * 0.35)
         }
@@ -126,6 +178,21 @@ struct RecipeDetailsView: View {
 //  }
 //  .environmentObject(RecipesStore())
 // }
+
+#Preview {
+  struct Preview: View {
+    private static let tastyRecipe = TastyJSONSample().getRecipeFromJSONFile()?.recipes[0]
+    @State var recipe = Recipe(tastyRecipe: tastyRecipe, recipeType: .myRecipe)
+    var body: some View {
+      NavigationStack {
+        RecipeDetailsView(recipe: recipe, addFavoriteButton: true)
+          .environmentObject(RecipesStore())
+      }
+    }
+  }
+  return Preview()
+}
+
 
 struct InstructionsView: View {
   @Binding var disclousureExpand: Bool

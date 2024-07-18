@@ -12,7 +12,6 @@ struct RecipeImage: View {
   @State var thumbnailURL: String?
   var body: some View {
     if let thumbnailURL = thumbnailURL {
-
       if thumbnailURL.starts(with: "https") {
         // Async Image
         if let thumbnailURL = self.thumbnailURL {
@@ -28,7 +27,6 @@ struct RecipeImage: View {
       } else {
         if let imagePath = recipeStore.loadImage(imageName: thumbnailURL) {
           if let uiImage = UIImage(contentsOfFile: imagePath) {
-            Text(thumbnailURL)
             Image(uiImage: uiImage)
               .resizable()
           } else {

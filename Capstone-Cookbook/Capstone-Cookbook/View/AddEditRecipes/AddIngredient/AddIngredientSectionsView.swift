@@ -29,7 +29,7 @@ struct AddIngredientSectionsView: View {
             Section {
               VStack {
                 NavigationLink {
-                  IngredientListView(
+                  AddIngredientListView(
                     sectionName: $section.name,
                     sectionID: section.id.uuidString,
                     components: $section.components,

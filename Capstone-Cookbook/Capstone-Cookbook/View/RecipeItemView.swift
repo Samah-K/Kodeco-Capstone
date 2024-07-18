@@ -26,17 +26,14 @@ struct RecipeItemView: View {
         HStack(alignment: .center, spacing: 10) {
           VStack {
             VStack {
-              // Check the type
               if let url = recipe.tastyRecipe.imageDataURL {
                 RecipeAsyncImage(thumbnailURL: url)
                   .frame(width: 130, height: 130)
                   .clipShape(RoundedRectangle(cornerRadius: ViewConstants.roundCorner))
               } else {
-                ZStack {
                   RecipeImage(thumbnailURL: recipe.tastyRecipe.getRecipeImageURL())
                     .frame(width: 130, height: 130)
                     .clipShape(RoundedRectangle(cornerRadius: ViewConstants.roundCorner))
-                }
               }
             }
             .padding(.leading, 12)

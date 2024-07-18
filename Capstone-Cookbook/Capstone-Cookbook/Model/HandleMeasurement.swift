@@ -75,7 +75,8 @@ struct HandleMeasurement {
         //        print("\(quantity) -> \(quantityValue)")
       }
     }
-    if let quantityInt = Double(quantityValue) { //
+    quantityValue = quantityValue.trimmingCharacters(in: .whitespaces)
+    if let quantityInt = Double(quantityValue) {
       return quantityInt + fractionValue
     } else if quantityValue.isEmpty {
       return fractionValue
@@ -83,30 +84,51 @@ struct HandleMeasurement {
     return 0.0
   }
 
-  func getIngredientDescription(ingredient: Ingredient, measurement: Measurement) -> String {
+  func getIngredientDescription(ingredient: Ingredient, measurements: [Measurement]) -> String {
     let ingredientName = ingredient.name
     var ingredientMeasurement = ""
-    let quantity = convertQuantity(quantity: measurement.quantity)
-    if measurement.unit.system == "none" && measurement.unit.abbreviation.isEmpty {
-      if quantity == 0 {
-        let name = ingredient.displaySingular ?? ingredientName
-        return "\(name)" // salt
-      } else if quantity > 0 && quantity <= 1.0 {
-        let name = ingredient.displaySingular ?? ingredientName
-        return "\(measurement.quantity) \(name)" // 1 egg
+    if measurements.count == 1 {
+      // .none
+      let measurement = measurements[0]
+      let quantity = convertQuantity(quantity: measurement.quantity)
+      if measurement.unit.system == "none" && measurement.unit.abbreviation.isEmpty {
+        if quantity == 0 {
+          let name = ingredient.displaySingular ?? ingredientName
+          return "\(name)" // salt
+        } else if quantity > 0 && quantity <= 1.0 {
+          let name = ingredient.displaySingular ?? ingredientName
+          return "\(quantity) \(name)" // 1 egg
+        } else {
+          let name = ingredient.displayPlural ?? ingredientName
+          return "\(quantity) \(name)" // 3 Apples
+        }
       } else {
-        let name = ingredient.displayPlural ?? ingredientName
-        return "\(measurement.quantity) \(name)" // 3 Apples
+        return "\(getMeasurementDescription(measurement)) \(ingredientName)"
       }
     } else {
-      var measurementName: String = ""
-      if quantity <= 1.0 {
-        measurementName = measurement.unit.displaySingular
-      } else {
-        measurementName = measurement.unit.displayPlural
+      // .Metric or .imperial
+      var metricMeasurement = ""
+      var imperialMeasurement = ""
+      measurements.forEach { measurement in
+        ingredientMeasurement = getMeasurementDescription(measurement)
+        if measurement.unit.system == UnitsSystem.imperial.rawValue {
+          imperialMeasurement = "\(ingredientMeasurement) \(ingredientName)"
+        } else if measurement.unit.system == UnitsSystem.metric.rawValue {
+          metricMeasurement = "\(ingredientMeasurement) \(ingredientName)"
+        }
       }
-      ingredientMeasurement = "\(quantity) \(measurementName) of"
-      return "\(ingredientMeasurement) \(ingredientName)"
+      return "\(metricMeasurement)\n\(imperialMeasurement)"
     }
+  }
+
+  private func getMeasurementDescription(_ measurement: Measurement) -> String {
+    let quantity = convertQuantity(quantity: measurement.quantity)
+    var measurementName: String = ""
+    if quantity <= 1.0 {
+      measurementName = measurement.unit.displaySingular
+    } else {
+      measurementName = measurement.unit.displayPlural
+    }
+    return "\(quantity) \(measurementName) of"
   }
 }
