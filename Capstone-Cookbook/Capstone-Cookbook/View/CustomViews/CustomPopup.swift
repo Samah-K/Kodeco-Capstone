@@ -60,7 +60,7 @@ struct CustomPopup: View {
     var body: some View {
       CustomPopup(
         isPopPresented: $isPopPresented,
-        popText: TextsConstants().measurementHowTo)
+        popText: TextsConstants.measurementHowTo)
     }
   }
   return Preview()

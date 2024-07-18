@@ -8,6 +8,9 @@
 import Foundation
 
 
-struct ImagesConstants {
+enum ImagesConstants {
   static let ImagePlaceHolder = "ImagePlaceHolder"
+  static let PrepareTime = "PrepareTime"
+  static let Ingredient = "Ingredient"
+  static let Instructions = "Instructions"
 }

@@ -54,30 +54,34 @@ struct AddIngredientView: View {
         if isHowPopOverPresent {
           CustomPopup(
             isPopPresented: $isHowPopOverPresent,
-            popText: TextsConstants().measurementHowTo)
+            popText: TextsConstants.measurementHowTo)
         }
       }
       .onAppear {
         self.ingredientName = ingredient.name
         self.ingredientPlural = ingredient.displayPlural ?? ingredient.name
         self.ingredientSignal = ingredient.displaySingular ?? ingredient.name
+        ViewConstants.enableSwipBackGesture = false
+      }
+      .onDisappear {
+        ViewConstants.enableSwipBackGesture = true
       }
       .interactiveDismissDisabled()
       .navigationTitle(addOrEdit == .addRecipe ? "Add New Ingredient" : "Edit Ingredient")
       .navigationBarBackButtonHidden()
       .alert(
-        TextsConstants().leavingIngredientConfirmation,
+        TextsConstants.leavingIngredientConfirmation,
         isPresented: $isAreYouSureYouWantToLeaveAlertPresent) {
           Button("Yes", role: .none) { dismiss() }
           Button("No", role: .cancel) {}
       }
       .alert(
-        TextsConstants().pleaseEnterIngredientNameAlertTitle,
+        TextsConstants.pleaseEnterIngredientNameAlertTitle,
         isPresented: $isEnterIngredientNameAlertPresent,
         actions: {
           Button("OK", role: .cancel) { isEnterIngredientNameAlertPresent = false }
         }, message: {
-          Text(TextsConstants().pleaseEnterIngredientNameAlertMessage)
+          Text(TextsConstants.pleaseEnterIngredientNameAlertMessage)
         })
       .toolbar {
         ToolbarItem(placement: .topBarTrailing) {
@@ -195,12 +199,12 @@ struct MeasurementView: View {
     .onAppear {
       setPropertiesOnAppear()
     }
-    .alert(TextsConstants().failedToConvetAmountAlertTitle, isPresented: $isCalculateAmountAlertPresent, actions: {
+    .alert(TextsConstants.failedToConvetAmountAlertTitle, isPresented: $isCalculateAmountAlertPresent, actions: {
       Button("OK", role: .cancel) {
         isCalculateAmountAlertPresent = false
       }
     }, message: {
-      Text("\(TextsConstants().failedToConvetAmountAlertMessage)")
+      Text("\(TextsConstants.failedToConvetAmountAlertMessage)")
     })
     .onChange(of: shouldSaveComponent) { _, newValue in
       if newValue {

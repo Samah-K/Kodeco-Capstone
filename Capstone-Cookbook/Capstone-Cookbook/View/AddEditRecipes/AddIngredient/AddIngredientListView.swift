@@ -11,7 +11,6 @@ struct AddIngredientListView: View {
   @Binding var sectionName: String?
   var sectionID: String
   @Binding var components: [Component]
-  // Don't update the section name immediately while the user still writing, only update it when user clicks `OK`, since the user can change their mind, and decide that they don't want to update the section name now
   @State var sectionNameInAlert: String
   @State private var isEditSectionNameAlertPresented = false // Add sections name
   @State private var isRemoveSectionAlertPresented = false
@@ -44,13 +43,13 @@ struct AddIngredientListView: View {
           }, message: {
             Text("Add Section to add Ingredient to it")
           })
-          .alert(TextsConstants().removeSectionConfirmationAlertTitle, isPresented: $isRemoveSectionAlertPresented) {
+          .alert(TextsConstants.removeSectionConfirmationAlertTitle, isPresented: $isRemoveSectionAlertPresented) {
             Button("Yes", role: .destructive) {
               removeSection(sectionID: sectionID)
             }
             Button("No", role: .cancel) { }
           } message: {
-            Text(TextsConstants().removeSectionConfirmationAlertMessage)
+            Text(TextsConstants.removeSectionConfirmationAlertMessage)
           }
         }
       }.listRowBackground(Color.clear)
@@ -65,9 +64,10 @@ struct AddIngredientListView: View {
                 addOrEdit: AddOrEditEnum.editRecipe,
                 delegate: self)
             } label: {
-              // Can't split the next line, which causes `Line Length Violation`
-              // swiftlint:disable:next line_length
-              Text("\(HandleMeasurement().getIngredientDescription(ingredient: component.wrappedValue.ingredient, measurements: component.wrappedValue.measurements))")
+              let description = HandleMeasurement().getIngredientDescription(
+                ingredient: component.wrappedValue.ingredient,
+                measurements: component.wrappedValue.measurements)
+              Text(description)
             }
           }
           .onMove { indices, newOffset in
@@ -113,7 +113,9 @@ struct AddIngredientListView: View {
       }
     }
   }
+}
 
+extension AddIngredientListView {
   func removeSection(sectionID: String) {
     if let delegate = delegate {
       delegate.removeSection(sectionID: sectionID)

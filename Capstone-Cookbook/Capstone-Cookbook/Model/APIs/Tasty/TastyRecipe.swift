@@ -87,9 +87,9 @@ struct Nutrition: Codable {
 }
 
 struct Instructions: Codable, Identifiable {
-  let displayText: String
+  var displayText: String
   let appliance: String?
-  let position: Int?
+  var position: Int?
   let id = UUID()
   let startTime: Int?
   let endTime: Int?
@@ -105,7 +105,7 @@ struct Instructions: Codable, Identifiable {
   func getBulletOrNumber() -> String {
     var bullet = "•"
     if let position = position {
-      bullet = "Step \(position) -"
+      bullet = "Step \(position)"
     }
     return bullet
   }

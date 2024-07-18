@@ -8,6 +8,8 @@
 import SwiftUI
 import PhotosUI
 
+// 💡 A REFERENCE for the Future : Don't update recipes information `immediately` while the user still editing/adding, only update it when user clicks `save`, since the user can change their mind, and decide that they don't want to update the recipe
+
 // TODO: Fix this to add instead of addRecipe
 enum AddOrEditEnum: String {
   case addRecipe = "Add New Recipe"
@@ -25,7 +27,9 @@ struct AddRecipeView: View {
   @State private var thumbnail = ""
   @State private var video = ""
   @State var ingredientSections: [IngredientSections] = []
+  @State var instructions: [Instructions] = []
   @State private var presentingIngredientSheet = false
+  @State private var presentingInstructionSheet = false
   @State private var thumbnailURL: String?
   @State private var recipeImage: Image?
   @State private var isAreYouSureYouWantToLeaveAlertPresent = false
@@ -42,7 +46,8 @@ struct AddRecipeView: View {
             Spacer()
             AddRecipeThumbnailView(
               thumbnailURL: $thumbnailURL,
-              recipeID: recipe.id)
+              recipeID: recipe.id,
+              addOrEdit: addOrEdit)
             Spacer()
           }
         }
@@ -59,11 +64,18 @@ struct AddRecipeView: View {
             presentingIngredientSheet = true
           } label: {
             ButtonLabel(buttonText: "Add Ingredient")
-          }
-          .sheet(isPresented: $presentingIngredientSheet) {
+          }.sheet(isPresented: $presentingIngredientSheet) {
             AddIngredientSectionsView(
               ingredientSections: $ingredientSections
             )
+          }
+          Button {
+            presentingInstructionSheet = true
+          } label: {
+            ButtonLabel(buttonText: "Add Instruction")
+          }
+          .sheet(isPresented: $presentingInstructionSheet) {
+            AddInstructionsListView(instructions: $instructions)
           }
         }
         Section {
@@ -98,17 +110,14 @@ struct AddRecipeView: View {
         // Instructions
       }
       .onAppear {
-        recipeName = recipe.tastyRecipe.name
-        recipeDescription = recipe.tastyRecipe.description ?? ""
-        prepTime = recipe.tastyRecipe.prepTimeMinutes ?? 0
-        cookTime = recipe.tastyRecipe.cookTimeMinutes ?? 0
-        numServing = recipe.tastyRecipe.numServing
-        video = recipe.tastyRecipe.videoURL ?? ""
-        ingredientSections = recipe.tastyRecipe.ingredientSections
-        thumbnailURL = recipe.tastyRecipe.thumbnailURL
+        loadRecipe()
+        ViewConstants.enableSwipBackGesture = false
+      }
+      .onDisappear {
+        ViewConstants.enableSwipBackGesture = true
       }
       .alert(
-        TextsConstants().leavingRecipeConfirmation,
+        TextsConstants.leavingRecipeConfirmation,
         isPresented: $isAreYouSureYouWantToLeaveAlertPresent) {
           Button("Yes", role: .none) {
             isAreYouSureYouWantToLeaveAlertPresent = false
@@ -118,9 +127,9 @@ struct AddRecipeView: View {
             dismiss()
           }
           Button("No", role: .none) {}
-      }
+        }
         .alert(
-          TextsConstants().pleaseEnterRecipeNameAlertTitle,
+          TextsConstants.pleaseEnterRecipeNameAlertTitle,
           isPresented: $isEmptyRecipeNameAlertPresent,
           actions: {
             Button("OK", role: .none) {
@@ -128,7 +137,7 @@ struct AddRecipeView: View {
             }
           },
           message: {
-            Text(TextsConstants().pleaseEnterRecipeNameAlertMessage)
+            Text(TextsConstants.pleaseEnterRecipeNameAlertMessage)
           })
         .navigationBarBackButtonHidden()
         .navigationTitle(addOrEdit.rawValue)
@@ -151,9 +160,23 @@ struct AddRecipeView: View {
               BackNavigationButton()
             })
           }
-          //          KeyboardToolbarItem()
+          //                    KeyboardToolbarItem()
         }
     }
+  }
+}
+
+extension AddRecipeView {
+  private func loadRecipe() {
+    recipeName = recipe.tastyRecipe.name
+    recipeDescription = recipe.tastyRecipe.description ?? ""
+    prepTime = recipe.tastyRecipe.prepTimeMinutes ?? 0
+    cookTime = recipe.tastyRecipe.cookTimeMinutes ?? 0
+    numServing = recipe.tastyRecipe.numServing
+    video = recipe.tastyRecipe.videoURL ?? ""
+    ingredientSections = recipe.tastyRecipe.ingredientSections
+    instructions = recipe.tastyRecipe.instructions
+    thumbnailURL = recipe.tastyRecipe.thumbnailURL
   }
 
   private func saveRecipe() {
@@ -164,11 +187,13 @@ struct AddRecipeView: View {
     recipe.tastyRecipe.numServing = numServing
     recipe.tastyRecipe.videoURL = video
     recipe.tastyRecipe.ingredientSections = ingredientSections
+    recipe.tastyRecipe.instructions = instructions
     if let thumbnailURL = thumbnailURL {
-      print(thumbnailURL)
-      recipe.tastyRecipe.thumbnailURL = recipe.id
-      recipe.tastyRecipe.beautyURL = recipe.id
-      recipe.tastyRecipe.imageDataURL = nil
+      if !thumbnailURL.starts(with: "https") {
+        recipe.tastyRecipe.thumbnailURL = recipe.id
+        recipe.tastyRecipe.beautyURL = recipe.id
+        recipe.tastyRecipe.imageDataURL = nil
+      }
     }
     recalculateComponentPosition()
     recipeStore.saveChangesOnRecipe(recipe)
@@ -198,69 +223,6 @@ struct AddRecipeView: View {
   }
 }
 
-struct TimePicker: View {
-  @State private var hours: Int = 0
-  @State private var minutes: Int = 0
-  var timePickerTitle: String
-  @Binding var time: Int // in minutes: (hours * 60 + minutes)
-  var body: some View {
-    VStack(alignment: .center, spacing: 10) {
-      Text("\(timePickerTitle)")
-      HStack {
-        VStack(spacing: 3) {
-          Picker("Hours", selection: $hours) {
-            ForEach(0..<11) { hour in
-              Text("\(hour)")
-                .tag("\(hour)")
-            }
-          }
-          .pickerStyle(.wheel)
-          .frame(maxWidth: 50, maxHeight: 100)
-          Text("hours")
-            .font(.caption)
-            .opacity(0.5)
-        }
-
-        VStack(spacing: 3) {
-          Picker("Minutes", selection: $minutes) {
-            ForEach(0..<60) { minutes in
-              Text("\(minutes)")
-                .tag("(minutes)")
-            }
-          }
-          .pickerStyle(.wheel)
-          .frame(maxWidth: 50, maxHeight: 100)
-          Text("minutes")
-            .font(.caption)
-            .opacity(0.5)
-        }
-      }
-      .onChange(of: hours) {
-        calculateTime()
-      }
-      .onChange(of: minutes) {
-        calculateTime()
-      }
-      .onAppear {
-        hours = time / 60
-        minutes = time % 60
-      }
-    }
-  }
-  private func calculateTime() {
-    time = hours * 60 + minutes
-  }
-}
-
-#Preview("TimePicker") {
-  struct Preview: View {
-    @State var timeInt = 260
-    var body: some View {
-      TimePicker(timePickerTitle: "Prep Time", time: $timeInt)
-    }
-  }
-  return Preview()
-}
 #Preview {
   struct Preview: View {
     private static let tastyRecipe = TastyJSONSample().getRecipeFromJSONFile()?.recipes[0]
@@ -272,15 +234,3 @@ struct TimePicker: View {
   }
   return Preview()
 }
-
-
-// file:///var/mobile/Containers/Data/Application/16936438-A9E7-4388-86E7-9B0584B654DB/Documents/
-
-
-// file:///Users/samahktaifan/Library/Developer/CoreSimulator/Devices/CBBC831E-805D-4FEF-B156-A00FD6141A0A/data/Containers/Data/Application/C02BF1E7-899B-4284-B2B7-5CAE4FD513B0/Documents/
-
-///Users/samahktaifan/Library/Developer/CoreSimulator/Devices/CBBC831E-805D-4FEF-B156-A00FD6141A0A/data/Containers/Data/Application/EC771B7D-1F61-4EB6-ACCA-18115D6560E0/Documents/Image-DC48EE96-06E8-4538-8CFB-D168ADF9D218.jpg
-
-
-/// var/mobile/Containers/Data/Application/5EB8A798-0945-42B8-83FC-E29C4F14831F/Documents/Image-5E5ADE34-0E97-47A3-8FB6-99D491582DD7.jpg
-// file:///var/mobile/Containers/Data/Application/5EB8A798-0945-42B8-83FC-E29C4F14831F/Documents/

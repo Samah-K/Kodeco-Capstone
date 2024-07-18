@@ -211,13 +211,12 @@ class RecipesStore: ObservableObject {
   }
 
   func loadImage(imageName: String) -> String? {
-//    do {
-    let fileName = FileManager.documentDirectoryURL.appending(component: "Image-\(imageName)").appendingPathExtension("jpg")
-      if FileManager.default.fileExists(atPath: fileName.path()) {
-        return fileName.path()
-      }
+    let fileName = FileManager.documentDirectoryURL.appending(component: "Image-\(imageName)")
+      .appendingPathExtension("jpg")
+    if FileManager.default.fileExists(atPath: fileName.path()) {
+      return fileName.path()
+    }
     return nil
-//    }
   }
 
   func convertAmount(of ingredientName: String, from amount: Double, _ fromUnit: UnitsName, to toUnit: UnitsName, delegate: CalculateAmountProtocol) {

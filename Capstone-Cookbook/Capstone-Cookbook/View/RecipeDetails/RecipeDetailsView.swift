@@ -22,121 +22,64 @@ struct RecipeDetailsView: View {
         VStack {
           // image
           VStack {
-            // TODO: Change image URL
             VStack {
               if let url = recipe.tastyRecipe.imageDataURL {
                 RecipeAsyncImage(thumbnailURL: url)
-
               } else {
                 RecipeImage(thumbnailURL: recipe.tastyRecipe.getRecipeImageURL())
-
               }
             }
-//            .clipShape(Circle())
-//            .overlay {
-//              Circle()
-//                .stroke(Color.white, lineWidth: 5.0)
-//            }
-//            .frame(width: 130, height: 130)
-            .frame(width: 300, height: 300)
+            .frame(width: 280, height: 280)
             .clipShape(RoundedRectangle(cornerRadius: ViewConstants.roundCorner))
             .shadow(radius: 3.0)
-//            .background(.red)
-
-//            AsyncImage(url: URL(string: recipe.tastyRecipe.getRecipeImageURL()), content: { image in
-//              image.resizable()
-//            }, placeholder: {
-//              ZStack {
-//                ProgressView()
-//              }
-//              .frame(width: 300, height: 300)
-//            })
-//            .clipShape(Circle())
-//            .overlay {
-//              Circle()
-//                .stroke(Color.white, lineWidth: 5.0)
-//            }
-//            .shadow(radius: 3.0)
-//            .frame(width: 300, height: 300)
           }
-          .frame(height: proxy.size.height * 0.4)
-
-
+          .padding(.top, 20)
+          .frame(height: proxy.size.height * 0.5)
           // Recipe Name + Recipe Description
           VStack(spacing: 15) {
             Text(recipe.tastyRecipe.name)
               .font(.title)
               .padding(.top, 6)
-            HStack (alignment: .firstTextBaseline){
-              Spacer()
-              Spacer()
-              HStack (alignment: .center) {
-                if let prepareTime = recipe.tastyRecipe.prepTimeMinutes {
-                  Image("PrepareTime")
-                    .resizable()
-                    .frame(width: 25, height: 25)
-                  Text(HandleMeasurement().calculateTotalTime(prepTime: prepareTime, cookTime: 0))
-                }
-              }
-              Spacer()
-              if let cookTime = recipe.tastyRecipe.cookTimeMinutes {
-                HStack {
-                  Image(systemName: "frying.pan")
-                    .frame(width: 25, height: 25)
-                  Text(HandleMeasurement().calculateTotalTime(prepTime: 0, cookTime: cookTime))
-                }
-              }
-              Spacer()
-              Spacer()
-            }
+            RecipeTime(recipe: recipe)
             Text(recipe.tastyRecipe.description ?? " - ")
               .font(.subheadline)
-              .lineLimit(2)
+              .lineLimit(4)
               .allowsTightening(true)
               .onTapGesture {
                 descriptionShowingModal = true
               }
-            
           }
           .padding(.horizontal, 20)
-          .frame(height: proxy.size.height * 0.25)
+          .frame(height: proxy.size.height * 0.3)
 
-          //         Nutrition
-          //          if !ingredientdisclousureExpand && !instructionDisclousureExpand {
-          //            if let recipeNutrition = recipe.nutrition {
-          //              NutritionView(
-          //                numberOfPeople: recipe.numServing,
-          //                recipeID: recipe.id,
-          //                nutrition: recipeNutrition)
-          //            }
-          //          }
-//          ScrollView {
-//            if !ingredientdisclousureExpand {
-//              InstructionsView(
-//                disclousureExpand: $instructionDisclousureExpand,
-//                instructions: recipe.tastyRecipe.instructions)
-//            }
-//            if !instructionDisclousureExpand {
-//              IngredientView(
-//                disclousureExpand: $ingredientdisclousureExpand,
-//                ingredientSections: recipe.tastyRecipe.ingredientSections
-//              )
-//            }
-//          }
-          VStack {
-            NavigationLink {
-              IngredientListView(ingredientSection: recipe.tastyRecipe.ingredientSections)
-            } label: {
-              Text("Ingredient")
+          VStack(spacing: 12.0) {
+            VStack {
+              NavigationLink {
+                InstructionListView(
+                  instructions: recipe.tastyRecipe.instructions,
+                  videoURL: recipe.tastyRecipe.videoURL)
+              } label: {
+                RecipeDetailsButton(
+                  imageName: ImagesConstants.Instructions,
+                  text: "Instructions",
+                  background: Color.accentColor)
+              }
             }
-
-
+            VStack {
+              NavigationLink {
+                IngredientListView(ingredientSection: recipe.tastyRecipe.ingredientSections)
+              } label: {
+                RecipeDetailsButton(
+                  imageName: ImagesConstants.Ingredient,
+                  text: "Check Ingredient",
+                  background: Color.tint
+                )
+              }
+            }
           }
-          .frame(height: proxy.size.height * 0.35)
+          .frame(height: proxy.size.height * 0.2)
+          .padding(.top, 8)
         }
-        //        .sheet(isPresented: $isNewRecipeSheetPresented) {
-        //          AddRecipeView(recipe: $recipe, addOrEdit: .editRecipe)
-        //        }
         .toolbar {
           ToolbarItem(placement: .topBarTrailing) {
             if recipe.recipeType == .tastyRecipe {
@@ -149,12 +92,6 @@ struct RecipeDetailsView: View {
               } label: {
                 Text("Edit")
               }
-
-              //              Button(action: {
-              //                isNewRecipeSheetPresented = true
-              //              }, label: {
-              //                Text("Edit")
-              //              })
             }
           }
         }
@@ -170,7 +107,57 @@ struct RecipeDetailsView: View {
     }
   }
 }
+struct RecipeTime: View {
+  @State var recipe: Recipe
+  var body: some View {
+    HStack(alignment: .firstTextBaseline) {
+      Spacer()
+      Spacer()
+      HStack(alignment: .center) {
+        if let prepareTime = recipe.tastyRecipe.prepTimeMinutes {
+          Image("\(ImagesConstants.PrepareTime)")
+            .resizable()
+            .frame(width: 25, height: 25)
+          Text(HandleMeasurement().calculateTotalTime(prepTime: prepareTime, cookTime: 0))
+        }
+      }
+      Spacer()
+      if let cookTime = recipe.tastyRecipe.cookTimeMinutes {
+        HStack {
+          Image(systemName: "frying.pan")
+            .frame(width: 25, height: 25)
+          Text(HandleMeasurement().calculateTotalTime(prepTime: 0, cookTime: cookTime))
+        }
+      }
+      Spacer()
+      Spacer()
+      Spacer()
+    }
+  }
+}
 
+struct RecipeDetailsButton: View {
+  let imageName: String
+  let text: String
+  let background: Color
+  var body: some View {
+    HStack {
+      Image(imageName)
+        .resizable()
+        .frame(width: 30, height: 30)
+      Text(text)
+        .font(.title2)
+        .foregroundStyle(.white)
+    }
+    .padding()
+    .background(background)
+    .clipShape(RoundedRectangle(cornerRadius: ViewConstants.roundCorner))
+    .overlay {
+      RoundedRectangle(cornerRadius: ViewConstants.roundCorner)
+        .stroke(.white, lineWidth: 2.0)
+    }
+  }
+}
 // #Preview {
 //  NavigationStack {
 //    RecipeDetailsView(
@@ -234,48 +221,48 @@ struct IngredientView: View {
   let ingredientSections: [IngredientSections]
   var body: some View {
     VStack { }
-//      DisclosureGroup(
-//        isExpanded: $disclousureExpand,
-//        content: {
-//          VStack {
-//            ForEach(ingredientSections) { section in
-//              if ingredientSections.count > 1 {
-//                DisclosureGroup(
-//                  content: {
-//                    ScrollView {
-//                      VStack(alignment: .leading, spacing: 5) {
-//                        ForEach(section.components) { component in
-//                          Text("• \(component.getIngredientDescription(measurement: component.measurements[0]))")
-//                            .frame(maxWidth: .infinity, alignment: .leading)
-//                        }
-//                      }
-//                    }
-//                  },
-//                  label: {
-//                    Text("\(section.name ?? "")")
-//                      .font(.title2)
-//                  }
-//                )
-//                .padding(.horizontal, 20)
-//              } else {
-//                ForEach(section.components) { component in
-//                  VStack(alignment: .leading, spacing: 5) {
-//                    Text("• \(component.getIngredientDescription())")
-//                      .frame(maxWidth: .infinity, alignment: .leading)
-//                  }
-//                }
-//              }
-//            }
-//          }
-//        },
-//        label: {
-//          Text("Ingredient")
-//            .font(.title)
-//        }
-//      )
-//    }
-//    //    .frame(width: .infinity, height: 200)
-//    .padding(.horizontal, 20)
+    //      DisclosureGroup(
+    //        isExpanded: $disclousureExpand,
+    //        content: {
+    //          VStack {
+    //            ForEach(ingredientSections) { section in
+    //              if ingredientSections.count > 1 {
+    //                DisclosureGroup(
+    //                  content: {
+    //                    ScrollView {
+    //                      VStack(alignment: .leading, spacing: 5) {
+    //                        ForEach(section.components) { component in
+    //                          Text("• \(component.getIngredientDescription(measurement: component.measurements[0]))")
+    //                            .frame(maxWidth: .infinity, alignment: .leading)
+    //                        }
+    //                      }
+    //                    }
+    //                  },
+    //                  label: {
+    //                    Text("\(section.name ?? "")")
+    //                      .font(.title2)
+    //                  }
+    //                )
+    //                .padding(.horizontal, 20)
+    //              } else {
+    //                ForEach(section.components) { component in
+    //                  VStack(alignment: .leading, spacing: 5) {
+    //                    Text("• \(component.getIngredientDescription())")
+    //                      .frame(maxWidth: .infinity, alignment: .leading)
+    //                  }
+    //                }
+    //              }
+    //            }
+    //          }
+    //        },
+    //        label: {
+    //          Text("Ingredient")
+    //            .font(.title)
+    //        }
+    //      )
+    //    }
+    //    //    .frame(width: .infinity, height: 200)
+    //    .padding(.horizontal, 20)
   }
 }
 
@@ -335,7 +322,7 @@ struct NutritionView: View {
         numberOfPeople -= 1
       }
     }
-//    tastyStore.scaleRecipe(for: recipeID, numberOfPeople: numberOfPeople)
+    //    tastyStore.scaleRecipe(for: recipeID, numberOfPeople: numberOfPeople)
   }
 }
 

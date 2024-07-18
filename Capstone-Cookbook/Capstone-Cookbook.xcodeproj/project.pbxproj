@@ -45,6 +45,14 @@
 		AC956FEE2C486AE900B1E7D9 /* ImagePlaceHolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC956FED2C486AE900B1E7D9 /* ImagePlaceHolderView.swift */; };
 		AC956FF22C48A2A100B1E7D9 /* RecipeAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC956FF12C48A2A100B1E7D9 /* RecipeAsyncImage.swift */; };
 		AC956FF72C491E8200B1E7D9 /* IngredientListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC956FF62C491E8200B1E7D9 /* IngredientListView.swift */; };
+		AC956FFA2C493E5800B1E7D9 /* AddInstructionsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC956FF92C493E5800B1E7D9 /* AddInstructionsListView.swift */; };
+		AC956FFC2C49741700B1E7D9 /* AddInstructionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC956FFB2C49741700B1E7D9 /* AddInstructionView.swift */; };
+		AC956FFE2C4974D700B1E7D9 /* InstructionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC956FFD2C4974D700B1E7D9 /* InstructionProtocol.swift */; };
+		AC9570002C497DB300B1E7D9 /* InstructionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC956FFF2C497DB300B1E7D9 /* InstructionListView.swift */; };
+		AC9570022C4986CA00B1E7D9 /* VideoPlayImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9570012C4986CA00B1E7D9 /* VideoPlayImage.swift */; };
+		AC9570042C49BBD000B1E7D9 /* TimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9570032C49BBD000B1E7D9 /* TimePicker.swift */; };
+		AC9570062C49C17600B1E7D9 /* Safari.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9570052C49C17500B1E7D9 /* Safari.swift */; };
+		AC9570082C49C8E200B1E7D9 /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9570072C49C8E200B1E7D9 /* UIApplicationExtension.swift */; };
 		AC9FC7F92C38C66B00707A78 /* MyCookbookFileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9FC7F82C38C66B00707A78 /* MyCookbookFileStore.swift */; };
 		ACAF98522C44955B007D52C5 /* CustomPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAF98512C44955B007D52C5 /* CustomPopup.swift */; };
 		ACAF98542C44A699007D52C5 /* EmptyObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAF98532C44A699007D52C5 /* EmptyObjects.swift */; };
@@ -125,6 +133,14 @@
 		AC956FED2C486AE900B1E7D9 /* ImagePlaceHolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePlaceHolderView.swift; sourceTree = "<group>"; };
 		AC956FF12C48A2A100B1E7D9 /* RecipeAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeAsyncImage.swift; sourceTree = "<group>"; };
 		AC956FF62C491E8200B1E7D9 /* IngredientListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientListView.swift; sourceTree = "<group>"; };
+		AC956FF92C493E5800B1E7D9 /* AddInstructionsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInstructionsListView.swift; sourceTree = "<group>"; };
+		AC956FFB2C49741700B1E7D9 /* AddInstructionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInstructionView.swift; sourceTree = "<group>"; };
+		AC956FFD2C4974D700B1E7D9 /* InstructionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionProtocol.swift; sourceTree = "<group>"; };
+		AC956FFF2C497DB300B1E7D9 /* InstructionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionListView.swift; sourceTree = "<group>"; };
+		AC9570012C4986CA00B1E7D9 /* VideoPlayImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayImage.swift; sourceTree = "<group>"; };
+		AC9570032C49BBD000B1E7D9 /* TimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePicker.swift; sourceTree = "<group>"; };
+		AC9570052C49C17500B1E7D9 /* Safari.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Safari.swift; sourceTree = "<group>"; };
+		AC9570072C49C8E200B1E7D9 /* UIApplicationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtension.swift; sourceTree = "<group>"; };
 		AC9FC7F82C38C66B00707A78 /* MyCookbookFileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCookbookFileStore.swift; sourceTree = "<group>"; };
 		ACAF98512C44955B007D52C5 /* CustomPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopup.swift; sourceTree = "<group>"; };
 		ACAF98532C44A699007D52C5 /* EmptyObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyObjects.swift; sourceTree = "<group>"; };
@@ -297,6 +313,7 @@
 				AC8166F02C40406E003B89EA /* PhotosPickerItemExtension.swift */,
 				ACAF98592C454A45007D52C5 /* NavigationExtension.swift */,
 				AC956FE52C4818B900B1E7D9 /* Color.swift */,
+				AC9570072C49C8E200B1E7D9 /* UIApplicationExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -304,6 +321,7 @@
 		AC6ADD712C400B3000E87454 /* AddEditRecipes */ = {
 			isa = PBXGroup;
 			children = (
+				AC956FF82C4939F400B1E7D9 /* AddInstructions */,
 				AC3728762C4491D600FDF9BC /* AddIngredient */,
 				ACC035342C3B4543007ECF4E /* AddRecipeView.swift */,
 				AC31BA122C41DCBE003735D4 /* AddRecipeThumbnailView.swift */,
@@ -316,8 +334,19 @@
 			children = (
 				AC1F4B6C2C3374E900855379 /* RecipeDetailsView.swift */,
 				AC956FF62C491E8200B1E7D9 /* IngredientListView.swift */,
+				AC956FFF2C497DB300B1E7D9 /* InstructionListView.swift */,
 			);
 			path = RecipeDetails;
+			sourceTree = "<group>";
+		};
+		AC956FF82C4939F400B1E7D9 /* AddInstructions */ = {
+			isa = PBXGroup;
+			children = (
+				AC956FF92C493E5800B1E7D9 /* AddInstructionsListView.swift */,
+				AC956FFB2C49741700B1E7D9 /* AddInstructionView.swift */,
+				AC956FFD2C4974D700B1E7D9 /* InstructionProtocol.swift */,
+			);
+			path = AddInstructions;
 			sourceTree = "<group>";
 		};
 		ACAF984F2C449519007D52C5 /* CustomViews */ = {
@@ -330,6 +359,9 @@
 				AC956FE92C4863ED00B1E7D9 /* RecipeImage.swift */,
 				AC956FED2C486AE900B1E7D9 /* ImagePlaceHolderView.swift */,
 				AC956FF12C48A2A100B1E7D9 /* RecipeAsyncImage.swift */,
+				AC9570012C4986CA00B1E7D9 /* VideoPlayImage.swift */,
+				AC9570032C49BBD000B1E7D9 /* TimePicker.swift */,
+				AC9570052C49C17500B1E7D9 /* Safari.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -536,6 +568,7 @@
 				AC3728782C44920E00FDF9BC /* AddIngredientListView.swift in Sources */,
 				AC1F4B642C336AB700855379 /* RecipesStore.swift in Sources */,
 				ACC0353D2C3CA55B007ECF4E /* RecipeGridView.swift in Sources */,
+				AC9570042C49BBD000B1E7D9 /* TimePicker.swift in Sources */,
 				ACFF6EF72C4594D300BD9F72 /* DismissKeyboardToolbarItem.swift in Sources */,
 				AC1F4B662C336BFE00855379 /* ErrorsEnums.swift in Sources */,
 				AC1F4B562C335BE700855379 /* TastyAPI.swift in Sources */,
@@ -543,8 +576,10 @@
 				ACAF985A2C454A45007D52C5 /* NavigationExtension.swift in Sources */,
 				ACAF98542C44A699007D52C5 /* EmptyObjects.swift in Sources */,
 				ACB722C62C40A103000B2A8F /* AddIngredientSectionsView.swift in Sources */,
+				AC9570062C49C17600B1E7D9 /* Safari.swift in Sources */,
 				ACC0353B2C3CA50C007ECF4E /* MyRecipesView.swift in Sources */,
 				AC37284D2C432CC200FDF9BC /* HandleMeasurement.swift in Sources */,
+				AC956FFE2C4974D700B1E7D9 /* InstructionProtocol.swift in Sources */,
 				AC956FEE2C486AE900B1E7D9 /* ImagePlaceHolderView.swift in Sources */,
 				AC1F4B6F2C337C8A00855379 /* TastyJSONSample.swift in Sources */,
 				AC1F4B5A2C3360AF00855379 /* TastyRecipe.swift in Sources */,
@@ -564,18 +599,23 @@
 				AC37287A2C44922D00FDF9BC /* AddIngredientAndMeasurementView.swift in Sources */,
 				ACC035212C3AC578007ECF4E /* SpoonacularUnitAmounts.swift in Sources */,
 				ACC035252C3ACBC2007ECF4E /* SpoonacularNetworkService.swift in Sources */,
+				AC9570082C49C8E200B1E7D9 /* UIApplicationExtension.swift in Sources */,
 				AC1F4B742C37558D00855379 /* AlertInfo.swift in Sources */,
 				AC956FF72C491E8200B1E7D9 /* IngredientListView.swift in Sources */,
 				AC1F4B762C377A6000855379 /* TastyPage.swift in Sources */,
 				AC956FE22C473EDC00B1E7D9 /* TastyTagsList.swift in Sources */,
+				AC9570022C4986CA00B1E7D9 /* VideoPlayImage.swift in Sources */,
 				AC956FEA2C4863ED00B1E7D9 /* RecipeImage.swift in Sources */,
 				AC1F4B6D2C3374E900855379 /* RecipeDetailsView.swift in Sources */,
 				AC40505E2C3358B200F4D5F6 /* ContentView.swift in Sources */,
 				ACB722C82C40AA67000B2A8F /* UnitsConstant.swift in Sources */,
 				AC40505C2C3358B200F4D5F6 /* CapstoneCookbookApp.swift in Sources */,
 				AC68D9762C3944F200233E83 /* RecipeItemView.swift in Sources */,
+				AC956FFC2C49741700B1E7D9 /* AddInstructionView.swift in Sources */,
+				AC956FFA2C493E5800B1E7D9 /* AddInstructionsListView.swift in Sources */,
 				AC3EAE6E2C3E09DD003B58D2 /* Recipe.swift in Sources */,
 				ACAF98562C452734007D52C5 /* IngredientProtocols.swift in Sources */,
+				AC9570002C497DB300B1E7D9 /* InstructionListView.swift in Sources */,
 				AC31BA132C41DCBE003735D4 /* AddRecipeThumbnailView.swift in Sources */,
 				AC956FF22C48A2A100B1E7D9 /* RecipeAsyncImage.swift in Sources */,
 			);

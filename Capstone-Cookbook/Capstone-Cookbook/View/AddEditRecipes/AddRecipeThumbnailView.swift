@@ -13,9 +13,23 @@ struct AddRecipeThumbnailView: View {
   @State private var photo: PhotosPickerItem?
   @Binding var thumbnailURL: String?
   var recipeID: String
+  var addOrEdit: AddOrEditEnum
   var body: some View {
     ZStack(alignment: .bottom) {
-      RecipeImage(thumbnailURL: thumbnailURL)
+      if addOrEdit == .addRecipe {
+        if let thumbnailURL = thumbnailURL {
+          if let uiImage = UIImage(contentsOfFile: thumbnailURL) {
+            Image(uiImage: uiImage)
+              .resizable()
+          } else {
+            ImagePlaceHolderView()
+          }
+        } else {
+          ImagePlaceHolderView()
+        }
+      } else {
+        RecipeImage(thumbnailURL: thumbnailURL)
+      }
       PhotosPicker(selection: $photo, matching: .images) {
         VStack(spacing: 1) {
           Image(systemName: "photo.badge.plus")
@@ -61,7 +75,7 @@ struct AddRecipeThumbnailView: View {
     var body: some View {
       AddRecipeThumbnailView(
         thumbnailURL: $thumbnailURL,
-        recipeID: "\(String(describing: recipeID))")
+        recipeID: "\(String(describing: recipeID))", addOrEdit: .addRecipe)
       .environmentObject(RecipesStore())
     }
   }

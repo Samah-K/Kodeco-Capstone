@@ -40,4 +40,13 @@ struct EmptyObjects {
       quantity: "0",
       unit: createEmptyUnit())
   }
+  func createEmptyInstruction() -> Instructions {
+    return Instructions(
+      displayText: "",
+      appliance: "",
+      position: 0,
+      startTime: nil,
+      endTime: nil,
+      temperature: nil)
+  }
 }
