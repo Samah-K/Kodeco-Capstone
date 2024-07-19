@@ -32,7 +32,7 @@ struct AddInstructionView: View {
       .alert(
         TextsConstants.leavingInstructionConfirmation,
         isPresented: $isConfirmationAlertPresented) {
-          Button("Yes", role: .none) { dismiss() }
+          Button("Yes", role: .destructive) { dismiss() }
           Button("No", role: .cancel) {}
       }
         .toolbar {

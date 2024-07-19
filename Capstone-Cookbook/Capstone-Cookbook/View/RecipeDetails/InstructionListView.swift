@@ -18,9 +18,9 @@ struct InstructionListView: View {
     ZStack {
       VStack {
         List(instructions) { instruction in
-          HStack {
+          HStack(spacing: 10) {
             Text(instruction.getBulletOrNumber())
-              .font(.title3)
+              .font(.title3.smallCaps())
               .fontWeight(.light)
               .foregroundStyle(Color.accentColor)
             Text(instruction.displayText)

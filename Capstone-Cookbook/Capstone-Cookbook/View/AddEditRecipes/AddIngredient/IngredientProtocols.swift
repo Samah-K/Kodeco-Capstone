@@ -14,4 +14,5 @@ protocol UpdateIngredientComponent {
 protocol CalculateAmountProtocol {
   func updateUI(to unitAmount: UnitAmounts, _ toSystem: UnitsSystem)
   func noResultWasFound()
+  func showErrors(error: String)
 }

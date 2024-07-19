@@ -55,7 +55,11 @@ struct RecipeItemView: View {
             if !recipe.getTotalCookTime().isEmpty {
               HStack(spacing: 5) {
                 Image(systemName: "timer")
-                Text(recipe.getTotalCookTime())
+                if recipe.getTotalCookTime() == " " {
+                  Text("-")
+                } else {
+                  Text(recipe.getTotalCookTime())
+                }
               }
               .foregroundStyle(Color.text)
               .frame(height: proxy.size.height * 0.5, alignment: .center)

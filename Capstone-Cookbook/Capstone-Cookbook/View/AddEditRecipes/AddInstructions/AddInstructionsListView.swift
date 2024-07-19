@@ -20,9 +20,9 @@ struct AddInstructionsListView: View {
                 addOrEdit: .editRecipe,
                 delegate: self)
             } label: {
-              HStack {
+              HStack(spacing: 10) {
                 Text(instruction.getBulletOrNumber())
-                  .font(.title3)
+                  .font(.title3.smallCaps())
                   .fontWeight(.light)
                   .foregroundStyle(Color.accentColor)
                 Text(instruction.displayText)

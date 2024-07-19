@@ -72,7 +72,7 @@ struct AddIngredientView: View {
       .alert(
         TextsConstants.leavingIngredientConfirmation,
         isPresented: $isAreYouSureYouWantToLeaveAlertPresent) {
-          Button("Yes", role: .none) { dismiss() }
+          Button("Yes", role: .destructive) { dismiss() }
           Button("No", role: .cancel) {}
       }
       .alert(

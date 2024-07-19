@@ -12,7 +12,7 @@ struct ButtonLabel: View {
   var padding: Double = 20.0
   var background = Color.accent
   var foregroundColor = Color.white
-  var cornerRadius = 20.0
+  var cornerRadius = ViewConstants.roundCorner
   var font = Font.title2
     var body: some View {
       Text(buttonText)

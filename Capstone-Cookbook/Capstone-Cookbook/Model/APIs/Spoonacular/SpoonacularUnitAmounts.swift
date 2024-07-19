@@ -9,9 +9,9 @@ import Foundation
 
 // Spoonacular API
 struct UnitAmounts: Decodable {
-  let sourceUnit: String //
+  let sourceUnit: String
   let sourceAmount: Double
-  let targetUnit: String//
+  let targetUnit: String
   let targetAmount: Double
-  var ingredient: String?//
+  var ingredient: String?
 }

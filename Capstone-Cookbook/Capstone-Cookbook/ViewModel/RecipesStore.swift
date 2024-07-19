@@ -233,7 +233,7 @@ class RecipesStore: ObservableObject {
           delegate.noResultWasFound()
         }
       } catch {
-        delegate.noResultWasFound()
+        delegate.showErrors(error: error.localizedDescription)
         print(error)
       }
     }

@@ -23,6 +23,8 @@ struct MeasurementView: View {
   @State private var noneSystem = MeasurementAndUnit(quantity: 0, unit: .none)
   @State private var showProgressView = false
   @State private var isCalculateAmountAlertPresent = false
+  @State private var errorTitle = ""
+  @State private var errorMessage = ""
   var delegate: UpdateIngredientComponent?
 
   var body: some View {
@@ -42,7 +44,12 @@ struct MeasurementView: View {
       }
     } header: {
       HStack {
-        Text("Measurements")
+        HStack(spacing: 10) {
+          Text("Measurements")
+          if showProgressView {
+            ProgressView()
+          }
+        }
         Spacer()
         Button(action: {
           isHowPopOverPresent = true
@@ -64,7 +71,7 @@ struct MeasurementView: View {
                   imperialSystem.unit,
                   to: metricSystem.unit)
               }, label: {
-                ButtonLabel(buttonText: "Calculate\n\(metricSystem.unit)", padding: 15.0, font: .callout)
+                ButtonLabel(buttonText: "Calculate\n\(metricSystem.unit)", padding: 15.0, font: .callout.smallCaps())
               })
             .disabled(showProgressView)
             Button(
@@ -76,27 +83,23 @@ struct MeasurementView: View {
                   metricSystem.unit,
                   to: imperialSystem.unit)
               }, label: {
-                ButtonLabel(buttonText: "Calculate\n\(imperialSystem.unit)", padding: 15.0, font: .callout)
+                ButtonLabel(buttonText: "Calculate\n\(imperialSystem.unit)", padding: 15.0, font: .callout.smallCaps())
               })
             .disabled(showProgressView)
           }
           .padding(.top, 10)
-          if showProgressView {
-            ProgressView()
-              .padding(.top, 10)
-          }
         }
       }
     }
     .onAppear {
       setPropertiesOnAppear()
     }
-    .alert(TextsConstants.failedToConvetAmountAlertTitle, isPresented: $isCalculateAmountAlertPresent, actions: {
+    .alert(errorTitle, isPresented: $isCalculateAmountAlertPresent, actions: {
       Button("OK", role: .cancel) {
         isCalculateAmountAlertPresent = false
       }
     }, message: {
-      Text("\(TextsConstants.failedToConvetAmountAlertMessage)")
+      Text("\(errorMessage)")
     })
     .onChange(of: shouldSaveComponent) { _, newValue in
       if newValue {
@@ -190,6 +193,8 @@ extension MeasurementView: CalculateAmountProtocol {
   func noResultWasFound() {
     isCalculateAmountAlertPresent = true
     showProgressView = false
+    errorTitle = TextsConstants.failedToConvetAmountAlertTitle
+    errorMessage = TextsConstants.failedToConvetAmountAlertMessage
   }
 
   func updateUI(to unitAmount: UnitAmounts, _ toSystem: UnitsSystem) {
@@ -201,6 +206,13 @@ extension MeasurementView: CalculateAmountProtocol {
       // update the imperial value
       imperialSystem.quantity = unitAmount.targetAmount
     }
+  }
+
+  func showErrors(error: String) {
+    isCalculateAmountAlertPresent = true
+    showProgressView = false
+    errorTitle = "Something went wrong"
+    errorMessage = error
   }
 }
 
