@@ -22,7 +22,7 @@ struct InstructionListView: View {
             Text(instruction.getBulletOrNumber())
               .font(.title3)
               .fontWeight(.light)
-              .foregroundStyle(Color.accentSecondary)
+              .foregroundStyle(Color.accentColor)
             Text(instruction.displayText)
           }
         }
@@ -83,15 +83,13 @@ struct RecipeVideoPlayer: View {
 
 extension InstructionListView {
   func showYouTubePlayer() {
-
-      if let videoURLString = videoURL {
-        if let videoURL = URL(string: videoURLString) {
-          let configuration = SFSafariViewController.Configuration()
-          let safariViewController = SFSafariViewController(url: videoURL, configuration: configuration)
-          UIApplication.shared.firstKeyWindow?.rootViewController?.present(safariViewController, animated: true)
-        }
+    if let videoURLString = videoURL {
+      if let videoURL = URL(string: videoURLString) {
+        let configuration = SFSafariViewController.Configuration()
+        let safariViewController = SFSafariViewController(url: videoURL, configuration: configuration)
+        UIApplication.shared.firstKeyWindow?.rootViewController?.present(safariViewController, animated: true)
       }
-
+    }
   }
 }
 

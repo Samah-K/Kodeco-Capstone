@@ -11,7 +11,7 @@ struct ImagePlaceHolderView: View {
   var isProgressViewPresented = false
   var body: some View {
     ZStack {
-      Color.accentSecondary
+      Color.accentColor
       Image(ImagesConstants.ImagePlaceHolder)
         .resizable()
         .frame(width: 160, height: 160)

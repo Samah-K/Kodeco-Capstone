@@ -34,7 +34,7 @@ struct AddInstructionView: View {
         isPresented: $isConfirmationAlertPresented) {
           Button("Yes", role: .none) { dismiss() }
           Button("No", role: .cancel) {}
-        }
+      }
         .toolbar {
           ToolbarItem(placement: .topBarTrailing) {
             Button(action: {

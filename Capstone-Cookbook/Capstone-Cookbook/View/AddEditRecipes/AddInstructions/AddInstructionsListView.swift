@@ -24,7 +24,7 @@ struct AddInstructionsListView: View {
                 Text(instruction.getBulletOrNumber())
                   .font(.title3)
                   .fontWeight(.light)
-                  .foregroundStyle(Color.accentSecondary)
+                  .foregroundStyle(Color.accentColor)
                 Text(instruction.displayText)
               }
             }

@@ -106,8 +106,6 @@ struct AddRecipeView: View {
             }
           }
         }
-        // Ingredient
-        // Instructions
       }
       .onAppear {
         loadRecipe()
@@ -127,7 +125,7 @@ struct AddRecipeView: View {
             dismiss()
           }
           Button("No", role: .none) {}
-        }
+      }
         .alert(
           TextsConstants.pleaseEnterRecipeNameAlertTitle,
           isPresented: $isEmptyRecipeNameAlertPresent,
@@ -160,7 +158,7 @@ struct AddRecipeView: View {
               BackNavigationButton()
             })
           }
-          //                    KeyboardToolbarItem()
+          KeyboardToolbarItem()
         }
     }
   }
@@ -195,6 +193,7 @@ extension AddRecipeView {
         recipe.tastyRecipe.imageDataURL = nil
       }
     }
+    recipe.isRecipeAddedToMyCookbook = true
     recalculateComponentPosition()
     recipeStore.saveChangesOnRecipe(recipe)
   }

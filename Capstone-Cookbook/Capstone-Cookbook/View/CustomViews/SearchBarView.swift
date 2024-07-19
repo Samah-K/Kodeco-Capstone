@@ -33,7 +33,7 @@ struct SearchBarView: View {
       .foregroundStyle(.accent)
     }
     .overlay {
-      RoundedRectangle(cornerRadius: 20)
+      RoundedRectangle(cornerRadius: ViewConstants.roundCorner)
         .fill(.clear)
         .stroke(.accent, lineWidth: 2)
     }

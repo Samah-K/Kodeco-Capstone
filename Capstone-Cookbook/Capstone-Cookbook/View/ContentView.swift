@@ -17,19 +17,22 @@ enum SearchState {
 }
 
 struct ContentView: View {
+  @State private var tabSelection = 1
   var body: some View {
-    TabView {
+    TabView(selection: $tabSelection) {
+      MyRecipesView(tabSelection: $tabSelection)
+        .tabItem {
+          Text("CookBook")
+          Image(systemName: "book.fill")
+        }
+        .tag(1)
+
       ExploreRecipesView()
         .tabItem {
           Text("Explore")
           Image(systemName: "magnifyingglass")
         }
-
-      MyRecipesView()
-        .tabItem {
-          Text("CookBook")
-          Image(systemName: "book.fill")
-        }
+        .tag(2)
     }
   }
 }

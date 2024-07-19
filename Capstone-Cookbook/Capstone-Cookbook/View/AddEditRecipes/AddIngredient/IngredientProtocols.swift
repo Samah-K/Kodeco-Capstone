@@ -11,10 +11,6 @@ protocol UpdateIngredientComponent {
   func saveComponent(componentID: String, ingredient: Ingredient, measurement: [Measurement], shouldAddComponent: AddOrEditEnum) // Add for add, don't add for edit
 }
 
-protocol UpdateIngredientSections {
-  func removeSection(sectionID: String)
-}
-
 protocol CalculateAmountProtocol {
   func updateUI(to unitAmount: UnitAmounts, _ toSystem: UnitsSystem)
   func noResultWasFound()

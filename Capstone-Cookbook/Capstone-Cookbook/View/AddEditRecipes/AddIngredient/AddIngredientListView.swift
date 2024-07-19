@@ -13,8 +13,6 @@ struct AddIngredientListView: View {
   @Binding var components: [Component]
   @State var sectionNameInAlert: String
   @State private var isEditSectionNameAlertPresented = false // Add sections name
-  @State private var isRemoveSectionAlertPresented = false
-  var delegate: UpdateIngredientSections?
 
   var body: some View {
     Form {
@@ -43,14 +41,6 @@ struct AddIngredientListView: View {
           }, message: {
             Text("Add Section to add Ingredient to it")
           })
-          .alert(TextsConstants.removeSectionConfirmationAlertTitle, isPresented: $isRemoveSectionAlertPresented) {
-            Button("Yes", role: .destructive) {
-              removeSection(sectionID: sectionID)
-            }
-            Button("No", role: .cancel) { }
-          } message: {
-            Text(TextsConstants.removeSectionConfirmationAlertMessage)
-          }
         }
       }.listRowBackground(Color.clear)
       Section {
@@ -77,22 +67,7 @@ struct AddIngredientListView: View {
             components.remove(atOffsets: indexSet)
           }
         }
-      } footer: {
-        HStack {
-          Spacer()
-          Button {
-            isRemoveSectionAlertPresented = true
-          } label: {
-            Text("Remove Section")
-              .foregroundStyle(.red)
-              .padding(.top, 40)
-          }
-          Spacer()
-        }
       }
-    }
-    .onAppear {
-      print(components)
     }
     .toolbar {
       ToolbarItem(placement: .topBarTrailing) {
@@ -111,14 +86,6 @@ struct AddIngredientListView: View {
           }
         }
       }
-    }
-  }
-}
-
-extension AddIngredientListView {
-  func removeSection(sectionID: String) {
-    if let delegate = delegate {
-      delegate.removeSection(sectionID: sectionID)
     }
   }
 }

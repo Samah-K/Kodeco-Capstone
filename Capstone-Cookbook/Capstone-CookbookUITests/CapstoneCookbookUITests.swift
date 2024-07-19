@@ -87,27 +87,27 @@ final class CapstoneCookbookUITests: XCTestCase {
   }
 
   func test_ExploreRecipesView_searchTextsShowResults() {
-//    let searchTextField = app.textFields["Search A Recipe..."]
-//    searchTextField.tap()
-//    app.keys["A"].tap()
-//    app.keys["p"].tap()
-//    app.keys["p"].tap()
-//    app.keys["l"].tap()
-//    app.keys["e"].tap()
-//    //    let returnButton = app.buttons["Search"]
-//    //    returnButton.tap()
-//    //    let gridExists = app.tables.firstMatch.waitForExistence(timeout: 3)
-//    //    if gridExists {
-//    //      print("YES")
-//    //    }else {
-//    //      print("NO")
-//    //    }
-//    let exists = app.scrollViews.firstMatch.waitForExistence(timeout: 5)
-//    if exists {
-//      print("YES")
-//    } else {
-//      print("NO")
-//    }
+    //    let searchTextField = app.textFields["Search A Recipe..."]
+    //    searchTextField.tap()
+    //    app.keys["A"].tap()
+    //    app.keys["p"].tap()
+    //    app.keys["p"].tap()
+    //    app.keys["l"].tap()
+    //    app.keys["e"].tap()
+    //    //    let returnButton = app.buttons["Search"]
+    //    //    returnButton.tap()
+    //    //    let gridExists = app.tables.firstMatch.waitForExistence(timeout: 3)
+    //    //    if gridExists {
+    //    //      print("YES")
+    //    //    }else {
+    //    //      print("NO")
+    //    //    }
+    //    let exists = app.scrollViews.firstMatch.waitForExistence(timeout: 5)
+    //    if exists {
+    //      print("YES")
+    //    } else {
+    //      print("NO")
+    //    }
     //    let scrollview = app.scrollViews.element(boundBy: 0)
     //    guard var lastCell = scrollview.images.allElementsBoundByIndex.last else { return }
     // Add in a count, so that the loop can escape if it's scrolled too many times

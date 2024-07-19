@@ -75,7 +75,9 @@ struct AddRecipeThumbnailView: View {
     var body: some View {
       AddRecipeThumbnailView(
         thumbnailURL: $thumbnailURL,
-        recipeID: "\(String(describing: recipeID))", addOrEdit: .addRecipe)
+        recipeID: "\(String(describing: recipeID))",
+        addOrEdit: .addRecipe
+      )
       .environmentObject(RecipesStore())
     }
   }

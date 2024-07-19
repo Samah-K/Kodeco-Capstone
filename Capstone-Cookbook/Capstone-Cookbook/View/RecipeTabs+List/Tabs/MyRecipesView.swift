@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MyRecipesView: View {
   @EnvironmentObject var recipeStoreManager: RecipesStore
+  @Binding var tabSelection: Int
   var body: some View {
     NavigationStack {
       ZStack {
@@ -19,7 +20,7 @@ struct MyRecipesView: View {
             recipeType: .myRecipe
           )
         } else {
-          EmptyCookBook()
+          EmptyCookBook(tabSelection: $tabSelection)
         }
       }
       .navigationTitle("My Recipes")
@@ -47,6 +48,6 @@ struct MyRecipesView: View {
 }
 
 #Preview {
-  MyRecipesView()
+  MyRecipesView(tabSelection: .constant(1))
     .environmentObject(RecipesStore())
 }

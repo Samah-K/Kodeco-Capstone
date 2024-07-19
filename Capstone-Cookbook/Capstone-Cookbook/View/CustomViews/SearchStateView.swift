@@ -12,13 +12,13 @@ struct SearchStateView: View {
   var searchStateTitle: String {
     switch searchState {
     case .enterASearch:
-      return "Enter something to search"
+      return "What Are You Craving?"
     case .noResultsFound:
-      return "No Results"
+      return "No Recipes were found"
     case .foundResults:
       return ""
     case .searching:
-      return "Searching ....."
+      return "Looking for recipes ..."
     case .additionalSearch:
       return ""
     case .none:
@@ -47,7 +47,8 @@ struct SearchStateView: View {
         ZStack {
           VStack {
             ProgressView {
-              Text("Searching...")
+              Text("\(searchStateTitle)")
+                .font(.title3.smallCaps())
             }
             .accessibilityIdentifier("ProgressView")
             .foregroundStyle(.accent)
@@ -61,7 +62,7 @@ struct SearchStateView: View {
             .accessibilityIdentifier("searchStateImage")
           VStack(spacing: 4) {
             Text(searchStateTitle)
-              .font(.title3)
+              .font(.title3.smallCaps())
               .accessibilityIdentifier("searchStateTitle")
             if searchState == .noResultsFound {
               Text(searchStateCaption)

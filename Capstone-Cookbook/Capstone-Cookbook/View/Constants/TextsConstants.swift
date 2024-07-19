@@ -8,10 +8,14 @@
 import Foundation
 
 enum TextsConstants {
-  static let measurementHowTo = "Measurement units can be:\n• Metric or Imperial." +
-  "You can enter both values for the two systems, or you can enter one value, and the app will calculate the other" +
-  "for you. You only need to provide the unit in the other system to which you want the app to convert." +
-  "\n• NONE, this can be teaspoon, tablespoon, clove, stick, slice, box, or `none` for things like eggs"
+  static let measurementHowTo =
+  """
+  Measurement units can be:\n
+  • Metric or Imperial:
+  You can enter one value and use the calculation button to calculate the other.
+  🍴Make sure to provide both units🍴\n
+  • NONE, this can be a teaspoon, tablespoon, slice, etc., or _none_ for things like eggs.
+  """
 
   static let leavingIngredientConfirmation = "Are you sure you want to leave editing the ingredient?"
   static let leavingInstructionConfirmation = "Are you sure you want to leave editing the instruction?"
@@ -32,7 +36,7 @@ enum TextsConstants {
   Oh no!
   Looks like your cookbook is empty 😮
   ✨ Let’s start our cooking journey ✨
-  • Add a new recipe •
-  • Explore and get inspired •
   """
+  static let emptyCookBookAddNewRecipes = "Add a new recipe"
+  static let emptyCookBookExplore = "Explore and get inspired"
 }

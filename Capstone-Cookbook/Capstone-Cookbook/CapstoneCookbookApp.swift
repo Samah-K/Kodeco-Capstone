@@ -9,12 +9,18 @@ import SwiftUI
 
 @main
 struct CapstoneCookbookApp: App {
+  @AppStorage("isOnboarding")
+  var isOnBoarding = false
   @StateObject var recipeStoreManager = RecipesStore()
+
   var body: some Scene {
     WindowGroup {
-      //      AddRecipeView(recipe: Recipe(tastyRecipe: nil, recipeType: .myRecipe))
-      ContentView()
-        .environmentObject(recipeStoreManager)
+      if isOnBoarding {
+        ContentView()
+          .environmentObject(recipeStoreManager)
+      } else {
+        OnboardingView()
+      }
     }
   }
 }

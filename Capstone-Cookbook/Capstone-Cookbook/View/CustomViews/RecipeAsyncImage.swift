@@ -34,6 +34,14 @@ struct RecipeAsyncImage: View {
   }
 }
 
-//#Preview {
-////    RecipeAsyncImage()
-//}
+#Preview {
+  struct Preview: View {
+    let urlString = "https://img.buzzfeed.com/thumbnailer-prod-us-east-1/2b422cd19f6c488fbe649da9739b5542/fb.jpg"
+    var body: some View {
+      if let url = URL(string: urlString) {
+        RecipeAsyncImage(thumbnailURL: url)
+      }
+    }
+  }
+  return Preview()
+}

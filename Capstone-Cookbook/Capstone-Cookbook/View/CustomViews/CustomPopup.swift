@@ -37,11 +37,16 @@ struct CustomPopup: View {
             .padding(.horizontal, 20)
             .padding(.top, 10)
             .padding(.bottom, 20)
+            .frame(minWidth: 350)
         }
       }
       .background(.white)
       .clipShape(RoundedRectangle(cornerRadius: 25.0))
-      .frame(maxWidth: 350, maxHeight: 400)
+      .frame(
+        minWidth: 350,
+        maxWidth: 350,
+        minHeight: 400,
+        maxHeight: 400)
       .shadow(radius: 20)
     }
     .onAppear {

@@ -10,10 +10,10 @@ import SwiftUI
 struct AddIngredientSectionsView: View {
   private let defaultSectionName = "Section"
   @Binding var ingredientSections: [IngredientSections]
-  @State private var isAlertShown = false // Add sections name
+  @State private var isAddSectionAlertPresented = false // Add sections name
+  @State private var isDeleteSectionAlertPresented = false // Add sections name
+  @State private var removeSectionIndex: IndexSet?
   @State private var sectionName = ""
-//  @Environment (\.dismiss)
-//  var dismiss
 
   var body: some View {
     NavigationStack {
@@ -33,8 +33,7 @@ struct AddIngredientSectionsView: View {
                     sectionName: $section.name,
                     sectionID: section.id.uuidString,
                     components: $section.components,
-                    sectionNameInAlert: section.name ?? defaultSectionName,
-                    delegate: self
+                    sectionNameInAlert: section.name ?? defaultSectionName
                   )
                 } label: {
                   Text(section.name ?? defaultSectionName)
@@ -42,10 +41,14 @@ struct AddIngredientSectionsView: View {
               }
             }
           }
+          .onDelete { indexSet in
+            isDeleteSectionAlertPresented = true
+            removeSectionIndex = indexSet
+          }
         }
       }
       .navigationTitle("Ingredient List")
-      .alert("Add Section", isPresented: $isAlertShown, actions: {
+      .alert("Add Section", isPresented: $isAddSectionAlertPresented, actions: {
         TextField("Section Name", text: $sectionName)
           .autocorrectionDisabled()
         Button("OK", role: .none) {
@@ -54,11 +57,26 @@ struct AddIngredientSectionsView: View {
       }, message: {
         Text("Add Section to add Ingredient to it")
       })
+      .alert(TextsConstants.removeSectionConfirmationAlertTitle, isPresented: $isDeleteSectionAlertPresented, actions: {
+        Button("No", role: .cancel) {
+          removeSectionIndex = nil
+          isDeleteSectionAlertPresented = false
+        }
+        Button("Yes", role: .destructive) {
+          // remove
+          removeSection(sectionID: removeSectionIndex)
+          isDeleteSectionAlertPresented = false
+          removeSectionIndex = nil
+        }
+      }, message: {
+        Text(TextsConstants.removeSectionConfirmationAlertMessage)
+      })
+
       .toolbar {
         ToolbarItem(placement: .topBarTrailing) {
           Button(action: {
             // Add
-            isAlertShown = true
+            isAddSectionAlertPresented = true
           }, label: {
             HStack {
               Image(systemName: "plus.square.on.square")
@@ -69,17 +87,17 @@ struct AddIngredientSectionsView: View {
       }
     }
   }
+}
+extension AddIngredientSectionsView {
   private func addSection() {
     guard !sectionName.isEmpty else { return }
     let newSection = IngredientSections(components: [], name: sectionName, position: ingredientSections.count + 1)
     ingredientSections.append(newSection)
   }
-}
 
-extension AddIngredientSectionsView: UpdateIngredientSections {
-  func removeSection(sectionID: String) {
-    if let index = ingredientSections.firstIndex(where: { $0.id.uuidString == sectionID }) {
-      ingredientSections.remove(at: index)
+  private func removeSection(sectionID: IndexSet?) {
+    if let indexSet = sectionID {
+      ingredientSections.remove(atOffsets: indexSet)
     }
   }
 }

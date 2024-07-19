@@ -7,32 +7,6 @@
 
 import SwiftUI
 
-//struct RecipeListView: View {
-//  @EnvironmentObject var recipeStoreManager: RecipesStore
-//  @Binding var searchState: SearchState
-//  let searchQuery: String?
-//  var recipeType: RecipeType
-//
-//  var body: some View {
-//    ScrollView {
-//      ForEach(
-//        recipeType == .tastyRecipe ?
-//        $recipeStoreManager.tastyRecipes :
-//          $recipeStoreManager.myRecipes) { recipe in
-//            NavigationLink {
-//              RecipeDetailsView(recipe: recipe.wrappedValue, addFavoriteButton: true)
-//            } label: {
-//              RecipeItemView(recipe: recipe)
-//                .frame(height: ViewConstants.minListHeight)
-//                .padding()
-//            }
-//            Divider()
-//              .padding(.horizontal, 20)
-//      }
-//    }
-//  }
-//}
-
 struct RecipeGridView: View {
   @EnvironmentObject var recipeStoreManager: RecipesStore
   @Binding var searchState: SearchState
@@ -46,10 +20,10 @@ struct RecipeGridView: View {
   var body: some View {
     ScrollView {
       let isPortraitMode = verticalSizeClass == .regular && horizontalSizeClass == .compact
-        let twoColumns = [
-          GridItem(.flexible()),
-          GridItem(.flexible())
-        ]
+      let twoColumns = [
+        GridItem(.flexible()),
+        GridItem(.flexible())
+      ]
 
       let oneColumns = [
         GridItem(.flexible())
@@ -75,7 +49,7 @@ struct RecipeGridView: View {
                     }
                   }
               }
-            }
+        }
       }
       .frame(maxWidth: .infinity)
     }
@@ -90,16 +64,3 @@ struct RecipeGridView: View {
     recipeType: .myRecipe)
   .environmentObject(RecipesStore())
 }
-
-//#Preview("RecipeListView") {
-//  struct Preview: View {
-//    var body: some View {
-//      RecipeListView(
-//        searchState: .constant(.searching),
-//        searchQuery: "pie",
-//        recipeType: .myRecipe)
-//      .environmentObject(RecipesStore())
-//    }
-//  }
-//  return Preview()
-//}

@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+struct OnboardingModel: Identifiable {
+  var id = UUID()
+  var title: String
+//  var subTitle: String
+  var image: String
+}
