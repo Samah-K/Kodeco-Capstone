@@ -83,7 +83,8 @@ struct RecipeDetailsViewPortrait: View {
             VStack(spacing: 15) {
               Text(recipe.tastyRecipe.name)
                 .font(.title)
-                .padding(.top, 6)
+                .padding(.top, 10)
+                .multilineTextAlignment(.center)
               RecipeTime(recipe: recipe)
               Text(recipe.tastyRecipe.description ?? " - ")
                 .font(.subheadline)
@@ -156,7 +157,8 @@ struct RecipeDetailsViewLandscape: View {
             VStack(spacing: 15) {
               Text(recipe.tastyRecipe.name)
                 .font(.title)
-                .padding(.top, 6)
+                .padding(.top, 10)
+                .multilineTextAlignment(.center)
               RecipeTime(recipe: recipe)
               Text(recipe.tastyRecipe.description ?? " - ")
                 .font(.subheadline)

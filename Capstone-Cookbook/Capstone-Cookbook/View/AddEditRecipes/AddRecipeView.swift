@@ -117,14 +117,14 @@ struct AddRecipeView: View {
       .alert(
         TextsConstants.leavingRecipeConfirmation,
         isPresented: $isAreYouSureYouWantToLeaveAlertPresent) {
-          Button("Yes", role: .none) {
+          Button("Yes", role: .destructive) {
             isAreYouSureYouWantToLeaveAlertPresent = false
             if addOrEdit == .addRecipe {
               setToInitialState()
             }
             dismiss()
           }
-          Button("No", role: .none) {}
+          Button("No", role: .cancel) {}
       }
         .alert(
           TextsConstants.pleaseEnterRecipeNameAlertTitle,

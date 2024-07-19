@@ -9,13 +9,16 @@ import SwiftUI
 
 struct EmptyCookBook: View {
   @Binding var tabSelection: Int
+  @State private var isAnimating = false
   var body: some View {
     VStack(spacing: 30) {
       Image(ImagesConstants.EmptyCookBook)
         .resizable()
         .scaledToFit()
         .shadow(color: Color.black.opacity(0.5), radius: 10, x: -20, y: 20)
-      VStack {
+        .opacity(isAnimating ? 1 : 0.6)
+        .scaleEffect(isAnimating ? 1.0 : 0.8)
+      VStack(spacing: 10) {
         Text(TextsConstants.emptyCookBook)
           .font(.body.smallCaps())
           .multilineTextAlignment(.center)
@@ -47,6 +50,14 @@ struct EmptyCookBook: View {
       }
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity)
+    .onAppear {
+      withAnimation(.smooth(duration: 1.2)) {
+        isAnimating = true
+      }
+    }
+    .onDisappear {
+      isAnimating = false
+    }
   }
 }
 

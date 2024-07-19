@@ -16,7 +16,7 @@ struct RecipeItemView: View {
   var body: some View {
     ZStack(alignment: .bottomTrailing) {
       RoundedRectangle(cornerRadius: ViewConstants.roundCorner)
-        .fill(.white)
+        .fill(Color.background)
         .shadow(radius: 10)
         .frame(
           maxWidth: .infinity,
@@ -37,18 +37,19 @@ struct RecipeItemView: View {
                   .clipShape(RoundedRectangle(cornerRadius: ViewConstants.roundCorner))
               }
             }
-            .padding(.leading, 12)
+            .padding(.leading, 8)
           }
           .frame(width: proxy.size.width * 0.4)
           VStack(alignment: .leading, spacing: 0) {
             VStack(alignment: .leading) {
               Text(recipe.getRecipeName())
-                .font(.body)
-                .foregroundStyle(.primary)
+                .font(.title3)
+                .foregroundStyle(Color.text)
                 .multilineTextAlignment(.leading)
                 .shadow(color: .tint.opacity(0.3), radius: 1)
                 .lineLimit(2)
                 .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.trailing, 8)
             }
             .frame(height: proxy.size.height * 0.5)
             if !recipe.getTotalCookTime().isEmpty {
@@ -56,9 +57,9 @@ struct RecipeItemView: View {
                 Image(systemName: "timer")
                 Text(recipe.getTotalCookTime())
               }
+              .foregroundStyle(Color.text)
               .frame(height: proxy.size.height * 0.5, alignment: .center)
               .font(.caption)
-              .foregroundStyle(.accent)
             }
           }
           .frame(maxWidth: proxy.size.width * (1 - 0.4))

@@ -40,7 +40,7 @@ struct CustomPopup: View {
             .frame(minWidth: 350)
         }
       }
-      .background(.white)
+      .background(Color.background)
       .clipShape(RoundedRectangle(cornerRadius: 25.0))
       .frame(
         minWidth: 350,

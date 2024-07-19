@@ -33,10 +33,10 @@ struct AddRecipeThumbnailView: View {
       PhotosPicker(selection: $photo, matching: .images) {
         VStack(spacing: 1) {
           Image(systemName: "photo.badge.plus")
-            .font(.callout)
           Text("Select an image")
-            .font(.callout)
         }
+        .font(.callout)
+        .foregroundStyle(.white)
         .shadow(radius: 10)
       }
       .frame(width: 200)

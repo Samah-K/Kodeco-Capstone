@@ -28,6 +28,7 @@ enum TextsConstants {
   static let failedToConvetAmountAlertMessage = "Try changing the ingredient name."
   static let removeSectionConfirmationAlertTitle = "Are you sure you want to remove the section?"
   static let removeSectionConfirmationAlertMessage = "You will lose all the added ingredient"
+  static let removeRecipeConfirmationAlertTitle = "Are you sure you want to remove the Recipe?"
   static let emptySearchAlertTitle = "Please enter something to search"
   static let InstructionsButton = "Instructions"
   static let IngredientButton = "Check Ingredient"

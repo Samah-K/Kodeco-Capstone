@@ -11,6 +11,7 @@ struct AddRecipeButton: View {
   @EnvironmentObject var recipeStoreManager: RecipesStore
   @Binding var isAddedToMyRecipes: Bool
   var recipeID: String
+  @State private var isRemoveRecipeAlertPresented = false
 
   var body: some View {
     Button(action: {
@@ -18,8 +19,7 @@ struct AddRecipeButton: View {
       if isAddedToMyRecipes {
         print("Remove")
         // Remove
-        isAddedToMyRecipes = false
-        recipeStoreManager.removeRecipeFromMyCookBook(recipeID: recipeID)
+        isRemoveRecipeAlertPresented = true
       } else {
         print("Add")
         // Add
@@ -31,6 +31,15 @@ struct AddRecipeButton: View {
       Image(systemName: isAddedToMyRecipes ? "heart.fill" : "heart")
         .tint(Color.tint)
     })
+    .alert(TextsConstants.removeRecipeConfirmationAlertTitle, isPresented: $isRemoveRecipeAlertPresented) {
+      Button("No", role: .cancel) {
+        isRemoveRecipeAlertPresented = false
+      }
+      Button("Yes", role: .destructive) {
+        isAddedToMyRecipes = false
+        recipeStoreManager.removeRecipeFromMyCookBook(recipeID: recipeID)
+      }
+    }
   }
 }
 
