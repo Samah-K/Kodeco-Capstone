@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CustomPopup: View {
   @Binding var isPopPresented: Bool // passing value should be false
-  @State var popupAnimation = false // passing value should be false
+  @State private var isAnimating = false
   var popText: String
   var body: some View {
     ZStack {
@@ -17,7 +17,9 @@ struct CustomPopup: View {
         .opacity(0.6)
         .ignoresSafeArea()
         .onTapGesture {
-          popupAnimation.toggle()
+          withAnimation(.easeInOut(duration: 0.5)) {
+            isAnimating = false
+          }
           DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
             isPopPresented = false
           }
@@ -50,12 +52,11 @@ struct CustomPopup: View {
       .shadow(radius: 20)
     }
     .onAppear {
-      DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250)) {
-        popupAnimation.toggle()
+      withAnimation(.smooth(duration: 0.5)) {
+        isAnimating = true
       }
     }
-    .opacity(popupAnimation ? 1 : 0)
-    .animation(.easeInOut(duration: 0.25), value: popupAnimation)
+    .opacity(isAnimating ? 1 : 0)
   }
 }
 
