@@ -13,7 +13,6 @@ struct ExploreRecipesView: View {
   @State private var searchQuery = ""
   @State private var resetSearchPressed = false
   @State private var searchState = SearchState.enterASearch
-//  @State private var isSearchQueryIsEmpty = false
   private var isAlertPresented: Binding<Bool> {
     Binding(
       get: { self.recipeStoreManager.alertInfo.isAlertPresented },
@@ -27,12 +26,12 @@ struct ExploreRecipesView: View {
         VStack {
           SearchBarView(
             searchQuery: $searchQuery,
-            resetSearchPressed: $resetSearchPressed
-          ).onSubmit {
-              resetSearch()
-              searchState = .searching
-              print("onSubmit \(searchQuery)")
-              recipeStoreManager.searchRecipes(for: searchQuery)
+            resetSearchPressed: $resetSearchPressed)
+          .onSubmit {
+            resetSearch()
+            searchState = .searching
+            print("onSubmit \(searchQuery)")
+            recipeStoreManager.searchRecipes(for: searchQuery)
           }
           .onChange(of: resetSearchPressed) { _, _ in
             if resetSearchPressed {
@@ -52,26 +51,23 @@ struct ExploreRecipesView: View {
               .frame(maxWidth: .infinity, maxHeight: .infinity)
           } else {
             VStack {
-              RecipeListView(
+              RecipeGridView(
                 searchState: $searchState,
                 searchQuery: searchQuery,
                 recipeType: RecipeType.tastyRecipe)
-//              RecipeGridView(
-//                searchState: $searchState,
-//                searchQuery: searchQuery,
-//                recipeType: RecipeType.tastyRecipe)
-              
               .frame(maxWidth: .infinity)
-
               if searchState == .additionalSearch {
                 ProgressView()
               }
             }
           }
         }
+        .padding(.top, 20)
       }
-//      .padding()
       .navigationTitle("Explore")
+      .toolbar {
+        KeyboardToolbarItem()
+      }
       .alert(recipeStoreManager.alertInfo.alertMessage, isPresented: isAlertPresented) {
         Button(action: {
           recipeStoreManager.alertInfo.isAlertPresented = false
@@ -80,33 +76,6 @@ struct ExploreRecipesView: View {
           Text("OK")
         })
       }
-//      .alert(TextsConstants().emptySearchAlertTitle, isPresented: $isSearchQueryIsEmpty) {
-//        Button("OK", role: .none) {
-//          isSearchQueryIsEmpty = false
-//        }
-//      }
-      //      .toolbar {
-      //        KeyboardToolbarItem()
-      //        ToolbarItem(placement: .keyboard) {
-      //          Button {
-      //            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-      ////            ExploreRecipesView
-      //          } label: {
-      //            HStack {
-      ////              Spacer()
-      //              Text("Done")
-      //            }
-      //          }
-      //
-      //        }
-      //      }
-      //      .onAppear {
-      ////        print(recipeStoreManager.tastyStore.tastyRecipes.count)
-      ////        if TastyJSONSample().isPreview {
-      ////          recipeStoreManager.searchRecipes(for: "")
-      ////          searchState = .foundResults
-      ////        }
-      //      }
     }
   }
 

@@ -13,4 +13,9 @@ enum ImagesConstants {
   static let PrepareTime = "PrepareTime"
   static let Ingredient = "Ingredient"
   static let Instructions = "Instructions"
+  static let EmptyCookBook = "EmptyCookBook"
+  static let onboarding1 = "onboarding1"
+  static let onboarding2 = "onboarding2"
+  static let onboarding3 = "onboarding3"
+  static let onboarding4 = "onboarding4"
 }

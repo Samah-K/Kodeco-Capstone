@@ -8,14 +8,20 @@
 import SwiftUI
 
 struct MyRecipesView: View {
-//  @EnvironmentObject var recipeStoreManager: RecipesStore
+  @EnvironmentObject var recipeStoreManager: RecipesStore
   var body: some View {
     NavigationStack {
-      RecipeListView(
-        searchState: .constant(.none),
-        searchQuery: nil,
-        recipeType: .myRecipe
-      )
+      ZStack {
+        if !recipeStoreManager.myRecipes.isEmpty {
+          RecipeGridView(
+            searchState: .constant(.none),
+            searchQuery: nil,
+            recipeType: .myRecipe
+          )
+        } else {
+          EmptyCookBook()
+        }
+      }
       .navigationTitle("My Recipes")
       .toolbar {
         ToolbarItem(placement: .topBarTrailing) {

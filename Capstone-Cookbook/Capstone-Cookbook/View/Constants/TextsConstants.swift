@@ -25,4 +25,14 @@ enum TextsConstants {
   static let removeSectionConfirmationAlertTitle = "Are you sure you want to remove the section?"
   static let removeSectionConfirmationAlertMessage = "You will lose all the added ingredient"
   static let emptySearchAlertTitle = "Please enter something to search"
+  static let InstructionsButton = "Instructions"
+  static let IngredientButton = "Check Ingredient"
+  static let emptyCookBook =
+  """
+  Oh no!
+  Looks like your cookbook is empty 😮
+  ✨ Let’s start our cooking journey ✨
+  • Add a new recipe •
+  • Explore and get inspired •
+  """
 }

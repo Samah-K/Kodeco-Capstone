@@ -21,7 +21,8 @@ struct RecipeItemView: View {
         .frame(
           maxWidth: .infinity,
           minHeight: ViewConstants.minListHeight,
-          maxHeight: ViewConstants.maxListHeight)
+          maxHeight: ViewConstants.maxListHeight
+        )
       GeometryReader { proxy in
         HStack(alignment: .center, spacing: 10) {
           VStack {
@@ -31,9 +32,9 @@ struct RecipeItemView: View {
                   .frame(width: 130, height: 130)
                   .clipShape(RoundedRectangle(cornerRadius: ViewConstants.roundCorner))
               } else {
-                  RecipeImage(thumbnailURL: recipe.tastyRecipe.getRecipeImageURL())
-                    .frame(width: 130, height: 130)
-                    .clipShape(RoundedRectangle(cornerRadius: ViewConstants.roundCorner))
+                RecipeImage(thumbnailURL: recipe.tastyRecipe.getRecipeImageURL())
+                  .frame(width: 130, height: 130)
+                  .clipShape(RoundedRectangle(cornerRadius: ViewConstants.roundCorner))
               }
             }
             .padding(.leading, 12)
@@ -43,7 +44,7 @@ struct RecipeItemView: View {
             VStack(alignment: .leading) {
               Text(recipe.getRecipeName())
                 .font(.body)
-                .foregroundStyle(.text)
+                .foregroundStyle(.primary)
                 .multilineTextAlignment(.leading)
                 .shadow(color: .tint.opacity(0.3), radius: 1)
                 .lineLimit(2)
@@ -51,22 +52,17 @@ struct RecipeItemView: View {
             }
             .frame(height: proxy.size.height * 0.5)
             if !recipe.getTotalCookTime().isEmpty {
-                HStack(spacing: 5) {
-              Image(systemName: "timer")
-              Text(recipe.getTotalCookTime())
-            }
+              HStack(spacing: 5) {
+                Image(systemName: "timer")
+                Text(recipe.getTotalCookTime())
+              }
               .frame(height: proxy.size.height * 0.5, alignment: .center)
-//              .background(.green)
               .font(.caption)
-              .foregroundStyle(.accentSecondary)
-          }
-//            Spacer()
-//            Spacer()
+              .foregroundStyle(.accent)
+            }
           }
           .frame(maxWidth: proxy.size.width * (1 - 0.4))
           .padding(.leading, 10)
-//          .background(.red)
-//          .frame(width: proxy.size.width * 0.6)
         }
       }
       ZStack {
@@ -85,7 +81,7 @@ struct RecipeItemView: View {
       maxWidth: .infinity,
       minHeight: ViewConstants.minListHeight,
       maxHeight: ViewConstants.minListHeight)
-        .padding()
+    .padding()
   }
 }
 
