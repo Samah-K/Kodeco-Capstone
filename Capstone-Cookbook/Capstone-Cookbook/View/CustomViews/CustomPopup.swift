@@ -1,0 +1,73 @@
+//
+//  CustomPopup.swift
+//  Capstone-Cookbook
+//
+//  Created by Samah Ktaifan on 15/07/2024.
+//
+
+import SwiftUI
+
+struct CustomPopup: View {
+  @Binding var isPopPresented: Bool // passing value should be false
+  @State private var isAnimating = false
+  var popText: String
+  var body: some View {
+    ZStack {
+      Color.black
+        .opacity(0.6)
+        .ignoresSafeArea()
+        .onTapGesture {
+          withAnimation(.easeInOut(duration: 0.5)) {
+            isAnimating = false
+          }
+          DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+            isPopPresented = false
+          }
+        }
+      VStack {
+        ZStack {
+          Circle()
+            .fill(.accent)
+            .frame(width: 40, height: 40)
+            .shadow(radius: 10)
+          Image(systemName: "fork.knife")
+            .foregroundStyle(.white)
+        }
+        .padding(.top, 20)
+        ScrollView {
+          Text(popText)
+            .padding(.horizontal, 20)
+            .padding(.top, 10)
+            .padding(.bottom, 20)
+            .frame(minWidth: 350)
+        }
+      }
+      .background(Color.background)
+      .clipShape(RoundedRectangle(cornerRadius: 25.0))
+      .frame(
+        minWidth: 350,
+        maxWidth: 350,
+        minHeight: 400,
+        maxHeight: 400)
+      .shadow(radius: 20)
+    }
+    .onAppear {
+      withAnimation(.smooth(duration: 0.5)) {
+        isAnimating = true
+      }
+    }
+    .opacity(isAnimating ? 1 : 0)
+  }
+}
+
+#Preview {
+  struct Preview: View {
+    @State private var isPopPresented = true
+    var body: some View {
+      CustomPopup(
+        isPopPresented: $isPopPresented,
+        popText: TextsConstants.measurementHowTo)
+    }
+  }
+  return Preview()
+}

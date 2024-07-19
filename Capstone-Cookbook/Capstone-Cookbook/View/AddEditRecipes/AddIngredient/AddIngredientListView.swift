@@ -1,0 +1,131 @@
+//
+//  IngredientListView.swift
+//  Capstone-Cookbook
+//
+//  Created by Samah Ktaifan on 15/07/2024.
+//
+
+import SwiftUI
+
+struct AddIngredientListView: View {
+  @Binding var sectionName: String?
+  var sectionID: String
+  @Binding var components: [Component]
+  @State var sectionNameInAlert: String
+  @State private var isEditSectionNameAlertPresented = false // Add sections name
+
+  var body: some View {
+    Form {
+      Section {
+        VStack {
+          HStack {
+            Button(action: {
+              // Edit Section name
+              isEditSectionNameAlertPresented = true
+            }, label: {
+              HStack {
+                Image(systemName: "pencil.line")
+                Text("\(sectionName ?? "Section")")
+                  .font(.title)
+              }
+            })
+          }
+          .alert("Edit Section Name", isPresented: $isEditSectionNameAlertPresented, actions: {
+            TextField("Section Name", text: $sectionNameInAlert)
+              .autocorrectionDisabled()
+            Button("OK", role: .none) {
+              isEditSectionNameAlertPresented = false
+              sectionName = sectionNameInAlert
+            }
+            Button("Cancel", role: .cancel) {}
+          }, message: {
+            Text("Add Section to add Ingredient to it")
+          })
+        }
+      }.listRowBackground(Color.clear)
+      Section {
+        List {
+          ForEach($components) { component in
+            NavigationLink {
+              AddIngredientView(
+                componentID: component.id.uuidString,
+                ingredient: component.ingredient.wrappedValue,
+                measurement: component.measurements.wrappedValue,
+                addOrEdit: AddOrEditEnum.editRecipe,
+                delegate: self)
+            } label: {
+              let description = HandleMeasurement().getIngredientDescription(
+                ingredient: component.wrappedValue.ingredient,
+                measurements: component.wrappedValue.measurements)
+              Text(description)
+            }
+          }
+          .onMove { indices, newOffset in
+            components.move(fromOffsets: indices, toOffset: newOffset)
+          }
+          .onDelete { indexSet in
+            components.remove(atOffsets: indexSet)
+          }
+        }
+      }
+    }
+    .toolbar {
+      ToolbarItem(placement: .topBarTrailing) {
+        NavigationLink {
+          let ingredientComponent = EmptyObjects().createEmptyIngredientComponent()
+          AddIngredientView(
+            componentID: "",
+            ingredient: ingredientComponent.ingredient,
+            measurement: ingredientComponent.measurements,
+            addOrEdit: AddOrEditEnum.addRecipe,
+            delegate: self)
+        } label: {
+          HStack {
+            Image(systemName: "plus")
+            Text("Ingredient")
+          }
+        }
+      }
+    }
+  }
+}
+
+extension AddIngredientListView: UpdateIngredientComponent {
+  func saveComponent(componentID: String, ingredient: Ingredient, measurement: [Measurement], shouldAddComponent: AddOrEditEnum) {
+    if shouldAddComponent == .addRecipe {
+      let component = Component(
+        extraComment: "",
+        rawText: "",
+        ingredient: ingredient,
+        measurements: measurement)
+      components.append(component)
+    } else {
+      // Edit
+      if let componentIndex = components.firstIndex(where: { $0.id.uuidString == componentID }) {
+        components[componentIndex].ingredient = ingredient
+        components[componentIndex].measurements = measurement
+      }
+    }
+  }
+}
+
+#Preview("IngredientListView") {
+  struct Preview: View {
+    private static let section = TastyJSONSample().getRecipeFromJSONFile()?.recipes[0].ingredientSections.first
+    @State var components = Preview.section?.components ?? []
+    @State var sectionName = Preview.section?.name
+    var sectionID: String = Preview.section?.id.uuidString ?? ""
+    var body: some View {
+      return NavigationStack {
+        VStack {
+          AddIngredientListView(
+            sectionName: $sectionName,
+            sectionID: sectionID,
+            components: $components,
+            sectionNameInAlert: sectionName ?? "Section")
+        }
+      }
+    }
+  }
+  return Preview()
+}
