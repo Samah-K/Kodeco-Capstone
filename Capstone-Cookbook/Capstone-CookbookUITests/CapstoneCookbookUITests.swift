@@ -101,7 +101,7 @@ final class CapstoneCookbookUITests: XCTestCase {
     let exploretabNavigationBar = app.navigationBars["Explore"]
     let exploretabSearchBarImage = app.images["searchImage"]
     let exploretabSearchTextField = app.textFields["searchTextField"]
-    let exploretabImage = app.images["magnifyingglass"]
+    _ = app.images["magnifyingglass"]
     let exploretabText = app.staticTexts["What Are You Craving?"]
     XCTAssertTrue(exploretabNavigationBar.exists)
     XCTAssertTrue(exploretabSearchBarImage.exists)
@@ -169,8 +169,8 @@ final class CapstoneCookbookUITests: XCTestCase {
       addRecipeButton = app.navigationBars["My Recipes"].buttons["New Recipe"].staticTexts["New Recipe"]
     }
     addRecipeButton.tap()
-    let newRecipeNavigationBar = app.navigationBars["Add New Recipe"]
-    let collectionViewsQuery = app.collectionViews
+    _ = app.navigationBars["Add New Recipe"]
+    _ = app.collectionViews
     let recipeNameTextField = app.textFields["recipeName"]
     let recipeDescriptionTextField = app.collectionViews.textViews["recipDescription"]
     let addInstructionButton = app.collectionViews.buttons["Add Ingredient"]
@@ -224,7 +224,5 @@ final class CapstoneCookbookUITests: XCTestCase {
     tabCookBook.tap()
     XCTAssertTrue(applePieFromScratch1Hour15MinutesButton.exists)
     applePieFromScratch1Hour15MinutesButton.tap()
-
-    let exploreRecipeDetailTabButton = app.navigationBars["My Recipes"].buttons["New Recipe"].staticTexts["New Recipe"]
   }
 }
