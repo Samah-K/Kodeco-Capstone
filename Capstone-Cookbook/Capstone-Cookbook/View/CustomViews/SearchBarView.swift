@@ -17,6 +17,7 @@ struct SearchBarView: View {
         .foregroundStyle(.accent)
         .frame(width: 20, height: 20)
         .padding(.leading, 10)
+        .accessibilityIdentifier("searchImage")
       TextField("Search A Recipe...", text: $searchQuery)
         .autocorrectionDisabled()
         .frame(maxWidth: 240, maxHeight: 50)

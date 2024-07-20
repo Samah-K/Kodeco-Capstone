@@ -25,6 +25,7 @@ struct AddIngredientSectionsView: View {
             + Text("and another for the `Filling`")
           }
           .listRowBackground(Color.clear)
+          .accessibilityIdentifier("AddIngredientSectionText")
           ForEach($ingredientSections) { $section in
             Section {
               VStack {

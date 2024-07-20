@@ -32,6 +32,8 @@ struct OnboardingCardView: View {
             .padding(40)
             .scaleEffect(isAnimating ? 1.0 : 0.4)
             .frame(height: proxy.size.height * 0.5)
+            .accessibilityIdentifier("OnboardingImage")
+
           Text(model.title)
             .font(.largeTitle.smallCaps())
             .foregroundStyle(Color.white)
@@ -39,9 +41,11 @@ struct OnboardingCardView: View {
             .padding(.horizontal, 20)
             .frame(maxWidth: 480)
             .frame(height: proxy.size.height * 0.2)
+            .accessibilityIdentifier("OnboardingText")
           // Start button here
           OnboardingStartButtonView()
             .frame(height: proxy.size.height * tagPercentage)
+            .accessibilityIdentifier("OnboardingButton")
           // Empty view, represents the tabs
           ZStack {
           }
