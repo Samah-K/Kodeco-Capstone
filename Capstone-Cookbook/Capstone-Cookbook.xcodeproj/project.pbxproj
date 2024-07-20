@@ -37,7 +37,6 @@
 		AC4050792C3358B300F4D5F6 /* CapstoneCookbookUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4050782C3358B300F4D5F6 /* CapstoneCookbookUITestsLaunchTests.swift */; };
 		AC42D9D62C4B35ED00AD0CCC /* ImagesConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC956FEB2C486A9300B1E7D9 /* ImagesConstants.swift */; };
 		AC42D9D72C4B35F500AD0CCC /* ViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC956FE72C481BC500B1E7D9 /* ViewConstants.swift */; };
-		AC466FC02C4A03880048A7AE /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC466FBF2C4A03880048A7AE /* Launch Screen.storyboard */; };
 		AC466FC52C4A8F760048A7AE /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC466FC42C4A8F760048A7AE /* OnboardingModel.swift */; };
 		AC466FC72C4A902A0048A7AE /* OnboardingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC466FC62C4A902A0048A7AE /* OnboardingData.swift */; };
 		AC466FC92C4A943F0048A7AE /* OnboardingCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC466FC82C4A943F0048A7AE /* OnboardingCardView.swift */; };
@@ -131,7 +130,6 @@
 		AC4050722C3358B300F4D5F6 /* Capstone-CookbookUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Capstone-CookbookUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC4050762C3358B300F4D5F6 /* CapstoneCookbookUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapstoneCookbookUITests.swift; sourceTree = "<group>"; };
 		AC4050782C3358B300F4D5F6 /* CapstoneCookbookUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapstoneCookbookUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		AC466FBF2C4A03880048A7AE /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		AC466FC42C4A8F760048A7AE /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
 		AC466FC62C4A902A0048A7AE /* OnboardingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingData.swift; sourceTree = "<group>"; };
 		AC466FC82C4A943F0048A7AE /* OnboardingCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCardView.swift; sourceTree = "<group>"; };
@@ -286,7 +284,6 @@
 				AC1F4B572C335C7100855379 /* Tasty-Info.plist */,
 				ACC035292C3ACCD4007ECF4E /* Spoonacular-Info.plist */,
 				ACC0352E2C3AD116007ECF4E /* Edamam-Info.plist */,
-				AC466FBF2C4A03880048A7AE /* Launch Screen.storyboard */,
 			);
 			path = "Capstone-Cookbook";
 			sourceTree = "<group>";
@@ -578,7 +575,6 @@
 				AC4050632C3358B300F4D5F6 /* Preview Assets.xcassets in Resources */,
 				AC4050602C3358B300F4D5F6 /* Assets.xcassets in Resources */,
 				ACC0352A2C3ACCD4007ECF4E /* Spoonacular-Info.plist in Resources */,
-				AC466FC02C4A03880048A7AE /* Launch Screen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -877,7 +873,6 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Whisk, Whisk!";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -909,7 +904,6 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Whisk, Whisk!";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
