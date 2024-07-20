@@ -1,12 +1,13 @@
-<h1 align="center">
-  <br>
-  <a href="Whisk, Whisk!"><img src="https://github.com/Samah-K/Kodeco-Capstone/blob/main/Capstone-Cookbook/Capstone-Cookbook/Assets.xcassets/AppIcon.appiconset/AppIcon.png" alt="Markdownify" width="200"></a>
-  <br>
-  Whisk, Whisk
-  <br>  
-</h1>
-  Whisk, Whisk! is an app that lets users explore new recipes and write down their own recipes
-  
+
+<img src="https://onyx-april-826.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F11e0a17a-d01c-4d41-91db-877edd7e7c49%2F9edbeae0-5b9f-4302-a550-42c1f064b054%2FLoadingScreen2.png?table=block&id=42c150a4-28aa-48da-896b-1bbb720238d5&spaceId=11e0a17a-d01c-4d41-91db-877edd7e7c49&width=2000&userId=&cache=v2">
+
+
+# Whisk, Whisk!
+
+<table border-width="0">
+  <td><img src="https://github.com/Samah-K/Kodeco-Capstone/blob/main/Capstone-Cookbook/Capstone-Cookbook/Assets.xcassets/AppIcon.appiconset/AppIcon.png" width="200"></td>
+  <td>Whisk, Whisk! is an app that lets users explore new recipes and write down their own recipes</td>
+</table>
 
 
 ## Features
@@ -65,7 +66,8 @@ No third-party frameworks or packages were used in the app.
 - Before running the test, **please make sure to uninstall the app first**, which include
     - The app: Whisk, Whisk!
     - The test runner: CookbookUITests-Runner (If you already had run the test)
-
+      
+<img src="https://onyx-april-826.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F11e0a17a-d01c-4d41-91db-877edd7e7c49%2Fda91249d-5621-4ab4-a004-4897d2857fb8%2FScreenshot_2024-07-20_at_6.50.44_AM.png?table=block&id=5128b195-7d81-469b-ac13-295cf4a7bb2b&spaceId=11e0a17a-d01c-4d41-91db-877edd7e7c49&width=1330&userId=&cache=v2" width="300"></img>
 
 ## The App includes:
 
@@ -235,3 +237,6 @@ No third-party frameworks or packages were used in the app.
 - Alert the users that an error has occurred
 - Confirm that the user wants to remove a recipe, an ingredient’s section, an ingredient, an instruction
 - Confirm that the user wants to discard the changes (move back)
+
+
+Header image © <a href="https://icons8.com/illustrations/style--moments">Moments by OlFi</a>
