@@ -55,9 +55,11 @@ struct AddRecipeView: View {
         Section {
           TextField("Recipe Name", text: $recipeName)
             .autocorrectionDisabled()
+            .accessibilityIdentifier("recipeName")
           TextField("Recipe description", text: $recipeDescription, axis: .vertical)
             .lineLimit(5...20)
             .autocorrectionDisabled()
+            .accessibilityIdentifier("recipDescription")
         }
         Section {
           Button {

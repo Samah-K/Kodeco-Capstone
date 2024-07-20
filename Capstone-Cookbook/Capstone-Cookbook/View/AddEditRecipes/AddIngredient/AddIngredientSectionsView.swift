@@ -25,6 +25,7 @@ struct AddIngredientSectionsView: View {
             + Text("and another for the `Filling`")
           }
           .listRowBackground(Color.clear)
+          .accessibilityIdentifier("AddIngredientSectionText")
           ForEach($ingredientSections) { $section in
             Section {
               VStack {
@@ -90,9 +91,10 @@ struct AddIngredientSectionsView: View {
 }
 extension AddIngredientSectionsView {
   private func addSection() {
-    guard !sectionName.isEmpty else { return }
-    let newSection = IngredientSections(components: [], name: sectionName, position: ingredientSections.count + 1)
-    ingredientSections.append(newSection)
+    if !sectionName.isEmpty {
+      let newSection = IngredientSections(components: [], name: sectionName, position: ingredientSections.count + 1)
+      ingredientSections.append(newSection)
+    }
   }
 
   private func removeSection(sectionID: IndexSet?) {
