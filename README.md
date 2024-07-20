@@ -26,9 +26,9 @@ The app connects to two APIs
     - API Limitation: The API allows only 500 requests/month (I already used all the requests 😅, I paid for an extra 10,000 requests)
 - **An API called "Spoonacular" to convert between ingredient units** `SpoonacularNetworkService.swift`
     - A famous conversion that the app can do is converting between cups and grams.
-      _- Recalling from physics class, one unit is used to measure volume (cups), and the other is used to measure mass (grams), so we need to have the ingredient's density to convert between the two_
+      - Recalling from physics class, one unit is used to measure volume (cups), and the other is used to measure mass (grams), so we need to have the ingredient's density to convert between the two_
     - Spoonacular to the rescue! This amazing API can do the calculation for us. (Imagine having to add all the ingredient's density in the app! Just the idea makes me dizzy 😵‍💫)
-    - API Limitation: The API allows 500 requests/month
+    - API Limitation: The API allows 500 requests/day
 
 No third-party frameworks or packages were used in the app.
 *The API's keys were submitted*
@@ -98,6 +98,7 @@ No third-party frameworks or packages were used in the app.
 
 ---
 # A Walkthrough of the App
+- You don't have to read this - 
 ## Starting the App
 
 - The App starts with a launch screen that shows someone cooking with their cookbook.
