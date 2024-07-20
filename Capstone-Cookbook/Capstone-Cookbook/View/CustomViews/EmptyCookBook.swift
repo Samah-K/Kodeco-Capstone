@@ -23,6 +23,7 @@ struct EmptyCookBook: View {
           .font(.body.smallCaps())
           .multilineTextAlignment(.center)
           .foregroundColor(.text)
+          .accessibilityIdentifier(TextsConstants.emptyCookBook)
 
         NavigationLink {
           var recipe = Recipe(tastyRecipe: nil, recipeType: RecipeType.myRecipe)

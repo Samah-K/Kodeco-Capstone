@@ -30,6 +30,20 @@
             <AutocreatedTestPlanReference>
             </AutocreatedTestPlanReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "AC4050712C3358B300F4D5F6"
+               BuildableName = "Capstone-CookbookUITests.xctest"
+               BlueprintName = "Capstone-CookbookUITests"
+               ReferencedContainer = "container:Capstone-Cookbook.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -38,6 +52,15 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
       shouldAutocreateTestPlan = "YES">
+      <PreActions>
+         <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Run Script"
+               scriptText = "# Type a script or drag a script file from your workspace to insert its path.&#10;killall Simulator&#10;defaults write com.apple.iphonesimulator ConnectHardwareKeyboard -bool false&#10;">
+            </ActionContent>
+         </ExecutionAction>
+      </PreActions>
       <Testables>
          <TestableReference
             skipped = "NO"
@@ -83,6 +106,15 @@
             ReferencedContainer = "container:Capstone-Cookbook.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "AC4050712C3358B300F4D5F6"
+            BuildableName = "Capstone-CookbookUITests.xctest"
+            BlueprintName = "Capstone-CookbookUITests"
+            ReferencedContainer = "container:Capstone-Cookbook.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
