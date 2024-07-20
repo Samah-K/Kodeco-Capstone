@@ -5,7 +5,8 @@
   Whisk, Whisk
   <br>  
 </h1>
-  Whisk, Whisk! is an app that lets users explore new recipes and write down there own recipes
+  Whisk, Whisk! is an app that lets users explore new recipes and write down their own recipes
+  
 
 
 ## Features
