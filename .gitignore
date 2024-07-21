@@ -89,6 +89,6 @@ fastlane/test_output
 
 iOSInjectionProject/
 Capstone-Cookbook/Capstone-Cookbook/Tasty-Info.plist
-*.plist
 Spoonacular-Info.plist
 Tasty-Info.plist
+Edamam-Info.plist
